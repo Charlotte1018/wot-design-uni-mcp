@@ -1,0 +1,80 @@
+{
+  "name": "@jd/find-plus-mcp",
+  "version": "1.0.0",
+  "description": "MCP 服务器，为 Claude 等 LLM 提供 Find-Plus 组件库文档",
+  "type": "module",
+  "bin": {
+    "find-plus-mcp": "./dist/cli.js"
+  },
+  "main": "./dist/src/server.js",
+  "module": "./dist/src/server.js",
+  "types": "./dist/src/server.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/src/server.d.ts",
+      "import": "./dist/src/server.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "componentData",
+    "LICENSE",
+    "README.md",
+    "README.zh-CN.md",
+    "QUICKSTART.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "extract": "tsx src/scripts/extract-docs.ts",
+    "test": "node dist/src/server.js",
+    "prepublishOnly": "pnpm build",
+    "prepack": "pnpm build",
+    "version": "node -p \"'export const VERSION = ' + JSON.stringify(require('./package.json').version) + ';'\" > src/version.ts"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "find-plus",
+    "vue",
+    "vue3",
+    "components",
+    "documentation",
+    "claude",
+    "ai",
+    "llm",
+    "component-library"
+  ],
+  "author": {
+    "name": "shichangxue",
+    "email": "shichangxue@jd.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/find-plus-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/find-plus-mcp/issues"
+  },
+  "homepage": "https://github.com/yourusername/find-plus-mcp#readme",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.6.0",
+    "gray-matter": "^4.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsup": "^8.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">= 18"
+  },
+  "publishConfig": {
+    "registry": "http://registry.m.jd.com/"
+  }
+}
+

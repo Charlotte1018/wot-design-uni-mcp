@@ -1,0 +1,36 @@
+# 源代码（已编译到 dist）
+src/
+*.ts
+!*.d.ts
+
+# 配置文件
+tsconfig.json
+tsup.config.ts
+.gitignore
+test-tools.js
+
+# 开发文件
+node_modules/
+.DS_Store
+*.log
+
+# 测试和开发工具
+coverage/
+.nyc_output/
+*.test.js
+*.spec.js
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Git
+.git/
+.github/
+
+# 其他
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
