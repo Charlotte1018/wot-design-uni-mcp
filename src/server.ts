@@ -14,7 +14,7 @@ import {
 } from './tools/index.js';
 import { SYSTEM_DESCRIPTION_PROMPT } from './prompt/index.js';
 
-// 创建 MCP 服务器实例 测试
+// 创建 MCP 服务器实例
 const server = new Server(
   {
     name: 'find-plus-mcp',
