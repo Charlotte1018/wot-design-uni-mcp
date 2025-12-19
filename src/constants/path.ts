@@ -5,7 +5,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 /** 项目根目录 */
-export const PROJECT_ROOT = join(__dirname, '../..');
+// 编译后的文件在 dist/ 中，需要向上查找到项目根目录
+// 如果路径包含 /dist，则截取 /dist 之前的部分作为项目根目录
+export const PROJECT_ROOT = __dirname.includes('/dist') 
+  ? __dirname.split('/dist')[0]
+  : join(__dirname, '../..');
 
 /** 提取数据存储目录 */
 export const EXTRACTED_DATA_DIR = join(PROJECT_ROOT, 'componentData');

@@ -1,6 +1,6 @@
 {
-  "name": "@jd/find-plus-mcp",
-  "version": "1.0.0",
+  "name": "@charlotte-zone/find-plus-mcp",
+  "version": "0.0.1",
   "description": "MCP 服务器，为 Claude 等 LLM 提供 Find-Plus 组件库文档",
   "type": "module",
   "bin": {
@@ -32,7 +32,8 @@
     "test": "node dist/src/server.js",
     "prepublishOnly": "pnpm build",
     "prepack": "pnpm build",
-    "version": "node -p \"'export const VERSION = ' + JSON.stringify(require('./package.json').version) + ';'\" > src/version.ts"
+    "version": "node -p \"'export const VERSION = ' + JSON.stringify(require('./package.json').version) + ';'\" > src/version.ts",
+    "test:mcp": "npx @modelcontextprotocol/inspector"
   },
   "keywords": [
     "mcp",
@@ -53,12 +54,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/find-plus-mcp.git"
+    "url": "git@coding.jd.com:shichangxue/find-plus-mcp.git"
   },
-  "bugs": {
-    "url": "https://github.com/yourusername/find-plus-mcp/issues"
-  },
-  "homepage": "https://github.com/yourusername/find-plus-mcp#readme",
   "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^0.6.0",
@@ -74,7 +71,8 @@
     "node": ">= 18"
   },
   "publishConfig": {
-    "registry": "http://registry.m.jd.com/"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
 
