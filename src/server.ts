@@ -17,7 +17,7 @@ import { SYSTEM_DESCRIPTION_PROMPT } from './prompt/index.js';
 // 创建 MCP 服务器实例
 const server = new Server(
   {
-    name: 'find-plus-mcp',
+    name: 'wot-design-uni-mcp',
     version: '1.0.0',
   },
   {
@@ -26,7 +26,7 @@ const server = new Server(
       prompts: {},
     },
   }
-);
+) as any;
 
 // 注册 prompts
 server.setRequestHandler(ListPromptsRequestSchema, async () => {
@@ -34,14 +34,14 @@ server.setRequestHandler(ListPromptsRequestSchema, async () => {
     prompts: [
       {
         name: 'system-description',
-        description: '专业的 Find-Plus 组件库专家助手',
+        description: '专业的 Wot-Design-Uni 组件库专家助手',
         arguments: [],
       },
     ],
   };
 });
 
-server.setRequestHandler(GetPromptRequestSchema, async (request) => {
+server.setRequestHandler(GetPromptRequestSchema, async (request: any) => {
   if (request.params.name === 'system-description') {
     return {
       messages: [
@@ -65,7 +65,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
     tools: [
       {
         name: 'list-components',
-        description: '列出所有可用的 Find-Plus 组件及其描述',
+        description: '列出所有可用的 Wot-Design-Uni 组件及其描述',
         inputSchema: {
           type: 'object',
           properties: {},
@@ -73,7 +73,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       },
       {
         name: 'get-component-docs',
-        description: '获取 Find-Plus 特定组件的详细文档，不包含代码示例',
+        description: '获取 Wot-Design-Uni 特定组件的详细文档，不包含代码示例',
         inputSchema: {
           type: 'object',
           properties: {
@@ -87,7 +87,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       },
       {
         name: 'list-component-examples',
-        description: '获取 Find-Plus 特定组件的代码示例',
+        description: '获取 Wot-Design-Uni 特定组件的代码示例',
         inputSchema: {
           type: 'object',
           properties: {
@@ -104,7 +104,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
 });
 
 // 处理工具调用
-server.setRequestHandler(CallToolRequestSchema, async (request) => {
+server.setRequestHandler(CallToolRequestSchema, async (request: any) => {
   const { name, arguments: args } = request.params;
 
   try {
@@ -158,7 +158,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error('Find-Plus Components MCP 服务器已启动');
+  console.error('Wot-Design-Uni Components MCP 服务器已启动');
 }
 
 main().catch((error) => {

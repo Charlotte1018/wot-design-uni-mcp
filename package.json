@@ -1,10 +1,10 @@
 {
-  "name": "@charlotte-zone/find-plus-mcp",
+  "name": "@charlotte-zone/wot-design-uni-mcp",
   "version": "0.0.1",
-  "description": "MCP 服务器，为 Claude 等 LLM 提供 Find-Plus 组件库文档",
+  "description": "MCP 服务器，为 Claude 等 LLM 提供 Wot-Design-Uni 组件库文档",
   "type": "module",
   "bin": {
-    "find-plus-mcp": "./dist/cli.js"
+    "wot-design-uni-mcp": "./dist/cli.js"
   },
   "main": "./dist/src/server.js",
   "module": "./dist/src/server.js",
@@ -38,7 +38,9 @@
   "keywords": [
     "mcp",
     "model-context-protocol",
-    "find-plus",
+    "wot-design-uni",
+    "wot-design",
+    "uni-app",
     "vue",
     "vue3",
     "components",
@@ -54,7 +56,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@coding.jd.com:shichangxue/find-plus-mcp.git"
+    "url": "git@github.com:Charlotte1018/wot-design-uni-mcp.git"
   },
   "license": "MIT",
   "dependencies": {
