@@ -18,7 +18,7 @@
 
 ### 设置主题
 
-<code>type</code>参数设置文本主题，我们提供了五类属性：<code>primary</code> <code>error</code> <code>success</code> <code>warning</code> <code>default-默认</code>。
+通过<code>type</code>参数设置文本主题，我们提供了五类属性：<code>primary</code> <code>error</code> <code>success</code> <code>warning</code> <code>default-默认</code>。
 
 ```vue
 <template>
@@ -74,36 +74,7 @@ const reset = () => {
 </script>
 ```
 
-### attributes
-
-Attributes
-
-| 参数      | 说明                           | 类型    | 可选值                                      | 默认值  | 最低版本 |
-| --------- | ------------------------------ | ------- | ------------------------------------------- | ------- | -------- |
-| fontSize  | 字体大小                       | number  | 16                                          | default | 1.3.8    |
-| color     | 文本颜色                       | string  | -                                           | ''      | 1.3.8    |
-| type      | 主题类型                       | string  | 'primary' / 'error' / 'warning' / 'success' | default | 1.3.9    |
-| startVal  | 起始值                         | number  | -                                           | 0       | 1.3.8    |
-| endVal    | 最终值                         | number  | -                                           | 2024    | 1.3.8    |
-| duration  | 从起始值到结束值数字变动的时间 | number  | -                                           | 3000    | 1.3.8    |
-| autoplay  | 是否自动播放                   | boolean | -                                           | true    | 1.3.8    |
-| decimals  | 保留的小数位数                 | number  | (需大于等于 0)                              | 0       | 1.3.8    |
-| decimal   | 小数点符号                     | string  | -                                           | '.'     | 1.3.8    |
-| separator | 三位三位的隔开效果             | string  | -                                           | ','     | 1.3.8    |
-| prefix    | 前缀                           | string  | -                                           | -       | 1.3.8    |
-| suffix    | 后缀                           | string  | -                                           | -       | 1.3.8    |
-| useEasing | 是否具有连贯性                 | boolean | -                                           | true    | 1.3.8    |
-
-### events
-
-Events
-
-| 事件名称 | 说明                 | 参数 | 最低版本 |
-| -------- | -------------------- | ---- | -------- |
-| finish   | 动画完成时触发       | —    | 1.3.8    |
-| mounted  | 组件加载完成时时触发 | -    | 1.3.8    |
-
-### methods
+### Methods
 
 Methods
 
@@ -112,16 +83,6 @@ Methods
 | start  | 开始动画                                                    | —    | 1.3.8    |
 | pause  | 暂停动画                                                    | —    | 1.3.8    |
 | reset  | 重置动画，若 `auto-start` 为 `true`，重设后会自动开始倒计时 | —    | 1.3.8    |
-
-### slots
-
-Slots
-
-| 名称    | 说明     | 最低版本 |
-| ------- | -------- | -------- |
-| default | 默认插槽 | 1.3.8    |
-| prefix  | 前缀插槽 | 1.3.8    |
-| suffix  | 后缀插槽 | 1.3.8    |
 
 ### 外部样式类
 

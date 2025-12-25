@@ -37,23 +37,6 @@
 
 建议样式（可在页面或全局样式中添加）：
 
-## Attributes
-
-| 参数       | 说明                                               | 类型                          | 可选值                                                          | 默认值                                                        | 最低版本         |
-| ---------- | -------------------------------------------------- | ----------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------- | ---------------- |
-| image      | 缺省图片类型，支持传入图片 URL                     | string                        | search / network / content / collect / comment / halo / message | network                                                       | -                |
-| image-size | 图片大小，默认单位为 `px`                          | `string`/`number`/`ImageSize` | -                                                               | -                                                             | -                |
-| tip        | 提示文案                                           | string                        | -                                                               | -                                                             | -                |
-| image-mode | 预览图片的 mode 属性                               | `ImageMode`                   | -                                                               | aspectFit                                                     | 1.2.12           |
-| url-prefix | 图片路径前缀，指向图片所在目录，用于拼接图片 URL。 | string                        | -                                                               | https://registry.npmmirror.com/wot-design-uni-assets/*/files/ | 1.3.11 |
-
-### ImageSize
-
-| 参数   | 说明                      | 类型             | 可选值 | 默认值 | 最低版本 |
-| ------ | ------------------------- | ---------------- | ------ | ------ | -------- |
-| height | 图片高度，默认单位为 `px` | string / number | -      | -      | 1.2.12   |
-| width  | 图片宽度，默认单位为 `px` | string / number | -      | -      | 1.2.12   |
-
 ## Slot
 
 | name    | 说明                     | 最低版本 |

@@ -1,257 +1,208 @@
 ## Tag 组件示例
 
-### basic
+### 基本用法
 
-由 `type` 属性来选择 tag 的类型。 也可以通过 `color` 属性来自定义背景色。
-
-```vue
-<template>
-  <fin-tag>Tag 1</fin-tag>
-  <fin-tag class="ml-2" type="success">Tag 2</fin-tag>
-  <fin-tag class="ml-2" type="info">Tag 3</fin-tag>
-  <fin-tag class="ml-2" type="warning">Tag 4</fin-tag>
-  <fin-tag class="ml-2" type="danger">Tag 5</fin-tag>
-  <fin-tag class="ml-2" type="neutral">Tag 6</fin-tag>
-</template>
-```
-
-### removable
-
-设置 `closable` 属性可以定义一个标签是否可移除。 它接受一个 `Boolean`。 默认的标签移除时会附带渐变动画。 如果不想使用，可以设置 `disable-transitions` 属性，它接受一个 `Boolean`，`true` 为关闭。 当 Tag 被移除时会触发 `close` 事件。
+基本用法
 
 ```vue
 <template>
-  <fin-tag
-    v-for="tag in tags"
-    :key="tag.name"
-    class="mx-1"
-    closable
-    :type="tag.type"
-  >
-    {{ tag.name }}
-  </fin-tag>
+<wd-tag custom-class="space">标签</wd-tag>
+<wd-tag custom-class="space" type="primary">标签</wd-tag>
+<wd-tag custom-class="space" type="danger">标签</wd-tag>
+<wd-tag custom-class="space" type="warning">标签</wd-tag>
+<wd-tag custom-class="space" type="success">标签</wd-tag>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+</script>
 
+<style lang="scss">
+:deep(.space) {
+  margin: 0 10px 10px;
+}
+</style>
+```
+
+### 幽灵标签
+
+幽灵标签
+
+```vue
+<template>
+<wd-tag plain>标签</wd-tag>
+<wd-tag type="primary" plain>标签</wd-tag>
+<wd-tag type="danger" plain>标签</wd-tag>
+<wd-tag type="warning" plain>标签</wd-tag>
+<wd-tag type="success" plain>标签</wd-tag>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 标记标签
+
+标记标签
+
+```vue
+<template>
+<wd-tag mark>标签</wd-tag>
+<wd-tag type="primary" mark>标签</wd-tag>
+<wd-tag type="danger" mark>标签</wd-tag>
+<wd-tag type="warning" mark>标签</wd-tag>
+<wd-tag type="success" mark>标签</wd-tag>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 幽灵标记标签
+
+幽灵标记标签
+
+```vue
+<template>
+<wd-tag mark plain>标签</wd-tag>
+<wd-tag type="primary" mark plain>标签</wd-tag>
+<wd-tag type="danger" mark plain>标签</wd-tag>
+<wd-tag type="warning" mark plain>标签</wd-tag>
+<wd-tag type="success" mark plain>标签</wd-tag>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 圆角标签
+
+圆角标签
+
+```vue
+<template>
+<wd-tag round>标签</wd-tag>
+<wd-tag type="primary" round>标签</wd-tag>
+<wd-tag type="danger" round>标签</wd-tag>
+<wd-tag type="warning" round>标签</wd-tag>
+<wd-tag type="success" round>标签</wd-tag>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 设置图标
+
+设置图标
+
+```vue
+<template>
+<wd-tag custom-class="space" icon="clock" mark>标签</wd-tag>
+<wd-tag custom-class="space" mark use-icon-slot>
+  <text>插槽</text>
+  <template #icon>
+    <wd-icon name="clock" />
+  </template>
+</wd-tag>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 自定义颜色
+
+自定义颜色
+
+```vue
+<template>
+<wd-tag color="#0083ff" bg-color="#d0e8ff">标签</wd-tag>
+<wd-tag color="#FAA21E" bg-color="#FAA21E" plain>标签</wd-tag>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 可关闭
+
+可关闭
+
+```vue
+<template>
+<wd-tag closable round type="primary">标签</wd-tag>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 新增标签
+
+新增标签
+
+```vue
+<template>
+<wd-tag v-for="(tag, index) in tags" :key="index" custom-class="space" round closable @close="handleClose(index)">{{item}}</wd-tag>
+<wd-tag custom-class="space" round dynamic @confirm="handleConfirm"></wd-tag>
+
+<wd-tag custom-class="space" round dynamic @confirm="handleConfirm">
+  <template #add>
+    <wd-icon name="pin" size="12px"></wd-icon>
+    <text style="margin-left: 4px">自定义</text>
+  </template>
+</wd-tag>
+</template>
+
+<script lang="ts" setup>
+const tags = ref(['标签一', '标签二'])
+
+function handleClose(order) {
+  tags.value = tags.value.filter((value, index) => index !== order)
+  console.log('close:index' + order)
+}
+
+function handleConfirm({ value }) {
+  if (!value) return
+  tags.value = [...tags.value, value]
+}
+</script>
+```
+
+### 事件
+
+事件
+
+```vue
+<template>
+<wd-tag v-for="(tag, index) in tags" :key="index" round closable @click="handleClick(index)" @close="handleClose(index)">{{tag.value}}</wd-tag>
+</template>
+
+<script lang="ts" setup>
 const tags = ref([
-  { name: 'Tag 1', type: '' },
-  { name: 'Tag 2', type: 'success' },
-  { name: 'Tag 3', type: 'info' },
-  { name: 'Tag 4', type: 'warning' },
-  { name: 'Tag 5', type: 'danger' },
-  { name: 'Tag 6', type: 'neutral' },
-])
-</script>
-```
-
-### editable
-
-
-
-```vue
-<template>
-  <fin-tag
-    v-for="tag in dynamicTags"
-    :key="tag"
-    class="mx-1"
-    closable
-    :disable-transitions="false"
-    @close="handleClose(tag)"
-  >
-    {{ tag }}
-  </fin-tag>
-  <fin-input
-    v-if="inputVisible"
-    ref="InputRef"
-    v-model="inputValue"
-    class="ml-1 w-20"
-    size="small"
-    @keyup.enter="handleInputConfirm"
-    @blur="handleInputConfirm"
-  />
-  <fin-button
-    v-else
-    class="button-new-tag ml-1"
-    size="small"
-    @click="showInput"
-  >
-    + New Tag
-  </fin-button>
-</template>
-
-<script lang="ts" setup>
-import { nextTick, ref } from 'vue'
-import { FinInput } from '@jdt/find-plus'
-
-const inputValue = ref('')
-const dynamicTags = ref(['Tag 1', 'Tag 2', 'Tag 3'])
-const inputVisible = ref(false)
-const InputRef = ref<InstanceType<typeof FinInput>>()
-
-const handleClose = (tag: string) => {
-  dynamicTags.value.splice(dynamicTags.value.indexOf(tag), 1)
-}
-
-const showInput = () => {
-  inputVisible.value = true
-  nextTick(() => {
-    InputRef.value!.input!.focus()
-  })
-}
-
-const handleInputConfirm = () => {
-  if (inputValue.value) {
-    dynamicTags.value.push(inputValue.value)
+  {
+    plain: true,
+    closable: true,
+    type: 'primary',
+    value: '标签一'
   }
-  inputVisible.value = false
-  inputValue.value = ''
+])
+
+function handleClick(index) {
+  console.log('click:index' + index)
+}
+function handleClose(order) {
+  tags.value = tags.value.filter((value, index) => index !== order)
+  console.log('close:index' + order)
 }
 </script>
 ```
 
-### sizes
+### 外部样式类
 
-使用 `size` 属性来设置额外尺寸, 可选值包括 `large`, `default` 或 `small`.
+外部样式类
 
-```vue
-<template>
-  <fin-row>
-    <fin-tag class="mx-1" size="large">Large</fin-tag>
-    <fin-tag class="mx-1">Default</fin-tag>
-    <fin-tag class="mx-1" size="small">Small</fin-tag>
-  </fin-row>
-
-  <fin-row class="mt-4">
-    <fin-tag class="mx-1" size="large" closable>Large</fin-tag>
-    <fin-tag class="mx-1" closable>Default</fin-tag>
-    <fin-tag class="mx-1" size="small" closable>Small</fin-tag>
-  </fin-row>
-</template>
-```
-
-### theme
-
-通过设置 `effect` 属性来改变主题，默认为 `light`。
-
-```vue
-<template>
-  <div class="tag-group my-2 flex flex-wrap gap-1 items-center">
-    <span class="tag-group__title m-1 line-height-2">Dark</span>
-    <fin-tag
-      v-for="item in items"
-      :key="item.label"
-      :type="item.type"
-      class="mx-1"
-      effect="dark"
-    >
-      {{ item.label }}
-    </fin-tag>
-  </div>
-  <div class="tag-group my-2 flex flex-wrap gap-1 items-center">
-    <span class="tag-group__title m-1">Light</span>
-    <fin-tag
-      v-for="item in items"
-      :key="item.label"
-      class="mx-1"
-      :type="item.type"
-      effect="light"
-    >
-      {{ item.label }}
-    </fin-tag>
-  </div>
-  <div class="tag-group my-2 flex flex-wrap gap-1 items-center">
-    <span class="tag-group__title m-1">Plain</span>
-    <fin-tag
-      v-for="item in items"
-      :key="item.label"
-      class="mx-1"
-      :type="item.type"
-      effect="plain"
-    >
-      {{ item.label }}
-    </fin-tag>
-  </div>
-</template>
-
-<script lang="ts" setup>
-import { ref } from 'vue'
-
-import type { TagProps } from '@jdt/find-plus'
-
-type Item = { type: TagProps['type']; label: string }
-
-const items = ref<Array<Item>>([
-  { type: '', label: 'Tag 1' },
-  { type: 'success', label: 'Tag 2' },
-  { type: 'info', label: 'Tag 3' },
-  { type: 'danger', label: 'Tag 4' },
-  { type: 'warning', label: 'Tag 5' },
-  { type: 'neutral', label: 'Tag 6' },
-])
-</script>
-```
-
-### rounded
-
-
-
-```vue
-<template>
-  <div class="flex flex-wrap gap-2 my-2">
-    <fin-tag
-      v-for="item in items"
-      :key="item.label"
-      :type="item.type"
-      class="mx-1"
-      effect="dark"
-      round
-    >
-      {{ item.label }}
-    </fin-tag>
-  </div>
-  <div class="flex flex-wrap gap-2">
-    <fin-tag
-      v-for="item in items"
-      :key="item.label"
-      :type="item.type"
-      class="mx-1"
-      effect="light"
-      round
-    >
-      {{ item.label }}
-    </fin-tag>
-  </div>
-  <div class="flex flex-wrap gap-2 my-2">
-    <fin-tag
-      v-for="item in items"
-      :key="item.label"
-      :type="item.type"
-      class="mx-1"
-      effect="plain"
-      round
-    >
-      {{ item.label }}
-    </fin-tag>
-  </div>
-</template>
-
-<script lang="ts" setup>
-import { ref } from 'vue'
-
-import type { TagProps } from '@jdt/find-plus'
-
-type Item = { type: TagProps['type']; label: string }
-
-const items = ref<Array<Item>>([
-  { type: '', label: 'Tag 1' },
-  { type: 'success', label: 'Tag 2' },
-  { type: 'info', label: 'Tag 3' },
-  { type: 'danger', label: 'Tag 4' },
-  { type: 'warning', label: 'Tag 5' },
-  { type: 'neutral', label: 'Tag 6' },
-])
-</script>
-```
+| 类名         | 说明       | 最低版本 |
+| ------------ | ---------- | -------- |
+| custom-class | 根节点样式 | -        |
 

@@ -1,78 +1,71 @@
-# Tabs 标签页
+# Tab 标签页
 
-分隔内容上有关联但属于不同类别的数据集合。
+标签页组件，用于在不同的内容区域之间进行切换。
 
-## 基础用法
+## 基本用法
 
-基础的、简洁的标签页。
+`v-model` 为绑定值，可以为 number 类型（选中的 tab 的下标）和 string 类型（标签名）。
 
-## 卡片风格的标签
+:::tip 提示
+当`v-model`为`number`类型时，`wd-tab`可以不必设置`name`。同时如果 value 超出了 tab 数量，会用 0 自动兜底。
+:::
 
-你可以设置具有卡片风格的标签。
+## name 匹配
 
-## 带有边框的卡片风格
+为`wd-tab`设置`name`作为唯一标识。
 
-你还可以设置标签页为带有边框的卡片
+## 使用徽标<el-tag text style="vertical-align: middle;margin-left:8px;" effect="plain">1.4.0</el-tag>
 
-## 标签位置的设置
+使用`bage-props`设置徽标属性，可以参考[Badge 组件的 props](/component/badge#attributes)。
 
-可以通过 `tab-position` 设置标签的位置
+## 自动调整底部条宽度
 
-## 自定义标签页的内容
+设置 `auto-line-width` 属性，自动调整底部条宽度为文本内容宽度。
 
-可以通过具名插槽来实现自定义标签页的内容
+## 粘性布局
 
-## 动态增减标签页
+设置 `sticky` 属性，使用粘性布局。可以设置 `offset-top` 属性，当距离窗口顶部多少像素时，固定标签头。在`H5`端使用自定义导航栏时需要参考[sticky 的吸顶距离](/component/sticky.html#吸顶距离)进行配置。
 
-增减标签页按钮只能在选项卡样式的标签页下使用
+## 禁用 Tab
 
-## 添加按钮自定义图标 ^(2.4.0)
+在 `wd-tab` 上设置 `disabled` 属性，禁用某个页签。
 
-## 增加标签页触发器自定义
+## 点击事件
 
-## Tabs 属性
+监听页签的点击事件.
 
-| 属性名                   | 说明                                                          | 类型                                  | 可选值                   | 默认值          |
-| --------------------- | ----------------------------------------------------------- | ----------------------------------- | --------------------- | ------------ |
-| model-value / v-model | 绑定值，选中选项卡的 name                                             | string / number                     | —                     | 第一个选项卡的 name |
-| type                  | 风格类型                                                        | string                              | card/border-card      | —            |
-| closable              | 标签是否可关闭                                                     | boolean                             | —                     | false        |
-| addable               | 标签是否可增加                                                     | boolean                             | —                     | false        |
-| editable              | 标签是否同时可增加和关闭                                                | boolean                             | —                     | false        |
-| tab-position          | 选项卡所在位置                                                     | string                              | top/right/bottom/left | top          |
-| stretch               | 标签的宽度是否自撑开                                                  | boolean                             | -                     | false        |
-| before-leave          | 切换标签之前的钩子函数， 若返回 `false ` 或者返回被 reject 的 ` Promise `，则阻止切换。 | Function(activeName, oldActiveName) | —                     | —            |
+## 手势滑动
 
-## Tabs 事件
+设置 `swipeable` 属性，支持手势滑动。
 
-| 事件名        | 说明                 | 回调参数                                                                  |
-| ---------- | ------------------ | --------------------------------------------------------------------- |
-| tab-click  | tab 被选中时触发         | (pane: `TabsPaneContext`, ev: `Event`)                                |
-| tab-change | `activeName` 改变时触发 | (name: `TabPaneName`)                                                 |
-| tab-remove | 点击 tab 移除按钮时触发     | (name: `TabPaneName`)                                                 |
-| tab-add    | 点击 tab 新增按钮时触发     | —                                                                     |
-| edit       | 点击 tab 的新增或移除按钮后触发 | (paneName: `TabPaneName \| undefined`, action: `'remove' \| 'add'`) |
+## 切换动画
 
-## Tabs 插槽
+设置 `animated` 属性，开启切换标签内容时的过渡动画。
 
-| 插槽名              | 说明        | 子标签      |
-| ---------------- | --------- | -------- |
-| -                | 默认插槽      | Tab-pane |
-| addIcon ^(2.4.0) | 自定义添加按钮图标 | -        |
+## 左对齐超出即可滚动 <el-tag text style="vertical-align: middle;margin-left:8px;" effect="plain">1.4.0</el-tag>
 
-## Tab-pane 属性
+`slidable`设置为`always`时，所有的标签会向左侧收缩对齐，超出即可滑动。
 
-| 属性名      | 说明                           | 类型              | 可选值 | 默认值                         |
-| -------- | ---------------------------- | --------------- | --- | --------------------------- |
-| label    | 选项卡标题                        | string          | —   | —                           |
-| disabled | 是否禁用                         | boolean         | —   | false                       |
-| name     | 与选项卡绑定值 value 对应的标识符，表示选项卡别名 | string / number | —   | 该选项卡在选项卡列表中的序数值，第一个选项卡为 '0' |
-| closable | 标签是否可关闭                      | boolean         | —   | false                       |
-| lazy     | 标签是否延迟渲染                     | boolean         | —   | false                       |
+---
 
-## Tab-pane 插槽
+标签页在标签数大于等于 6 个时，可以滑动；当标签数大于等于 10 个时，将会显示导航地图，便于快速定位到某个标签。可以通过设置 `slidable-num` 修改可滑动的数量阈值；设置 `map-num` 修改显示导航地图的阈值。`slidable`设置为`always`时，所有的标签会向左侧收缩对齐，超出即可滑动。
 
-| 插槽名   | 说明             |
-| ----- | -------------- |
-| -     | Tab-pane 的内容   |
-| label | Tab-pane 的标题内容 |
+## 在弹出框中使用
+
+微信小程序端，在弹出框中使用本组件时，需要调用 `updateLineStyle` 方法更新激活项样式，参见[常见问题](/guide/common-problems.html#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%9C%A8%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%8A%E4%BD%BF%E7%94%A8popup%E3%80%81actionsheet%E3%80%81dropdownitem%E7%AD%89%E5%BC%B9%E5%87%BA%E6%A1%86%E7%BB%84%E4%BB%B6%E5%8C%85%E8%A3%B9slider%E3%80%81tabs%E7%AD%89%E7%BB%84%E4%BB%B6%E6%97%B6-slider%E3%80%81tabs%E8%A1%A8%E7%8E%B0%E5%BC%82%E5%B8%B8)。
+
+## Methods
+
+对外暴露函数
+
+| 事件名称        | 说明                                                                                                | 参数                                                                   | 最低版本 |
+| --------------- | --------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | -------- |
+| setActive       | 设置激活项，参数分别为：`value` 激活值，`init` 是否已初始化 ，`setScroll` 是否设置 scroll-view 滚动 | `(value: number \| string, init: boolean, setScroll: boolean) => void` | -        |
+| scrollIntoView  | 使选中项滚动到可视区域                                                                              | -                                                                      | -        |
+| updateLineStyle | 更新激活项边框线样式，参数`animation`用于是否开启动画，默认开启                                     | `(animation: boolean) => void`                                         | -        |
+
+## 外部样式类
+
+| 类名         | 说明       | 最低版本 |
+| ------------ | ---------- | -------- |
+| custom-class | 根节点样式 | -        |

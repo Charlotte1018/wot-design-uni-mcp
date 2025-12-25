@@ -1,374 +1,351 @@
 ## DatetimePicker 组件示例
 
-### date-and-time
+### 基本用法
 
-通过设置`type`属性为`datetime`，即可在同一个选择器里同时进行日期和时间的选择。 快捷方式的使用方法与 Date Picker 相同。
-
-```vue
-<template>
-  <div class="demo-datetime-picker">
-    <div class="block">
-      <span class="demonstration">Default</span>
-      <fin-date-picker
-        v-model="value1"
-        type="datetime"
-        placeholder="Select date and time"
-      />
-    </div>
-    <div class="block">
-      <span class="demonstration">With shortcuts</span>
-      <fin-date-picker
-        v-model="value2"
-        type="datetime"
-        placeholder="Select date and time"
-        :shortcuts="shortcuts"
-      />
-    </div>
-    <div class="block">
-      <span class="demonstration">With default time</span>
-      <fin-date-picker
-        v-model="value3"
-        type="datetime"
-        placeholder="Select date and time"
-        :default-time="defaultTime"
-      />
-    </div>
-  </div>
-</template>
-
-<script lang="ts" setup>
-import { ref } from 'vue'
-
-const value1 = ref('')
-const value2 = ref('')
-const value3 = ref('')
-const defaultTime = new Date(2000, 1, 1, 12, 0, 0)
-
-const shortcuts = [
-  {
-    text: 'Today',
-    value: new Date(),
-  },
-  {
-    text: 'Yesterday',
-    value: () => {
-      const date = new Date()
-      date.setTime(date.getTime() - 3600 * 1000 * 24)
-      return date
-    },
-  },
-  {
-    text: 'A week ago',
-    value: () => {
-      const date = new Date()
-      date.setTime(date.getTime() - 3600 * 1000 * 24 * 7)
-      return date
-    },
-  },
-]
-</script>
-<style scoped>
-.demo-datetime-picker {
-  display: flex;
-  width: 100%;
-  padding: 0;
-  flex-wrap: wrap;
-}
-.demo-datetime-picker .block {
-  padding: 30px 0;
-  text-align: center;
-  border-right: solid 1px var(--fin-border-color);
-  flex: 1;
-}
-.demo-datetime-picker .block:last-child {
-  border-right: none;
-}
-.demo-datetime-picker .demonstration {
-  display: block;
-  color: var(--fin-text-color-secondary);
-  font-size: 14px;
-  margin-bottom: 20px;
-}
-</style>
-```
-
-### date-and-time-formats
-
-
+基本用法
 
 ```vue
 <template>
-  <div class="demo-datetime-picker">
-    <div class="block">
-      <span class="demonstration">Emits Date object</span>
-      <div class="demonstration">Value: {{ value1 }}</div>
-      <fin-date-picker
-        v-model="value1"
-        type="datetime"
-        placeholder="Pick a Date"
-        format="YYYY/MM/DD HH:mm:ss"
-      />
-    </div>
-    <div class="block">
-      <span class="demonstration">Use value-format</span>
-      <div class="demonstration">Value：{{ value2 }}</div>
-      <fin-date-picker
-        v-model="value2"
-        type="datetime"
-        placeholder="Pick a Date"
-        format="YYYY/MM/DD hh:mm:ss"
-        value-format="YYYY-MM-DD h:m:s a"
-      />
-    </div>
-    <div class="block">
-      <span class="demonstration">Timestamp</span>
-      <div class="demonstration">Value：{{ value3 }}</div>
-      <fin-date-picker
-        v-model="value3"
-        type="datetime"
-        placeholder="Pick a Date"
-        format="YYYY/MM/DD hh:mm:ss"
-        value-format="x"
-      />
-    </div>
-  </div>
+<wd-datetime-picker v-model="value" label="日期选择" @confirm="handleConfirm" />
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-
-const value1 = ref('')
-const value2 = ref('')
-const value3 = ref('')
+const value = ref<number>(Date.now())
+function handleConfirm({ value }) {
+  console.log(new Date(value))
+}
 </script>
-<style scoped>
-.demo-datetime-picker {
-  display: flex;
-  width: 100%;
-  padding: 0;
-  flex-wrap: wrap;
-}
-.demo-datetime-picker .block {
-  padding: 30px 0;
-  text-align: center;
-  border-right: solid 1px var(--fin-border-color);
-  flex: 1;
-}
-.demo-datetime-picker .block:last-child {
-  border-right: none;
-}
-.demo-datetime-picker .demonstration {
-  display: block;
-  color: var(--fin-text-color-secondary);
-  font-size: 14px;
-  margin-bottom: 20px;
-}
-</style>
 ```
 
-### date-and-time-formats-panel
+### 设置默认值
 
-
+设置默认值
 
 ```vue
 <template>
-  <div class="demo-datetime-picker">
-    <div class="block">
-      <fin-date-picker
-        v-model="value1"
-        type="datetime"
-        placeholder="Pick a Date"
-        format="YYYY-MM-DD HH:mm:ss"
-        date-format="MMM DD, YYYY"
-        time-format="HH:mm"
-      />
-    </div>
-    <div class="line" />
-    <div class="block">
-      <fin-date-picker
-        v-model="value2"
-        type="datetimerange"
-        start-placeholder="Start date"
-        end-placeholder="End date"
-        format="YYYY-MM-DD HH:mm:ss"
-        date-format="YYYY/MM/DD ddd"
-        time-format="A hh:mm:ss"
-      />
-    </div>
-  </div>
+<wd-datetime-picker v-model="value" :default-value="defaultValue" label="日期选择" @confirm="handleConfirm" />
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+const value = ref<string>('')
+const defaultValue = ref<number>(Date.now())
 
-const value1 = ref('')
-const value2 = ref('')
+function handleConfirm({ value }) {
+  console.log(new Date(value))
+}
 </script>
-<style scoped>
-.demo-datetime-picker {
-  display: flex;
-  width: 100%;
-  padding: 0;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: stretch;
-}
-.demo-datetime-picker .block {
-  padding: 30px 0;
-  text-align: center;
-}
-.line {
-  width: 1px;
-  background-color: var(--fin-border-color);
-}
-</style>
 ```
 
-### date-and-time-range
+### date 类型
 
-设置`type`为`datetimerange`即可选择日期和时间范围
+date 类型
 
 ```vue
 <template>
-  <div class="block">
-    <span class="demonstration">Default</span>
-    <fin-date-picker
-      v-model="value1"
-      type="datetimerange"
-      range-separator="To"
-      start-placeholder="Start date"
-      end-placeholder="End date"
-    />
-  </div>
-  <div class="block">
-    <span class="demonstration">With shortcuts</span>
-    <fin-date-picker
-      v-model="value2"
-      type="datetimerange"
-      :shortcuts="shortcuts"
-      range-separator="To"
-      start-placeholder="Start date"
-      end-placeholder="End date"
-    />
-  </div>
+<wd-datetime-picker type="date" v-model="value" label="年月日" />
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-
-const value1 = ref<[Date, Date]>([
-  new Date(2000, 10, 10, 10, 10),
-  new Date(2000, 10, 11, 10, 10),
-])
-const value2 = ref('')
-
-const shortcuts = [
-  {
-    text: 'Last week',
-    value: () => {
-      const end = new Date()
-      const start = new Date()
-      start.setTime(start.getTime() - 3600 * 1000 * 24 * 7)
-      return [start, end]
-    },
-  },
-  {
-    text: 'Last month',
-    value: () => {
-      const end = new Date()
-      const start = new Date()
-      start.setTime(start.getTime() - 3600 * 1000 * 24 * 30)
-      return [start, end]
-    },
-  },
-  {
-    text: 'Last 3 months',
-    value: () => {
-      const end = new Date()
-      const start = new Date()
-      start.setTime(start.getTime() - 3600 * 1000 * 24 * 90)
-      return [start, end]
-    },
-  },
-]
+const value = ref<number>(Date.now())
 </script>
-<style scoped>
-.block {
-  padding: 30px 0;
-  text-align: center;
-  border-right: solid 1px var(--fin-border-color);
-  flex: 1;
-}
-.block:last-child {
-  border-right: none;
-}
-.block .demonstration {
-  display: block;
-  color: var(--fin-text-color-secondary);
-  font-size: 14px;
-  margin-bottom: 20px;
-}
-</style>
 ```
 
-### default-time
+### year-month 类型
 
-使用`datetimerange`进行范围选择时，在日期选择面板中选定起始与结束的日期，默认会使用该日期的`00:00:00`作为起始与结束的时刻；通过选项`default-time`可以控制选中起始与结束日期时所使用的具体时刻。 我们可以使用 `default-time` 属性来控制它。 `default-time`接受一个数组，其中第一项控制起始日期的具体时刻，第二项控制结束日期的具体时刻。 第一项控制开始日期的时间值，第二项控制结束日期的时间值。
+year-month 类型
 
 ```vue
 <template>
-  <div class="block">
-    <span class="demonstration">Start and end date time 12:00:00</span>
-    <fin-date-picker
-      v-model="value1"
-      type="datetimerange"
-      start-placeholder="Start Date"
-      end-placeholder="End Date"
-      :default-time="defaultTime1"
-    />
-  </div>
-  <div class="block">
-    <span class="demonstration"
-      >Start date time 12:00:00, end date time 08:00:00</span
-    >
-    <fin-date-picker
-      v-model="value2"
-      type="datetimerange"
-      start-placeholder="Start Date"
-      end-placeholder="End Date"
-      :default-time="defaultTime2"
-    />
-  </div>
+<wd-datetime-picker type="year-month" v-model="value" label="年月" />
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-
-const value1 = ref('')
-const value2 = ref('')
-
-const defaultTime1 = new Date(2000, 1, 1, 12, 0, 0) // '12:00:00'
-const defaultTime2: [Date, Date] = [
-  new Date(2000, 1, 1, 12, 0, 0),
-  new Date(2000, 2, 1, 8, 0, 0),
-] // '12:00:00', '08:00:00'
+const value = ref<number>(Date.now())
 </script>
-<style scoped>
-.block {
-  padding: 30px 0;
-  text-align: center;
-  border-right: solid 1px var(--fin-border-color);
-  flex: 1;
-}
-.block:last-child {
-  border-right: none;
-}
-.block .demonstration {
-  display: block;
-  color: var(--fin-text-color-secondary);
-  font-size: 14px;
-  margin-bottom: 20px;
-}
-</style>
 ```
+
+### year 类型
+
+year 类型
+
+```vue
+<template>
+<wd-datetime-picker type="year" v-model="value" label="年" />
+</template>
+
+<script lang="ts" setup>
+const value = ref<number>(Date.now())
+</script>
+```
+
+### time 类型
+
+time 类型
+
+```vue
+<template>
+<wd-datetime-picker type="time" v-model="value" label="时分" />
+</template>
+
+<script lang="ts" setup>
+const value4 = ref<string>('09:20')
+</script>
+```
+
+### time 类型（带秒）
+
+time 类型（带秒）
+
+```vue
+<template>
+<wd-datetime-picker type="time" v-model="value" label="时分秒" use-second />
+</template>
+
+<script lang="ts" setup>
+const value = ref<string>('09:20:30')
+</script>
+```
+
+### datetime 类型（带秒）
+
+datetime 类型（带秒）
+
+```vue
+<template>
+<wd-datetime-picker type="datetime" v-model="value" label="年月日时分秒" use-second />
+</template>
+
+<script lang="ts" setup>
+const value = ref<number>(Date.now())
+</script>
+```
+
+### 修改展示格式
+
+修改展示格式
+
+```vue
+<template>
+<wd-datetime-picker v-model="value" label="展示格式" :displayFormat="displayFormat" />
+</template>
+
+<script lang="ts" setup>
+const value = ref<number>(Date.now())
+const displayFormat = (items) => {
+  return `${items[0].label}年${items[1].label}月${items[2].label}日 ${items[3].label}:${items[4].label}`
+}
+</script>
+```
+
+### 修改弹出层内部格式
+
+修改弹出层内部格式
+
+```vue
+<template>
+<wd-datetime-picker v-model="value" label="内部格式" :formatter="formatter" />
+</template>
+
+<script lang="ts" setup>
+const value = ref<number>(Date.now())
+
+const formatter = (type, value) => {
+  switch (type) {
+    case 'year':
+      return value + '年'
+    case 'month':
+      return value + '月'
+    case 'date':
+      return value + '日'
+    case 'hour':
+      return value + '时'
+    case 'minute':
+      return value + '分'
+    default:
+      return value
+  }
+}
+</script>
+```
+
+### 过滤选项
+
+过滤选项
+
+```vue
+<template>
+<wd-datetime-picker v-model="value" label="过滤选项" :filter="filter" />
+</template>
+
+<script lang="ts" setup>
+const value = ref<number>(Date.now())
+
+const filter = (type, values) => {
+  if (type === 'minute') {
+    return values.filter((value) => value % 5 === 0)
+  }
+  return values
+}
+</script>
+```
+
+### 选择器大小
+
+选择器大小
+
+```vue
+<template>
+<wd-datetime-picker label="日期选择" size="large" v-model="value" />
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 必填属性
+
+必填属性
+
+```vue
+<template>
+<wd-datetime-picker label="必填属性" error v-model="value" required/>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 错误状态
+
+错误状态
+
+```vue
+<template>
+<wd-datetime-picker label="日期选择" error v-model="value" />
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 值靠右展示
+
+值靠右展示
+
+```vue
+<template>
+<wd-datetime-picker label="日期选择" align-right v-model="value" />
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 确定前校验
+
+确定前校验
+
+```vue
+<template>
+<wd-toast></wd-toast>
+<wd-datetime-picker label="before-confirm" v-model="value" :before-confirm="beforeConfirm" @confirm="handleConfirm" />
+</template>
+
+<script lang="ts" setup>
+const value = ref<string>('')
+
+const toast = useToast()
+const beforeConfirm = (value, resolve, picker) => {
+  picker.setLoading(true)
+  setTimeout(() => {
+    picker.setLoading(false)
+    if (value > Date.now()) {
+      resolve(false)
+      toast.error('不能选择大于今天的日期')
+    } else {
+      resolve(true)
+    }
+  }, 2000)
+}
+
+function handleConfirm({ value }) {
+  console.log(new Date(value))
+}
+</script>
+```
+
+### 唤起项插槽
+
+设置默认插槽修改唤起picker组件的形式。
+
+```vue
+<template>
+<wd-datetime-picker  v-model="value">
+  <wd-button>插槽唤起</wd-button>
+</wd-datetime-picker>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 时间范围选择
+
+时间范围选择
+
+```vue
+<template>
+<wd-datetime-picker label="日期选择" v-model="value" @confirm="handleConfirm" />
+</template>
+
+<script lang="ts" setup>
+const value = ref<any[]>(['', Date.now()])
+
+function handleConfirm({ value }) {
+  console.log(new Date(value))
+}
+</script>
+```
+
+### 范围选择tab标签展示格式
+
+范围选择tab标签展示格式
+
+```vue
+<template>
+<wd-datetime-picker v-model="value" label="范围tab展示格式" :display-format-tab-label="displayFormatTabLabel" @confirm="handleConfirm"></wd-datetime-picker>
+</template>
+
+<script lang="ts" setup>
+const value = ref<any[]>(['', Date.now()])
+
+function handleConfirm({ value }) {
+  console.log(new Date(value))
+}
+
+const displayFormatTabLabel = (items) => {
+  return `${items[0].label}年${items[1].label}月${items[2].label}日 ${items[3].label}:${items[4].label}`
+}
+</script>
+```
+
+### Methods
+
+Methods
+
+| 方法名称 | 说明 | 参数 | 最低版本 |
+|--------|------|-----|---------|
+| open | 打开picker弹框 | - |
+| close | 关闭picker弹框 | - |
+
+### 外部样式类
+
+外部样式类
+
+| 类名 | 说明 | 最低版本 |
+|-----|------|--------|
+| custom-view-class | pickerView 外部自定义样式 | - |
+| custom-cell-class | pickerView cell 外部自定义样式 | 1.3.8 |
+| custom-label-class | label 外部自定义样式 | - |
+| custom-value-class | value 外部自定义样式 | - |
 

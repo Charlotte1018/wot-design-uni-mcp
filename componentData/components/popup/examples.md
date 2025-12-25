@@ -14,7 +14,7 @@
 <script lang="ts" setup>
 </script>
 
-<style lang="css" scoped>
+<style lang="scss">
 .custom-txt {
   color: black;
   width: 400rpx;
@@ -56,7 +56,7 @@
 
 ### 禁用遮罩点击
 
-设置
+禁用遮罩点击
 
 ```vue
 <template>
@@ -69,7 +69,7 @@
 
 ### 禁用遮罩
 
-设置
+禁用遮罩
 
 ```vue
 <template>
@@ -82,7 +82,7 @@
 
 ### 开启底部安全区
 
-设置
+开启底部安全区
 
 ```vue
 <template>
@@ -95,7 +95,7 @@
 
 ### root-portal
 
-当使用
+root-portal
 
 ```vue
 <template>
@@ -123,43 +123,6 @@
 <script lang="ts" setup>
 </script>
 ```
-
-### attributes
-
-Attributes
-
-| 参数 | 说明 | 类型 | 可选值 | 默认值 | 最低版本 |
-|-----|-----|------|-------|-------|---------|
-| v-model | 弹出层是否显示 | boolean | - | - | - |
-| position | 弹出位置 | string | center / top / right / bottom / left | center | - |
-| closable | 关闭按钮 | boolean | - | false | - |
-| close-on-click-modal | 点击遮罩是否关闭 | boolean | - | true | - |
-| duration | 动画持续时间 | number / boolean | - | 300(ms) | - |
-| z-index | 设置层级 | number | - | 10 | - |
-| custom-style | 自定义弹出层样式 | string | - | - | - |
-| modal | 是否显示遮罩 | boolean | - | true | - |
-| modal-style | 自定义modal蒙层样式 | string | - | - | - |
-| hide-when-close | 是否当关闭时将弹出层隐藏(display: none) | boolean | - | true | - |
-| lazy-render | 弹层内容懒渲染，触发展示时才渲染内容 | boolean | - | true | - |
-| safe-area-inset-bottom | 弹出面板是否设置底部安全距离（iphone X 类型的机型） | boolean | - | false | - |
-| transition | 动画类型，参见 wd-transition 组件的name | string | fade / fade-up / fade-down / fade-left / fade-right / slide-up / slide-down / slide-left / slide-right / zoom-in | - | - |
-| lock-scroll | 是否锁定背景滚动，锁定时蒙层里的内容也将无法滚动 | boolean | - | true | 0.1.30 |
-| root-portal | 是否从页面中脱离出来，用于解决各种 fixed 失效问题 | boolean | - | false | 1.11.0 |
-
-### events
-
-Events
-
-| 事件名称 | 说明 | 参数 | 最低版本 |
-|---------|-----|-----|---------|
-| close | 弹出层关闭时触发 | - | - |
-| click-modal | 点击遮罩时触发 | - | - |
-| before-enter | 进入前触发 | - | - |
-| enter | 进入时触发 | - | - |
-| after-enter | 进入后触发 | - | - |
-| before-leave | 离开前触发 | - | - |
-| leave | 离开时触发 | - | - |
-| after-leave | 离开后触发| - | - |
 
 ### 外部样式类
 

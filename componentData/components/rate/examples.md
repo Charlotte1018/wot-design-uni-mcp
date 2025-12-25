@@ -1,164 +1,120 @@
 ## Rate 组件示例
 
-### basic-usage
+### 基本用法
 
-评分默认被分为三个等级，可以利用颜色数组对分数及情感倾向进行分级（默认情况下不区分颜色）。 三个等级所对应的颜色用 `colors` 属性设置，而它们对应的两个阈值则通过 `low-threshold` 和 `high-threshold` 设定。
+基本用法
 
 ```vue
 <template>
-  <div class="demo-rate-block">
-    <span class="demonstration">Default</span>
-    <fin-rate v-model="value1" />
-  </div>
-  <div class="demo-rate-block">
-    <span class="demonstration">Color for different levels</span>
-    <fin-rate v-model="value2" :colors="colors" />
-  </div>
+<wd-rate v-model="value" @change="handleChange" />
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+const value = ref<number>(1)
 
-const value1 = ref(null)
-const value2 = ref(null)
-const colors = ref(['#99A9BF', '#F7BA2A', '#FF9900']) // same as { 2: '#99A9BF', 4: { value: '#F7BA2A', excluded: true }, 5: '#FF9900' }
-</script>
-
-<style scoped>
-.demo-rate-block {
-  padding: 30px 0;
-  text-align: center;
-  border-right: solid 1px var(--fin-border-color);
-  display: inline-block;
-  width: 49%;
-  box-sizing: border-box;
+function changeValue({ value }) {
+  console.log(value)
 }
-.demo-rate-block:last-child {
-  border-right: none;
-}
-.demo-rate-block .demonstration {
-  display: block;
-  color: var(--fin-text-color-secondary);
-  font-size: 14px;
-  margin-bottom: 20px;
-}
-</style>
-```
-
-### sizes
-
-
-
-```vue
-<template>
-  <fin-rate v-model="value" size="large" />
-  <br />
-  <fin-rate v-model="value" />
-  <br />
-  <fin-rate v-model="value" size="small" />
-</template>
-
-<script lang="ts" setup>
-import { ref } from 'vue'
-
-const value = ref(null)
 </script>
 ```
 
-### allow-half
+### 只读
 
-属性 `allow-half` 允许出现半星
-
-```vue
-<template>
-  <fin-rate v-model="value" allow-half />
-</template>
-
-<script lang="ts" setup>
-import { ref } from 'vue'
-
-const value = ref()
-</script>
-```
-
-### text
-
-为组件设置 `show-text` 属性会在右侧显示辅助文字。 通过设置 `texts` 可以为每一个分值指定对应的辅助文字。 `texts` 为一个数组，长度应等于最大值 `max`。
+只读
 
 ```vue
 <template>
-  <fin-rate
-    v-model="value"
-    :texts="['oops', 'disappointed', 'normal', 'good', 'great']"
-    show-text
-  />
+<wd-rate v-model="value" readonly />
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-
-const value = ref()
 </script>
 ```
 
-### clearable
+### 禁用
 
-当你再次点击相同的值时，可以将值重置为 `0`。
+禁用
 
 ```vue
 <template>
-  <fin-rate v-model="value" clearable />
+<wd-rate :modelValue="2" disabled />
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-
-const value = ref(3)
 </script>
 ```
 
-### more-icons
+### 修改颜色
 
-设置`icons`属性可以自定义不同分段的图标。 若传入数组，共有 3 个元素，为 3 个分段所对应的类名；若传入对象，可自定义分段，键名为分段的界限值，键值为对应的类名。 本例还使用 `void-icon` 指定了未选中时的图标类名。
+修改颜色
 
 ```vue
 <template>
-  <fin-rate
-    v-model="value"
-    :icons="icons"
-    :void-icon="ChatDot"
-    :colors="['#409eff', '#67c23a', '#FF9900']"
-  />
+<wd-rate v-model="value" active-color="linear-gradient(180deg, rgba(255,238,0,1) 0%,rgba(250,176,21,1) 100%)" />
+<wd-rate v-model="value" :active-color="['linear-gradient(180deg, rgba(255,238,0,1) 0%,rgba(250,176,21,1) 100%)', 'linear-gradient(315deg, rgba(245,34,34,1) 0%,rgba(255,117,102,1) 100%)']" />
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { ChatDot } from '@jdt/find-plus-icons-vue'
-
-const value = ref()
-const icons = [ChatDot, ChatDot, ChatDot]
 </script>
 ```
 
-### readonly
+### 修改icon
 
-为组件设置 `disabled` 属性表示组件为只读。 此时若设置 `show-score`，则会在右侧显示目前的分值。 此外，您可以使用属性 `score-template` 来提供评分模板。 模板为一个包含了 `{value}` 的字符串，`{value}` 会被替换为当前分值。
+修改icon
 
 ```vue
 <template>
-  <fin-rate
-    v-model="value"
-    disabled
-    show-score
-    text-color="#ff9900"
-    score-template="{value} points"
-  />
+<wd-rate v-model="value" icon="wd-icon-dong" active-icon="wd-icon-dong" active-color="#4D80F0"/>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-
-const value = ref(3.7)
 </script>
 ```
+
+### 修改大小、间隔
+
+修改大小、间隔
+
+```vue
+<template>
+<wd-rate v-model="value" size="30px" space="10px"/>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 允许半选
+
+允许半选
+
+```vue
+<template>
+<wd-rate v-model="value" allow-half />
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 允许清空评分
+
+允许清空评分
+
+```vue
+<template>
+<wd-rate v-model="value" clearable />
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 外部样式类
+
+外部样式类
+
+| 类名 | 说明 | 最低版本 |
+|-----|------|--------|
+| custom-class | 根节点样式 | - |
 

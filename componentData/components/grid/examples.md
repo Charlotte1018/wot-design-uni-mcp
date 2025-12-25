@@ -2,7 +2,7 @@
 
 ### 基础用法
 
-基础用法需要绑定
+基础用法
 
 ```vue
 <template>
@@ -77,7 +77,7 @@
 
 ### 内容插槽
 
-默认插槽可以自定义
+内容插槽
 
 ```vue
 <template>
@@ -97,7 +97,7 @@
 <script lang="ts" setup>
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .img {
   width: 100%;
   height: 90px;
@@ -107,7 +107,7 @@
 
 ### 单个插槽
 
-插槽
+单个插槽
 
 ```vue
 <template>
@@ -130,7 +130,7 @@
 <script lang="ts" setup>
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .slot-img {
   height: 36px;
   width: 36px;
@@ -145,7 +145,7 @@
 
 ### 自定义样式
 
-设置
+自定义样式
 
 ```vue
 <template>
@@ -162,7 +162,7 @@
 <script lang="ts" setup>
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 :deep(.custom-item) {
   height: 80px !important;
   color: #e2231a;
@@ -242,49 +242,7 @@
 </script>
 ```
 
-### grid-attributes
-
-Grid Attributes
-
-| 参数        | 说明                           | 类型    | 可选值 | 默认值                       | 最低版本         |
-| ----------- | ------------------------------ | ------- | ------ | ---------------------------- | ---------------- |
-| column      | 列数                           | number  | -      | -                            | -                |
-| border      | 是否显示边框                   | boolean | -      | false                        | -                |
-| gutter      | 格子之间的间距，默认单位为`px` | number  | -      | -                            | -                |
-| square      | 是否将格子固定为正方形         | boolean | -      | false                        | -                |
-| clickable   | 是否开启格子点击反馈           | boolean | -      | false                        | -                |
-| bg-color    | 背景颜色设置                   | string  | -      | #ffffff                      | -                |
-| hover-class | 指定grid-item按下去的样式类    | string  | -      | wd-grid-item__content--hover | 1.9.0 |
-
-### griditem-attributes
-
-GridItem Attributes
-
-| 参数          | 说明                                                                                                                      | 类型           | 可选值                                      | 默认值 | 最低版本 |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------- | ------------------------------------------- | ------ | -------- |
-| text          | 文字 value                                                                                                                | string         | -                                           | -      | -        |
-| icon          | 图标名称，可选值见 `wd-icon` 组件                                                                                         | string         | -                                           | -      | -        |
-| is-dot        | 是否显示图标右上角小红点                                                                                                  | boolean        | -                                           | false  | -        |
-| type          | 图标右上角显示的 `badge` 类型                                                                                             | string         | primary / success / warning / danger / info | -      | -        |
-| value         | 图标右上角 `badge` 显示值                                                                                                 | string, number | -                                           | -      | -        |
-| max           | 图标右上角 `badge` 最大值，超过最大值会显示 '{max}+'，要求 value 是 Number 类型                                           | number         | -                                           | -      | -        |
-| url           | 点击后跳转的链接地址                                                                                                      | string         | -                                           | -      | -        |
-| link-type     | 页面跳转方式, 参考[微信小程序路由文档](https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/route.html) | string         | navigateTo / switchTab / reLaunch           | -      | -        |
-| <s>use-slot</s> | 是否开启 `GridItem` 内容插槽 **（1.12.0已废弃，直接使用默认插槽即可）**                                                          | boolean        | -                                           | false  | -        |
-| <s>use-icon-slot</s> | 是否开启 `GridItem` icon 插槽 **（1.12.0已废弃，组件会自动检测icon插槽的存在）**                                                | boolean        | -                                           | false  | -        |
-| <s>use-text-slot</s> | 是否开启 `GridItem` text 内容插槽 **（1.12.0已废弃，组件会自动检测text插槽的存在）**                                            | boolean        | -                                           | false  | -        |
-| icon-size     | 图标大小                                                                                                                  | string         | -                                           | 26px   | -        |
-| badge-props   | 自定义徽标的属性，传入的对象会被透传给 [Badge 组件的 props](/component/badge#attributes)                                  | BadgeProps     | -                                           | -      | 0.1.50   |
-
-### griditem-events
-
-GridItem Events
-
-| 方法名    | 说明           | 参数  | 返回值 | 最低版本 |
-| --------- | -------------- | ----- | ------ | -------- |
-| itemclick | 点击(跳转)事件 | event | -      | -        |
-
-### Grid外部样式类
+### Grid 外部样式类
 
 Grid 外部样式类
 
@@ -292,7 +250,7 @@ Grid 外部样式类
 | ------------ | --------------- | -------- |
 | custom-class | Grid 根节点样式 | -        |
 
-### GridItem外部样式类
+### GridItem 外部样式类
 
 GridItem 外部样式类
 

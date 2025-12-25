@@ -1,255 +1,148 @@
 ## Skeleton 组件示例
 
-### basic-usage
+### 骨架图风格
 
-
-
-```vue
-<template>
-  <fin-skeleton />
-  <br />
-  <fin-skeleton style="--fin-skeleton-circle-size: 100px">
-    <template #template>
-      <fin-skeleton-item variant="circle" />
-    </template>
-  </fin-skeleton>
-</template>
-```
-
-### configurable-rows
-
-
+骨架图风格
 
 ```vue
 <template>
-  <fin-skeleton :rows="5" />
-</template>
-```
-
-### animation
-
-
-
-```vue
-<template>
-  <fin-skeleton :rows="5" animated />
-</template>
-```
-
-### loading-state
-
-
-
-```vue
-<template>
-  <fin-space direction="vertical" alignment="flex-start">
-    <div>
-      <label style="margin-right: 16px">Switch Loading</label>
-      <fin-switch v-model="loading" />
-    </div>
-    <fin-skeleton style="width: 240px" :loading="loading" animated>
-      <template #template>
-        <fin-skeleton-item
-          variant="image"
-          style="width: 240px; height: 240px"
-        />
-        <div style="padding: 14px">
-          <fin-skeleton-item variant="h3" style="width: 50%" />
-          <div
-            style="
-              display: flex;
-              align-items: center;
-              justify-items: space-between;
-              margin-top: 16px;
-              height: 16px;
-            "
-          >
-            <fin-skeleton-item variant="text" style="margin-right: 16px" />
-            <fin-skeleton-item variant="text" style="width: 30%" />
-          </div>
-        </div>
-      </template>
-      <template #default>
-        <fin-card :body-style="{ padding: '0px', marginBottom: '1px' }">
-          <img
-            src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-            class="image"
-          />
-          <div style="padding: 14px">
-            <span>Delicious hamburger</span>
-            <div class="bottom card-header">
-              <div class="time">{{ currentDate }}</div>
-              <fin-button text class="button">Operation button</fin-button>
-            </div>
-          </div>
-        </fin-card>
-      </template>
-    </fin-skeleton>
-  </fin-space>
+// 头像骨架屏
+<wd-skeleton theme="avatar" />
+// 图片骨架屏
+<wd-skeleton theme="image" />
+// 文本骨架屏
+<wd-skeleton theme="text" />
+// 段落骨架屏
+<wd-skeleton theme="paragraph" />
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-
-const loading = ref(true)
-const currentDate = new Date().toDateString()
 </script>
 ```
 
-### rendering-with-data
+### 宫格骨架屏
 
-
+宫格骨架屏
 
 ```vue
 <template>
-  <fin-space direction="vertical" alignment="flex-start">
-    <fin-button @click="setLoading">Click me to reload</fin-button>
-    <fin-skeleton style="width: 240px" :loading="loading" animated :count="3">
-      <template #template>
-        <fin-skeleton-item
-          variant="image"
-          style="width: 400px; height: 267px"
-        />
-        <div style="padding: 14px">
-          <fin-skeleton-item variant="h3" style="width: 50%" />
-          <div
-            style="
-              display: flex;
-              align-items: center;
-              justify-items: space-between;
-              margin-top: 16px;
-              height: 16px;
-            "
-          >
-            <fin-skeleton-item variant="text" style="margin-right: 16px" />
-            <fin-skeleton-item variant="text" style="width: 30%" />
-          </div>
-        </div>
-      </template>
-      <template #default>
-        <fin-card
-          v-for="item in lists"
-          :key="item.name"
-          :body-style="{ padding: '0px', marginBottom: '1px' }"
-        >
-          <img :src="item.imgUrl" class="image multi-content" />
-          <div style="padding: 14px">
-            <span>{{ item.name }}</span>
-            <div class="bottom card-header">
-              <div class="time">{{ currentDate }}</div>
-              <fin-button text class="button">Operation button</fin-button>
-            </div>
-          </div>
-        </fin-card>
-      </template>
-    </fin-skeleton>
-  </fin-space>
+<wd-skeleton :row-col="grid" />
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue'
-
-interface ListItem {
-  imgUrl: string
-  name: string
-}
-
-const loading = ref(true)
-const lists = ref<ListItem[]>([])
-const currentDate = new Date().toDateString()
-
-const setLoading = () => {
-  loading.value = true
-  setTimeout(() => {
-    loading.value = false
-  }, 2000)
-}
-
-onMounted(() => {
-  loading.value = false
-  lists.value = [
-    {
-      imgUrl:
-        'https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg',
-      name: 'Deer',
-    },
-    {
-      imgUrl:
-        'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
-      name: 'Horse',
-    },
-    {
-      imgUrl:
-        'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg',
-      name: 'Mountain Lion',
-    },
+const grid = [
+  [
+    { width: '48px', height: '48px' },
+    { width: '48px', height: '48px' },
+    { width: '48px', height: '48px' },
+    { width: '48px', height: '48px' },
+    { width: '48px', height: '48px' }
+  ],
+  [
+    { width: '48px', height: '16px' },
+    { width: '48px', height: '16px' },
+    { width: '48px', height: '16px' },
+    { width: '48px', height: '16px' },
+    { width: '48px', height: '16px' }
   ]
-})
+]
 </script>
 ```
 
-### avoiding-rendering-bouncing
+### 单元格骨架屏
 
-
+单元格骨架屏
 
 ```vue
 <template>
-  <fin-space direction="vertical" alignment="flex-start">
-    <div>
-      <label style="margin-right: 16px">Switch Loading</label>
-      <fin-switch v-model="loading" />
-    </div>
-    <fin-skeleton
-      style="width: 240px"
-      :loading="loading"
-      animated
-      :throttle="500"
-    >
-      <template #template>
-        <fin-skeleton-item
-          variant="image"
-          style="width: 240px; height: 240px"
-        />
-        <div style="padding: 14px">
-          <fin-skeleton-item variant="h3" style="width: 50%" />
-          <div
-            style="
-              display: flex;
-              align-items: center;
-              justify-items: space-between;
-              margin-top: 16px;
-              height: 16px;
-            "
-          >
-            <fin-skeleton-item variant="text" style="margin-right: 16px" />
-            <fin-skeleton-item variant="text" style="width: 30%" />
-          </div>
-        </div>
-      </template>
-      <template #default>
-        <fin-card :body-style="{ padding: '0px', marginBottom: '1px' }">
-          <img
-            src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-            class="image"
-          />
-          <div style="padding: 14px">
-            <span>Delicious hamburger</span>
-            <div class="bottom card-header">
-              <div class="time">{{ currentDate }}</div>
-              <fin-button text class="button">operation button</fin-button>
-            </div>
-          </div>
-        </fin-card>
-      </template>
-    </fin-skeleton>
-  </fin-space>
+<view style="display: flex">
+  <wd-skeleton :row-col="[{ size: '48px', type: 'circle' }]" />
+  <wd-skeleton :custom-style="{ width: '100%', marginLeft: '12px' }" :row-col="[{ width: '50%' }, { width: '100%' }]" />
+</view>
+<view style="display: flex; margin-top: 20px">
+  <wd-skeleton :row-col="[{ size: '48px', type: 'rect' }]" />
+  <wd-skeleton :custom-style="{ width: '100%', marginLeft: '12px' }" :row-col="[{ width: '50%' }, { width: '100%' }]" />
+</view>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+</script>
+```
 
-const loading = ref(false)
-const currentDate = new Date().toDateString()
+### 图片组合骨架屏
+
+图片组合骨架屏
+
+```vue
+<template>
+<view>
+  <wd-skeleton :row-col="imageGroup" />
+  <wd-skeleton :custom-style="{ marginTop: '20px' }" :row-col="imageGroup" />
+</view>
+</template>
+
+<script lang="ts" setup>
+const imageGroup = [
+  { height: '171px' }, 1, { width: '107px' }, 
+  [{ width: '93px' }, { width: '32px', marginLeft: '41px' }]
+]
+</script>
+```
+
+### 加载动画
+
+加载动画
+
+```vue
+<template>
+<wd-skeleton animation="gradient" theme="paragraph" />
+<view style="display: flex">
+  <wd-skeleton :row-col="[{ size: '48px', type: 'circle' }]" />
+  <wd-skeleton :custom-style="{ width: '100%', marginLeft: '12px' }" animation="flashed" theme="paragraph" />
+</view>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 插槽内容
+
+可以通过插槽写入展示的内容，当请求结束，将loading设置为false，此时会隐藏骨架组件，同时展示插槽内容。
+
+```vue
+<template>
+<wd-skeleton 
+  :row-col="[
+    [
+      { width: '48px', height: '48px' },
+      { width: '48px', height: '48px' },
+      { width: '48px', height: '48px' },
+      { width: '48px', height: '48px' },
+      { width: '48px', height: '48px' }
+    ],
+    [
+      { width: '48px', height: '16px' },
+      { width: '48px', height: '16px' },
+      { width: '48px', height: '16px' },
+      { width: '48px', height: '16px' },
+      { width: '48px', height: '16px' }
+    ]
+  ]" 
+  :loading="showContent"
+>
+  <wd-grid>
+    <wd-grid-item icon-size="32px" icon="picture" text="文字" />
+    <wd-grid-item icon-size="32px" icon="picture" text="文字" />
+    <wd-grid-item icon-size="32px" icon="picture" text="文字" />
+    <wd-grid-item icon-size="32px" icon="picture" text="文字" />
+    <wd-grid-item icon-size="32px" icon="picture" text="文字" />
+  </wd-grid>
+</wd-skeleton>
+</template>
+
+<script lang="ts" setup>
+const showContent = ref(true)
 </script>
 ```
 

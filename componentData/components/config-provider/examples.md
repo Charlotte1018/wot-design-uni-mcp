@@ -1,86 +1,148 @@
 ## ConfigProvider 组件示例
 
-### usage
+### 深色模式
 
-使用两个属性来提供 i18n 相关配置
+深色模式
 
 ```vue
 <template>
-  <div>
-    <fin-button mb-2 @click="toggle">Switch Language</fin-button>
-    <br />
-
-    <fin-config-provider :locale="locale">
-      <fin-table mb-1 :data="[]" />
-      <fin-pagination :total="100" />
-    </fin-config-provider>
-  </div>
+<wd-config-provider theme="dark">...</wd-config-provider>
 </template>
 
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
-import zhCn from '@jdt/find-plus/dist/locale/zh-cn.mjs'
-import en from '@jdt/find-plus/dist/locale/en.mjs'
+</script>
 
-const language = ref('zh-cn')
-const locale = computed(() => (language.value === 'zh-cn' ? zhCn : en))
+<style lang="scss">
+.wot-theme-dark body {
+  color: #f5f5f5;
+  background-color: black;
+}
+</style>
+```
 
-const toggle = () => {
-  language.value = language.value === 'zh-cn' ? 'en' : 'zh-cn'
+### 动态切换
+
+动态切换
+
+```vue
+<template>
+<wd-config-provider :theme="theme">...</wd-config-provider>
+</template>
+
+<script lang="ts" setup>
+export default {
+  setup() {
+    const theme = ref('light')
+
+    setTimeout(() => {
+      theme.value = 'dark'
+    }, 1000)
+
+    return { theme }
+  }
 }
 </script>
 ```
 
-### button
+### 定制主题
 
-
-
-```vue
-<template>
-  <div>
-    <div m="b-2">
-      <fin-checkbox v-model="config.autoInsertSpace"
-        >autoInsertSpace</fin-checkbox
-      >
-    </div>
-
-    <fin-config-provider :button="config">
-      <fin-button>中文</fin-button>
-    </fin-config-provider>
-  </div>
-</template>
-
-<script lang="ts" setup>
-import { reactive } from 'vue'
-
-const config = reactive({
-  autoInsertSpace: true,
-})
-</script>
-```
-
-### message
-
-
+定制主题
 
 ```vue
 <template>
-  <div>
-    <fin-config-provider :message="config">
-      <fin-button @click="open">OPEN</fin-button>
-    </fin-config-provider>
+<wd-config-provider :theme-vars="themeVars">
+  <div style="margin: 16px">
+    <wd-button round block type="primary">提交</wd-button>
   </div>
+</wd-config-provider>
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue'
-import { FinMessage } from '@jdt/find-plus'
-const config = reactive({
-  max: 3,
-})
-const open = () => {
-  FinMessage('This is a message.')
+import { ref, reactive } from 'vue'
+
+export default {
+  setup() {
+    // themeVars 内的值会被转换成对应 CSS 变量
+    // 比如 buttonPrimaryBg 会转换成 `--wot-button-primary-bg-color`
+    const themeVars = reactive({
+      buttonPrimaryBgColor: '#07c160',
+      buttonPrimaryColor: '#07c160'
+    })
+    return {
+      themeVars
+    }
+  }
+}
+
+import type { ConfigProviderThemeVars } from 'wot-design-uni';
+
+const themeVars: ConfigProviderThemeVars = {
+  colorTheme: 'red'
 }
 </script>
+
+<style lang="scss">
+:root,
+page {
+  --wot-color-success: red;
+  --wot-color-warning: yellow;
+}
+
+/* 添加这段样式后，默认 Button 底色会变成绿色 */
+:root,
+page {
+  --wot-button-normal-bg: green;
+}
+</style>
 ```
+
+### 全局共享
+
+> 需要配合虚拟根组件([uni-ku-root](https://github.com/uni-ku/root)) 来做全局共享
+
+```vue
+<template>
+
+
+
+
+:::
+
+### 引入
+
+- CLI项目: 直接编辑 根目录下的 vite.config.(js|ts)
+- HBuilderX项目: 需要在根目录下 创建 vite.config.(js|ts)
+
+:::tip
+若存在改变 pages.json 的插件，需要将 UniKuRoot 放置其后
+:::
+
+### 使用
+
+1. 创建根组件并处理全局配置组件
+
+- CLI项目: 在 **src** 目录下创建下 App.ku.vue
+- HBuilderX项目: 在 **根** 目录下创建 App.ku.vue
+
+:::tip
+在 App.ku.vue 中标签 `<KuRootView />` 代表指定视图存放位置
+:::
+
+2. 编写控制主题组合式函数
+
+3. 在任意视图文件中使用切换主题模式
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 外部样式类
+
+外部样式类
+
+| 类名         | 说明       | 最低版本         |
+| ------------ | ---------- | ---------------- |
+| custom-class | 根节点样式 | 1.3.9 |
+| custom-style | 根节点样式 | 1.3.9 |
 

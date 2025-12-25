@@ -1,424 +1,301 @@
 ## Tabs 组件示例
 
-### basic
+### 基本用法
 
-Tabs 组件提供了选项卡功能， 默认选中第一个标签页，你也可以通过 `value` 属性来指定当前选中的标签页。
+基本用法
 
 ```vue
 <template>
-  <fin-tabs v-model="activeName" class="demo-tabs" @tab-click="handleClick">
-    <fin-tab-pane label="User" name="first">User</fin-tab-pane>
-    <fin-tab-pane label="Config" name="second">Config</fin-tab-pane>
-    <fin-tab-pane label="Role" name="third">Role</fin-tab-pane>
-    <fin-tab-pane label="Task" name="fourth">Task</fin-tab-pane>
-  </fin-tabs>
+<wd-tabs v-model="tab">
+  <block v-for="item in 4" :key="item">
+    <wd-tab :title="`标签${item}`">
+      <view class="content">内容{{ item}}</view>
+    </wd-tab>
+  </block>
+</wd-tabs>
 </template>
+
 <script lang="ts" setup>
-import { ref } from 'vue'
-import type { TabsPaneContext } from '@jdt/find-plus'
-
-const activeName = ref('first')
-
-const handleClick = (tab: TabsPaneContext, event: Event) => {
-  console.log(tab, event)
-}
+const tab = ref<number>(0)
 </script>
-<style>
-.demo-tabs > .fin-tabs__content {
-  padding: 32px;
-  color: #6b778c;
-  font-size: 32px;
-  font-weight: 600;
+
+<style lang="scss">
+.content {
+  line-height: 120px;
+  text-align: center;
 }
 </style>
 ```
 
-### card-style
+### name 匹配
 
-只需要设置 `type` 属性为 `card` 就可以使选项卡改变为标签风格。
+name 匹配
 
 ```vue
 <template>
-  <fin-tabs
-    v-model="activeName"
-    type="card"
-    class="demo-tabs"
-    @tab-click="handleClick"
-  >
-    <fin-tab-pane label="User" name="first">User</fin-tab-pane>
-    <fin-tab-pane label="Config" name="second">Config</fin-tab-pane>
-    <fin-tab-pane label="Role" name="third">Role</fin-tab-pane>
-    <fin-tab-pane label="Task" name="fourth">Task</fin-tab-pane>
-  </fin-tabs>
+<wd-tabs v-model="tab">
+  <block v-for="item in tabs" :key="item">
+    <wd-tab :title="`${item}`" :name="item">
+      <view class="content">内容{{ item }}</view>
+    </wd-tab>
+  </block>
+</wd-tabs>
 </template>
+
 <script lang="ts" setup>
-import { ref } from 'vue'
-import type { TabsPaneContext } from '@jdt/find-plus'
-
-const activeName = ref('first')
-
-const handleClick = (tab: TabsPaneContext, event: Event) => {
-  console.log(tab, event)
-}
+const tabs = ref(['这', '是', '一', '个', '例子'])
+const tab = ref('例子')
 </script>
-<style>
-.demo-tabs > .fin-tabs__content {
-  padding: 32px;
-  color: #6b778c;
-  font-size: 32px;
-  font-weight: 600;
+
+<style lang="scss">
+.content {
+  line-height: 120px;
+  text-align: center;
 }
 </style>
 ```
 
-### border-card
+### 使用徽标<el-tag text style="vertical-align: middle;margin-left:8px;" effect="plain">1.4.0</el-tag>
 
-将 `type` 设置为 `border-card`。
-
-```vue
-<template>
-  <fin-tabs type="border-card">
-    <fin-tab-pane label="User">User</fin-tab-pane>
-    <fin-tab-pane label="Config">Config</fin-tab-pane>
-    <fin-tab-pane label="Role">Role</fin-tab-pane>
-    <fin-tab-pane label="Task">Task</fin-tab-pane>
-  </fin-tabs>
-</template>
-```
-
-### tab-position
-
-标签一共有四个方向的设置 `tabPosition="left|right|top|bottom"`
+使用徽标<el-tag text style="vertical-align: middle;margin-left:8px;" effect="plain">1.4.0</el-tag>
 
 ```vue
 <template>
-  <fin-radio-group v-model="tabPosition" style="margin-bottom: 30px">
-    <fin-radio-button label="top">top</fin-radio-button>
-    <fin-radio-button label="right">right</fin-radio-button>
-    <fin-radio-button label="bottom">bottom</fin-radio-button>
-    <fin-radio-button label="left">left</fin-radio-button>
-  </fin-radio-group>
-
-  <fin-tabs :tab-position="tabPosition" style="height: 200px" class="demo-tabs">
-    <fin-tab-pane label="User">User</fin-tab-pane>
-    <fin-tab-pane label="Config">Config</fin-tab-pane>
-    <fin-tab-pane label="Role">Role</fin-tab-pane>
-    <fin-tab-pane label="Task">Task</fin-tab-pane>
-  </fin-tabs>
-</template>
-<script lang="ts" setup>
-import { ref } from 'vue'
-
-const tabPosition = ref('left')
-</script>
-<style>
-.demo-tabs > .fin-tabs__content {
-  padding: 32px;
-  color: #6b778c;
-  font-size: 32px;
-  font-weight: 600;
-}
-
-.fin-tabs--right .fin-tabs__content,
-.fin-tabs--left .fin-tabs__content {
-  height: 100%;
-}
-</style>
-```
-
-### custom-tab
-
-
-
-```vue
-<template>
-  <fin-tabs type="border-card" class="demo-tabs">
-    <fin-tab-pane>
-      <template #label>
-        <span class="custom-tabs-label">
-          <fin-icon><Date /></fin-icon>
-          <span>Route</span>
-        </span>
-      </template>
-      Route
-    </fin-tab-pane>
-    <fin-tab-pane label="Config">Config</fin-tab-pane>
-    <fin-tab-pane label="Role">Role</fin-tab-pane>
-    <fin-tab-pane label="Task">Task</fin-tab-pane>
-  </fin-tabs>
+<wd-tabs v-model="tabWithBadge" @change="handleChange">
+  <wd-tab v-for="(item, index) in tabsWithBadge" :key="index" :title="`${item.title}`" :badge-props="item.badgeProps">
+    <view class="content">{{ item.title }}徽标</view>
+  </wd-tab>
+</wd-tabs>
 </template>
 
 <script lang="ts" setup>
-import { Date } from '@jdt/find-plus-icons-vue'
-</script>
-<style>
-.demo-tabs > .fin-tabs__content {
-  padding: 32px;
-  color: #6b778c;
-  font-size: 32px;
-  font-weight: 600;
-}
-.demo-tabs .custom-tabs-label .fin-icon {
-  vertical-align: middle;
-}
-.demo-tabs .custom-tabs-label span {
-  vertical-align: middle;
-  margin-left: 4px;
-}
-</style>
-```
-
-### dynamic-tabs
-
-
-
-```vue
-<template>
-  <fin-tabs
-    v-model="editableTabsValue"
-    type="card"
-    editable
-    class="demo-tabs"
-    @edit="handleTabsEdit"
-  >
-    <fin-tab-pane
-      v-for="item in editableTabs"
-      :key="item.name"
-      :label="item.title"
-      :name="item.name"
-    >
-      {{ item.content }}
-    </fin-tab-pane>
-  </fin-tabs>
-</template>
-<script lang="ts" setup>
-import { ref } from 'vue'
-import type { TabPaneName } from '@jdt/find-plus'
-
-let tabIndex = 2
-const editableTabsValue = ref('2')
-const editableTabs = ref([
+const tabWithBadge = ref(0)
+const tabsWithBadge = ref([
   {
-    title: 'Tab 1',
-    name: '1',
-    content: 'Tab 1 content',
-  },
-  {
-    title: 'Tab 2',
-    name: '2',
-    content: 'Tab 2 content',
-  },
-])
-
-const handleTabsEdit = (
-  targetName: TabPaneName | undefined,
-  action: 'remove' | 'add'
-) => {
-  if (action === 'add') {
-    const newTabName = `${++tabIndex}`
-    editableTabs.value.push({
-      title: 'New Tab',
-      name: newTabName,
-      content: 'New Tab content',
-    })
-    editableTabsValue.value = newTabName
-  } else if (action === 'remove') {
-    const tabs = editableTabs.value
-    let activeName = editableTabsValue.value
-    if (activeName === targetName) {
-      tabs.forEach((tab, index) => {
-        if (tab.name === targetName) {
-          const nextTab = tabs[index + 1] || tabs[index - 1]
-          if (nextTab) {
-            activeName = nextTab.name
-          }
-        }
-      })
+    title: '普通数值',
+    badgeProps: {
+      modelValue: 10,
+      right: '-8px'
     }
-
-    editableTabsValue.value = activeName
-    editableTabs.value = tabs.filter((tab) => tab.name !== targetName)
-  }
-}
-</script>
-<style>
-.demo-tabs > .fin-tabs__content {
-  padding: 32px;
-  color: #6b778c;
-  font-size: 32px;
-  font-weight: 600;
-}
-</style>
-```
-
-### customized-add-button-icon
-
-
-
-```vue
-addIcon
-<template>
-  <fin-tabs
-    v-model="editableTabsValue"
-    type="card"
-    class="demo-tabs"
-    editable
-    @edit="handleTabsEdit"
-  >
-    <template #addIcon>
-      <fin-icon><Check /></fin-icon>
-    </template>
-    <fin-tab-pane
-      v-for="item in editableTabs"
-      :key="item.name"
-      :label="item.title"
-      :name="item.name"
-    >
-      {{ item.content }}
-    </fin-tab-pane>
-  </fin-tabs>
-</template>
-<script lang="ts" setup>
-import { ref } from 'vue'
-import { Check } from '@jdt/find-plus-icons-vue'
-import type { TabPaneName } from '@jdt/find-plus'
-
-let tabIndex = 2
-const editableTabsValue = ref('2')
-const editableTabs = ref([
-  {
-    title: 'Tab 1',
-    name: '1',
-    content: 'Tab 1 content',
   },
   {
-    title: 'Tab 2',
-    name: '2',
-    content: 'Tab 2 content',
-  },
-])
-
-const handleTabsEdit = (
-  targetName: TabPaneName | undefined,
-  action: 'remove' | 'add'
-) => {
-  if (action === 'add') {
-    const newTabName = `${++tabIndex}`
-    editableTabs.value.push({
-      title: 'New Tab',
-      name: newTabName,
-      content: 'New Tab content',
-    })
-    editableTabsValue.value = newTabName
-  } else if (action === 'remove') {
-    const tabs = editableTabs.value
-    let activeName = editableTabsValue.value
-    if (activeName === targetName) {
-      tabs.forEach((tab, index) => {
-        if (tab.name === targetName) {
-          const nextTab = tabs[index + 1] || tabs[index - 1]
-          if (nextTab) {
-            activeName = nextTab.name
-          }
-        }
-      })
+    title: '最大值',
+    badgeProps: {
+      modelValue: 100,
+      max: 99,
+      right: '-8px'
     }
-
-    editableTabsValue.value = activeName
-    editableTabs.value = tabs.filter((tab) => tab.name !== targetName)
+  },
+  {
+    title: '点状',
+    badgeProps: {
+      isDot: true,
+      right: '-8px',
+      showZero: true
+    }
   }
-}
+])
 </script>
-<style>
-.demo-tabs > .fin-tabs__content {
-  padding: 32px;
-  color: #6b778c;
-  font-size: 32px;
-  font-weight: 600;
-}
-</style>
 ```
 
-### customized-trigger
+### 自动调整底部条宽度
 
-
+自动调整底部条宽度
 
 ```vue
 <template>
-  <div style="margin-bottom: 20px">
-    <fin-button size="small" @click="addTab(editableTabsValue)">
-      add tab
-    </fin-button>
-  </div>
-  <fin-tabs
-    v-model="editableTabsValue"
-    type="card"
-    class="demo-tabs"
-    closable
-    @tab-remove="removeTab"
-  >
-    <fin-tab-pane
-      v-for="item in editableTabs"
-      :key="item.name"
-      :label="item.title"
-      :name="item.name"
-    >
-      {{ item.content }}
-    </fin-tab-pane>
-  </fin-tabs>
+<wd-tabs v-model="tab" @change="handleChange" auto-line-width>
+  <block v-for="item in tabs" :key="item">
+    <wd-tab :title="`${item}`" :name="item">
+      <view class="content">内容{{ tab }}</view>
+    </wd-tab>
+  </block>
+</wd-tabs>
 </template>
+
 <script lang="ts" setup>
-import { ref } from 'vue'
+const tabs = ref(['Wot', 'Design', 'Uni'])
+const tab = ref('Design')
+</script>
+```
 
-let tabIndex = 2
-const editableTabsValue = ref('2')
-const editableTabs = ref([
-  {
-    title: 'Tab 1',
-    name: '1',
-    content: 'Tab 1 content',
-  },
-  {
-    title: 'Tab 2',
-    name: '2',
-    content: 'Tab 2 content',
-  },
-])
+### 粘性布局
 
-const addTab = (targetName: string) => {
-  const newTabName = `${++tabIndex}`
-  editableTabs.value.push({
-    title: 'New Tab',
-    name: newTabName,
-    content: 'New Tab content',
-  })
-  editableTabsValue.value = newTabName
+粘性布局
+
+```vue
+<template>
+<wd-tabs v-model="tab" sticky>
+  <block v-for="item in 4" :key="item">
+    <wd-tab :title="`标签${item}`">
+      <view class="content">内容{{ item}}</view>
+    </wd-tab>
+  </block>
+</wd-tabs>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 禁用 Tab
+
+禁用 Tab
+
+```vue
+<template>
+<wd-tabs v-model="tab">
+  <block v-for="item in 4" :key="item">
+    <wd-tab :title="`标签${item}`" :disabled="item === 1">
+      <view class="content">内容{{ item }}</view>
+    </wd-tab>
+  </block>
+</wd-tabs>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 点击事件
+
+监听页签的点击事件.
+
+```vue
+<template>
+<wd-tabs v-model="tab" @click="handleClick">
+  <block v-for="item in 4" :key="item">
+    <wd-tab :title="`标签${item}`">
+      <view class="content">内容{{ item }}</view>
+    </wd-tab>
+  </block>
+</wd-tabs>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 手势滑动
+
+手势滑动
+
+```vue
+<template>
+<wd-tabs v-model="tab" swipeable>
+  <block v-for="item in 4" :key="item">
+    <wd-tab :title="`标签${item}`">
+      <view class="content">内容{{ item }}</view>
+    </wd-tab>
+  </block>
+</wd-tabs>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 切换动画
+
+切换动画
+
+```vue
+<template>
+<wd-tabs v-model="tab" animated>
+  <block v-for="item in 4" :key="item">
+    <wd-tab :title="`标签${item}`">
+      <view class="content">内容{{ item }}</view>
+    </wd-tab>
+  </block>
+</wd-tabs>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 左对齐超出即可滚动 <el-tag text style="vertical-align: middle;margin-left:8px;" effect="plain">1.4.0</el-tag>
+
+左对齐超出即可滚动 <el-tag text style="vertical-align: middle;margin-left:8px;" effect="plain">1.4.0</el-tag>
+
+```vue
+<template>
+<wd-tabs v-model="tab" slidable="always">
+  <block v-for="item in 5" :key="item">
+    <wd-tab :title="`超大标签${item}`">
+      <view class="content">内容{{ item }}</view>
+    </wd-tab>
+  </block>
+</wd-tabs>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 在弹出框中使用
+
+在弹出框中使用
+
+```vue
+<template>
+<wd-button @click="handleClick">打开弹窗</wd-button>
+<wd-popup v-model="showPopup" position="bottom" @after-enter="handlePopupShow" closable custom-style="height: 200px;padding: 0 24rpx;">
+  <view class="title">在弹出框中使用</view>
+  <wd-tabs v-model="tab" ref="tabsRef">
+    <wd-tab v-for="item in tabs" :key="item" :title="`${item}`" :name="item">
+      <view class="content">内容{{ tab }}</view>
+    </wd-tab>
+  </wd-tabs>
+</wd-popup>
+</template>
+
+<script lang="ts" setup>
+const tab = ref<number>(3)
+const tabs = ref(['这', '是', '一', '个', '例子'])
+
+const showPopup = ref(false) // 控制popup显示
+const tabsRef = ref<TabsInstance>() // 获取分段器实例
+/**
+ * 点击按钮打开popup
+ */
+function handleOpenClick() {
+  showPopup.value = true
 }
-const removeTab = (targetName: string) => {
-  const tabs = editableTabs.value
-  let activeName = editableTabsValue.value
-  if (activeName === targetName) {
-    tabs.forEach((tab, index) => {
-      if (tab.name === targetName) {
-        const nextTab = tabs[index + 1] || tabs[index - 1]
-        if (nextTab) {
-          activeName = nextTab.name
-        }
-      }
-    })
-  }
-
-  editableTabsValue.value = activeName
-  editableTabs.value = tabs.filter((tab) => tab.name !== targetName)
+/**
+ * popup打开后更新分段器样式
+ */
+function handlePopupShow() {
+  tabsRef.value?.updateLineStyle(false)
 }
 </script>
-<style>
-.demo-tabs > .fin-tabs__content {
-  padding: 32px;
-  color: #6b778c;
-  font-size: 32px;
-  font-weight: 600;
+
+<style lang="scss">
+.title {
+  display: flex;
+  font-size: 32rpx;
+  align-items: center;
+  justify-content: center;
+  padding: 24rpx 0;
 }
 </style>
 ```
+
+### Methods
+
+对外暴露函数
+
+| 事件名称        | 说明                                                                                                | 参数                                                                   | 最低版本 |
+| --------------- | --------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | -------- |
+| setActive       | 设置激活项，参数分别为：`value` 激活值，`init` 是否已初始化 ，`setScroll` 是否设置 scroll-view 滚动 | `(value: number \| string, init: boolean, setScroll: boolean) => void` | -        |
+| scrollIntoView  | 使选中项滚动到可视区域                                                                              | -                                                                      | -        |
+| updateLineStyle | 更新激活项边框线样式，参数`animation`用于是否开启动画，默认开启                                     | `(animation: boolean) => void`                                         | -        |
+
+### 外部样式类
+
+外部样式类
+
+| 类名         | 说明       | 最低版本 |
+| ------------ | ---------- | -------- |
+| custom-class | 根节点样式 | -        |
 

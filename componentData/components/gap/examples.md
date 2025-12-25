@@ -52,16 +52,6 @@
 </script>
 ```
 
-### attributes
-
-Attributes
-
-| 参数              | 说明      | 类型      | 可选值        | 默认值         | 最低版本 |
-|-----------------|---------|---------|------------|-------------| -------- |
-| height          | 高度      | `string`/`number`  | -          | 15       | -        |
-| bgColor      | 背景颜色    | string  |            | transparent | -        |
-| safeAreaBottom | 开启底部安全区  | boolean | true/false | false       | -        |
-
 ### 外部样式类
 
 外部样式类

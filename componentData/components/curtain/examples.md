@@ -84,51 +84,6 @@ function handleClick() {
 </script>
 ```
 
-### attributes
-
-Attributes
-
-| 参数                 | 说明                                               | 类型    | 可选值                                                                   | 默认值 | 最低版本 |
-|----------------------|----------------------------------------------------|---------|--------------------------------------------------------------------------|--------|----------|
-| value                | 绑定值，展示/关闭幕帘（已废弃，请使用 modelValue） | boolean | -                                                                        | -      | -        |
-| modelValue           | 绑定值，展示/关闭幕帘                              | boolean | -                                                                        | -      | 1.7.0   |
-| src                  | 幕帘图片地址，必须使用网络地址                     | string  | -                                                                        | -      | -        |
-| width                | 幕帘图片宽度，默认单位 px                          | number  | -                                                                        | -      | -        |
-| to                   | 幕帘图片点击链接                                   | string  | -                                                                        | -      | -        |
-| close-position       | 关闭按钮位置                                       | string  | inset / top / bottom / top-left / top-right / bottom-left / bottom-right | inset  | -        |
-| close-on-click-modal | 点击遮罩是否关闭                                   | boolean | -                                                                        | false  | -        |
-| hide-when-close      | 是否当关闭时将弹出层隐藏（display: none）          | boolean | -                                                                        | true   | -        |
-| z-index              | 设置层级                                           | number  | -                                                                        | 10     | 1.4.0    |
-| root-portal          | 是否从页面中脱离出来，用于解决各种 fixed 失效问题 | boolean | -                                                                        | false  | 1.11.0 |
-| show-menu-by-longpress          | 开启长按图片显示识别小程序码菜单，仅微信小程序支持 | boolean | -                                                                        | false  | 1.13.0 |
-| close-on-click         | 是否在点击图片时关闭幕帘，默认为 true | boolean | -                                                                         | ture   | 1.13.0 |
-
-### events
-
-Events
-
-| 事件名称    | 说明                                                                           | 参数 | 最低版本 |
-| ----------- | ------------------------------------------------------------------------------ | ---- | -------- |
-| click       | 点击幕帘时触发                                                                 | -    | -        |
-| close       | 弹出层关闭时触发                                                               | -    | -        |
-| click-modal | 点击遮罩时触发                                                                 | -    | -        |
-| beforeenter | 进入前触发                                                                     | -    | -        |
-| enter       | 进入时触发                                                                     | -    | -        |
-| afterenter  | 进入后触发                                                                     | -    | -        |
-| beforeleave | 离开前触发                                                                     | -    | -        |
-| leave       | 离开时触发                                                                     | -    | -        |
-| afterleave  | 离开后触发                                                                     | -    | -        |
-| load        | 图片加载完成事件                                                               | -    | -        |
-| error       | 图片加载失败事件，若图片加载失败，则不会展示幕帘组件，即使设置 `value` 为 true | -    | -        |
-
-### slots
-
-Slots
-
-| name  | 说明         | 最低版本         |
-| ----- | ------------ | ---------------- |
-| close | 关闭按钮插槽 | 1.5.0 |
-
 ### 外部样式类
 
 外部样式类

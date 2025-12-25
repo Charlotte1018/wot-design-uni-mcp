@@ -32,42 +32,6 @@
 
 通过设置 `placeholder` 修改输入框提示文案，`cancel-txt` 修改取消按钮文案。
 
-## Attributes
-
-| 参数                | 说明                                                                                      | 类型            | 可选值 | 默认值 | 最低版本 |
-| ------------------- | ----------------------------------------------------------------------------------------- | --------------- | ------ | ------ | -------- |
-| placeholder         | 搜索框占位文本                                                                            | string          | -      | 搜索   | -        |
-| placeholder-left    | placeholder 居左边                                                                        | boolean         | -      | false  | -        |
-| cancel-txt          | 搜索框右侧文本                                                                            | string          | -      | 取消   | -        |
-| light               | 搜索框亮色（白色）                                                                        | boolean         | -      | false  | -        |
-| hide-cancel         | 是否隐藏右侧文本                                                                          | boolean         | -      | false  | -        |
-| disabled            | 是否禁用搜索框                                                                            | boolean         | -      | false  | -        |
-| maxlength           | 原生属性，设置最大长度。-1 表示无限制                                                     | string / number | -      | -1     | -        |
-| v-model             | 输入框内容，双向绑定                                                                      | string          | -      | -      | -        |
-| ~~use-suffix-slot~~ | ~~是否使用输入框右侧插槽~~**（已废弃，将在下一个 minor 版本被移除，直接使用插槽即可）** | boolean         | -      | false  | -        |
-| focus               | 是否自动聚焦                                                                              | boolean         | -      | false  | 0.1.63   |
-| focusWhenClear      | 是否在点击清除按钮时聚焦输入框                                                            | boolean         | -      | false  | 0.1.63   |
-| placeholderStyle    | 原生属性，指定 placeholder 的样式，目前仅支持color,font-size和font-weight | string | - | - | 1.6.0 |
-| placeholderClass    | 原生属性，指定 placeholder 的样式类 | string | - | - | 1.6.0 |
-
-## Events
-
-| 事件名称 | 说明                       | 参数        | 最低版本 |
-| -------- | -------------------------- | ----------- | -------- |
-| focus    | 输入框聚焦事件             | `{ value }` | -        |
-| blur     | 监听输入框失焦事件         | `{ value }` | -        |
-| search   | 监听输入框搜索事件         | `{ value }` | -        |
-| clear    | 监听输入框清空按钮事件     | -           | -        |
-| cancel   | 监听输入框右侧文本点击事件 | `{ value }` | -        |
-| change   | 监听输入框内容变化事件     | `{ value }` | -        |
-
-## Slots
-
-| name   | 说明                 | 最低版本 |
-| ------ | -------------------- | -------- |
-| prefix | 输入框左侧自定义内容 | -        |
-| suffix | 输入框右侧自定义内容 | -        |
-
 ## 外部样式类
 
 | 类名         | 说明       | 最低版本 |

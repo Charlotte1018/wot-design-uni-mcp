@@ -1,165 +1,158 @@
 ## Radio 组件示例
 
-### basic-usage
+### 基本用法
 
-要使用 Radio 组件，只需要设置`v-model`绑定变量， 选中意味着变量的值为相应 Radio `label`属性的值， `label`可以是`String`、`Number` 或 `Boolean`。
+基本用法
 
 ```vue
 <template>
-  <div class="mb-2 flex items-center text-sm">
-    <fin-radio-group v-model="radio1" class="ml-4">
-      <fin-radio label="1" size="large">Option 1</fin-radio>
-      <fin-radio label="2" size="large">Option 2</fin-radio>
-    </fin-radio-group>
-  </div>
-  <div class="my-2 flex items-center text-sm">
-    <fin-radio-group v-model="radio2" class="ml-4">
-      <fin-radio label="1">Option 1</fin-radio>
-      <fin-radio label="2">Option 2</fin-radio>
-    </fin-radio-group>
-  </div>
-  <div class="my-4 flex items-center text-sm">
-    <fin-radio-group v-model="radio3" class="ml-4">
-      <fin-radio label="1" size="small">Option 1</fin-radio>
-      <fin-radio label="2" size="small">Option 2</fin-radio>
-    </fin-radio-group>
-  </div>
-  <div class="mb-2 flex items-center text-sm">
-    <fin-radio-group v-model="radio3" disabled class="ml-4">
-      <fin-radio label="1" size="small">Option 1</fin-radio>
-      <fin-radio label="2" size="small">Option 2</fin-radio>
-    </fin-radio-group>
-  </div>
+<demo-block title="基本用法">
+  <wd-radio-group v-model="value">
+    <wd-radio :value="1">单选框1</wd-radio>
+    <wd-radio :value="2">单选框2</wd-radio>
+  </wd-radio-group>
+  <view>当前选中的值为:{{value}}</view>
+</demo-block>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-
-const radio1 = ref('1')
-const radio2 = ref('1')
-const radio3 = ref('1')
+const value = ref<number>(1)
 </script>
 ```
 
-### disabled
+### 修改图标形状
 
-你只需要为单选框设置 `disabled` 属性就能控制其禁用状态。
+修改图标形状
 
 ```vue
 <template>
-  <fin-radio v-model="radio" disabled label="disabled">Option A</fin-radio>
-  <fin-radio v-model="radio" disabled label="selected and disabled"
-    >Option B</fin-radio
-  >
+<!-- button 按钮式单选 -->
+<wd-radio-group v-model="value" shape="button" @change="change">
+  <wd-radio :value="1">沃特</wd-radio>
+  <wd-radio :value="2">商家后台</wd-radio>
+</wd-radio-group>
+
+<!-- dot 点状单选 -->
+<wd-radio-group v-model="value" shape="dot" @change="change">
+  <wd-radio :value="1">沃特</wd-radio>
+  <wd-radio :value="2">商家后台</wd-radio>
+</wd-radio-group>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+const value = ref<number>(1)
 
-const radio = ref('selected and disabled')
+function change(e) {
+  console.log(e)
+}
+
+const value = ref<number>(1)
+
+function change(e) {
+  console.log(e)
+}
 </script>
 ```
 
-### radio-button-group
+### 表单模式
 
-结合`fin-radio-group`元素和子元素`fin-radio`可以实现单选组， 为 `fin-radio-group` 绑定 `v-model`，再为 每一个 `fin-radio` 设置好 `label` 属性即可， 另外，还可以通过 `change` 事件来响应变化，它会传入一个参数 `value` 来表示改变之后的值。
+表单模式
 
 ```vue
 <template>
-  <fin-radio-group v-model="radio">
-    <fin-radio :label="3">Option A</fin-radio>
-    <fin-radio :label="6">Option B</fin-radio>
-    <fin-radio :label="9">Option C</fin-radio>
-  </fin-radio-group>
+<wd-radio-group v-model="value" cell>
+  <wd-radio value="1">选项一</wd-radio>
+  <wd-radio value="2">选项二</wd-radio>
+  <wd-radio value="3">选项三</wd-radio>
+  <wd-radio value="4">选项四</wd-radio>
+  <wd-radio value="5">选项五</wd-radio>
+  <wd-radio value="6">选项六</wd-radio>
+  <wd-radio value="7">选项七</wd-radio>
+</wd-radio-group>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-
-const radio = ref(3)
 </script>
 ```
 
-### button-style
+### 同行展示
 
-只需要把 `fin-radio` 元素换成 `fin-radio-button` 元素即可， 此外，FinD Plus 还提供了 `size` 属性用来控制单选框的大小。
+同行展示
 
 ```vue
 <template>
-  <div>
-    <fin-radio-group v-model="radio1" size="large">
-      <fin-radio-button label="New York" />
-      <fin-radio-button label="Washington" />
-      <fin-radio-button label="Los Angeles" />
-      <fin-radio-button label="Chicago" />
-    </fin-radio-group>
-  </div>
-  <div style="margin-top: 20px">
-    <fin-radio-group v-model="radio2">
-      <fin-radio-button label="New York" />
-      <fin-radio-button label="Washington" />
-      <fin-radio-button label="Los Angeles" />
-      <fin-radio-button label="Chicago" />
-    </fin-radio-group>
-  </div>
-  <div style="margin-top: 20px">
-    <fin-radio-group v-model="radio3" size="small">
-      <fin-radio-button label="New York" />
-      <fin-radio-button label="Washington" disabled />
-      <fin-radio-button label="Los Angeles" />
-      <fin-radio-button label="Chicago" />
-    </fin-radio-group>
-  </div>
+<wd-radio-group v-model="value" inline>
+  <wd-radio value="1">单选框1</wd-radio>
+  <wd-radio value="2">单选框2</wd-radio>
+</wd-radio-group>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-
-const radio1 = ref('New York')
-const radio2 = ref('New York')
-const radio3 = ref('New York')
 </script>
 ```
 
-### with-borders
+### 修改选中的颜色
 
-设置 `border` 属性为 true 可以渲染为带有边框的单选框。
+修改选中的颜色
 
 ```vue
 <template>
-  <div>
-    <fin-radio-group v-model="radio1">
-      <fin-radio label="1" size="large" border>Option A</fin-radio>
-      <fin-radio label="2" size="large" border>Option B</fin-radio>
-    </fin-radio-group>
-  </div>
-  <div style="margin-top: 20px">
-    <fin-radio-group v-model="radio2">
-      <fin-radio label="1" border>Option A</fin-radio>
-      <fin-radio label="2" border>Option B</fin-radio>
-    </fin-radio-group>
-  </div>
-  <div style="margin-top: 20px">
-    <fin-radio-group v-model="radio3" size="small">
-      <fin-radio label="1" border>Option A</fin-radio>
-      <fin-radio label="2" border disabled>Option B</fin-radio>
-    </fin-radio-group>
-  </div>
-  <div style="margin-top: 20px">
-    <fin-radio-group v-model="radio4" size="small" disabled>
-      <fin-radio label="1" border>Option A</fin-radio>
-      <fin-radio label="2" border>Option B</fin-radio>
-    </fin-radio-group>
-  </div>
+<wd-radio-group v-model="value" checked-color="#fa4350">
+  <wd-radio value="1">沃特</wd-radio>
+  <wd-radio value="2">商家后台</wd-radio>
+</wd-radio-group>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+</script>
+```
 
-const radio1 = ref('1')
-const radio2 = ref('1')
-const radio3 = ref('1')
-const radio4 = ref('1')
+### 禁用
+
+禁用
+
+```vue
+<template>
+<wd-radio-group v-model="value" disabled>
+  <wd-radio value="1">沃特</wd-radio>
+  <wd-radio value="2">商家后台</wd-radio>
+</wd-radio-group>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 尺寸
+
+尺寸
+
+```vue
+<template>
+<wd-radio-group v-model="value" size="large">
+  <wd-radio value="1">沃特</wd-radio>
+  <wd-radio value="2">商家后台</wd-radio>
+</wd-radio-group>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### Props优先级
+
+radio设置的props优先级比radioGroup上设置的props优先级更高
+
+```vue
+<template>
+<wd-radio-group v-model="value" shape="button" disabled checked-color="#f00">
+    <wd-radio value="1" :disabled="false" checked-color="#000">商家后台</wd-radio>
+    <wd-radio value="2" :disabled="false">沃特</wd-radio>
+    <wd-radio value="3">商家智能</wd-radio>
+  </wd-radio-group>
+</template>
+
+<script lang="ts" setup>
 </script>
 ```
 

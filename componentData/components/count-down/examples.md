@@ -45,7 +45,7 @@ const time = ref<number>(30 * 60 * 60 * 1000)
 
 ### 自定义样式
 
-插槽自定义倒计时的样式，
+自定义样式
 
 ```vue
 <template>
@@ -64,7 +64,7 @@ const time = ref<number>(30 * 60 * 60 * 1000)
 const time = ref<number>(30 * 60 * 60 * 1000)
 </script>
 
-<style lang="css" scoped>
+<style lang="scss">
 .custom-count-down {
   display: inline-block;
   width: 22px;
@@ -115,27 +115,7 @@ const onFinish = () => showToast('倒计时结束')
 </script>
 ```
 
-### attributes
-
-Attributes
-
-| 参数        | 说明                 | 类型    | 可选值 | 默认值     | 最低版本 |
-| ----------- | -------------------- | ------- | ------ | ---------- | -------- |
-| time        | 倒计时时长，单位毫秒 | Number  | —      | 0          | 0.1.58   |
-| millisecond | 是否开启毫秒级渲染   | Boolean | —      | false      | 0.1.58   |
-| auto-start  | 是否自动开始倒计时   | Boolean | —      | true       | 0.1.58   |
-| format      | 倒计时格式化字符串   | String  | —      | `HH:mm:ss` | 0.1.58   |
-
-### events
-
-Events
-
-| 事件名称 | 说明             | 参数                  | 最低版本 |
-| -------- | ---------------- | --------------------- | -------- |
-| finish   | 倒计时结束时触发 | —                     | 0.1.58   |
-| change   | 倒计时变化时触发 | current: TimeData | 0.1.58   |
-
-### methods
+### Methods
 
 Methods
 
@@ -145,14 +125,6 @@ Methods
 | pause    | 暂停倒计时       | —                     | 0.1.58   |
 | reset     | 重置倒计时，若 `auto-start` 为 `true`，重设后会自动开始倒计时       | —                     | 0.1.58   |
 
-### slots
-
-Slots
-
-| 名称 | 说明     | 最低版本 |
-| ---- | -------- | -------- |
-| —    | 默认插槽 | 0.1.58   |
-
 ### 外部样式类
 
 外部样式类
@@ -160,26 +132,4 @@ Slots
 | 类名         | 说明       | 最低版本 |
 | ------------ | ---------- | -------- |
 | custom-class | 根节点样式 | -        |
-
-### format 格式
-
-| 格式 | 说明         |
-| ---- | ------------ |
-| DD   | 天数         |
-| HH   | 小时         |
-| mm   | 分钟         |
-| ss   | 秒数         |
-| S    | 毫秒（1 位） |
-| SS   | 毫秒（2 位） |
-| SSS  | 毫秒（3 位） |
-
-### timeData 对象
-
-| 属性         | 说明 | 类型   | 默认值 |
-| ------------ | ---- | ------ | ------ |
-| days         | 天   | number | -      |
-| hours        | 小时 | number | -      |
-| minutes      | 分钟 | number | -      |
-| seconds      | 秒   | number | -      |
-| milliseconds | 毫秒 | number | -      |
 

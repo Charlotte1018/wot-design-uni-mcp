@@ -40,35 +40,6 @@ mode 为小程序原生属性，参考[微信小程序 image 官方文档](https
 
 也可以传入 `preview-src` 属性来预览另外的图片
 
-## Attributes
-
-| 参数                   | 说明                                               | 类型            | 可选值                                                                                                                                                                             | 默认值        | 最低版本         |
-| ---------------------- | -------------------------------------------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ---------------- |
-| src                    | 图片链接                                           | string          | -                                                                                                                                                                                  | -             | -                |
-| width                  | 宽度，默认单位为 px                                | number / string | -                                                                                                                                                                                  | -             | -                |
-| height                 | 高度，默认单位为 px                                | number / string | -                                                                                                                                                                                  | -             | -                |
-| mode                   | 填充模式                                           | ImageMode       | 'top left' / 'top right' / 'bottom left' / 'bottom right' / 'right' / 'left' / 'center' / 'bottom' / 'top' / 'heightFix' / 'widthFix' / 'aspectFill' / 'aspectFit' / 'scaleToFill' | 'scaleToFill' | -                |
-| round                  | 是否显示为圆形                                     | boolean         | -                                                                                                                                                                                  | false         | -                |
-| radius                 | 圆角大小，默认单位为 px                            | number / string | -                                                                                                                                                                                  | -             | -                |
-| enable-preview         | 是否支持点击预览                                   | boolean         | -                                                                                                                                                                                  | false         | 1.2.11           |
-| show-menu-by-longpress | 开启长按图片显示识别小程序码菜单，仅微信小程序支持 | boolean         | -                                                                                                                                                                                  | false         | 1.3.11 |
-| preview-src             | 预览图片链接                                     | string           |  -                                                                                 | -             | 1.8.0 |
-
-## Events
-
-| 事件名称 | 说明                 | 参数                        | 最低版本 |
-| -------- | -------------------- | --------------------------- | -------- |
-| click    | 点击事件             | (event: MouseEvent) => void | -        |
-| load     | 当图片载入完毕时触发 | `{height, width}`           | -        |
-| error    | 当错误发生时触发     | `{errMsg}`                  | -        |
-
-## Slots
-
-| 名称    | 说明               | 最低版本 |
-| ------- | ------------------ | -------- |
-| loading | 图片加载时展示     | 1.2.21   |
-| error   | 图片加载失败后展示 | 1.2.21   |
-
 ## 外部样式类
 
 | 类名         | 说明                 | 最低版本 |

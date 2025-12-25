@@ -44,43 +44,6 @@
 
 ## 禁用菜单
 
-## DropMenu Attributes
-
-| 参数                 | 说明                                 | 类型    | 可选值    | 默认值 | 最低版本 |
-| -------------------- | ------------------------------------ | ------- | --------- | ------ | -------- |
-| direction            | 菜单展开方向，可选值为`up` 或 `down` | string  | up / down | down   | -        |
-| modal                | 是否展示蒙层                         | boolean | -         | true   | -        |
-| close-on-click-modal | 是否点击蒙层时关闭                   | boolean | -         | true   | -        |
-| duration             | 菜单展开收起动画时间，单位 ms        | number  | -         | 200    | -        |
-
-## DropMenuItem Attributes
-
-| 参数          | 说明                                                                   | 类型                          | 可选值 | 默认值     | 最低版本 |
-| ------------- | ---------------------------------------------------------------------- | ----------------------------- | ------ | ---------- | -------- |
-| v-model       | 当前选中项对应选中的 value                                             | string / number               | -      | -          | -        |
-| disabled      | 禁用菜单                                                               | boolean                       | -      | false      | -        |
-| options       | 列表数据，对应数据结构 `[{label: '标题', value: '0', tip: '提示文字'}]` | array                         | -      | -          | -        |
-| icon-name     | 选中的图标名称(可选名称在 wd-icon 组件中)                              | string                        | -      | check      | -        |
-| title         | 菜单标题                                                               | string                        | -      | -          | -        |
-| icon          | 菜单图标                                                               | string                        | -      | arrow-down | -        |
-| icon-size     | 菜单图标尺寸                                                           | string                        | -      | 14px       | \_       |
-| before-toggle | 下拉菜单打开或者关闭前触发，`reslove(true)`时继续执行打开或关闭操作    | function({ status, resolve }) | -      | -          | 1.3.7    |
-| value-key     | 选项对象中，value 对应的 key                                           | string                        | -      | value      | -        |
-| label-key     | 选项对象中，展示的文本对应的 key                                       | string                        | -      | label      | -        |
-| tip-key       | 选项对象中，选项说明对应的 key                                         | string                        | -      | tip        | -        |
-| popup-height  | popup弹出容器的高度，不设置默认为80%                                       | string                        | -      | -        | 1.13.0 |
-| root-portal    | 是否从页面中脱离出来，用于解决各种 fixed 失效问题                     | boolean                       | -      | false      | 1.11.0 |
-
-## DropdownItem Events
-
-| 方法名 | 说明             | 参数                                                                          | 最低版本 |
-| ------ | ---------------- | ----------------------------------------------------------------------------- | -------- |
-| change | 绑定值变化时触发 | event.detail = { value, selectedItem }, value 为选中值，selectedItem 为选中项 | -        |
-| close  | 关闭菜单         | -                                                                             | -        |
-| open   | 展开菜单         | -                                                                             | -        |
-| closed | 菜单完全关闭     | -                                                                             | -        |
-| opened | 菜单展开完成     | -                                                                             | -        |
-
 ## DropdownItem Methods
 
 通过设置 `ref` 可以获取到 DropdownItem 实例并调用实例方法

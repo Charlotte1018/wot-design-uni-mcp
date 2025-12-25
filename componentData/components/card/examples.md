@@ -1,148 +1,94 @@
 ## Card 组件示例
 
-### basic
+### 基本使用
 
-Card 组件由 `header` `body` 和 `footer`组成。 `header` 和 `footer`是可选的，其内容取决于一个具名的 slot。
-
-```vue
-<template>
-  <fin-card class="box-card">
-    <template #header>
-      <div class="card-header">
-        <span>Card name</span>
-        <fin-button class="button" text>Operation button</fin-button>
-      </div>
-    </template>
-    <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>
-    <template #footer>Footer content</template>
-  </fin-card>
-</template>
-
-<style>
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.text {
-  font-size: 14px;
-}
-
-.item {
-  margin-bottom: 18px;
-}
-
-.box-card {
-  width: 480px;
-}
-</style>
-```
-
-### simple
-
-
+基本使用
 
 ```vue
 <template>
-  <fin-card class="box-card">
-    <div v-for="o in 4" :key="o" class="text item">{{ 'List item ' + o }}</div>
-  </fin-card>
-</template>
-<style scoped>
-.text {
-  font-size: 14px;
-}
-
-.item {
-  padding: 18px 0;
-}
-
-.box-card {
-  width: 480px;
-}
-</style>
-```
-
-### with-images
-
-配置 `body-style` 属性来自定义 `body` 部分的样式。 在这个例子中我们还使用了 `fin-col` 组件来布局。
-
-```vue
-<template>
-  <fin-row>
-    <fin-col
-      v-for="(o, index) in 2"
-      :key="o"
-      :span="8"
-      :offset="index > 0 ? 2 : 0"
-    >
-      <fin-card :body-style="{ padding: '0px' }">
-        <img
-          src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-          class="image"
-        />
-        <div style="padding: 14px">
-          <span>Yummy hamburger</span>
-          <div class="bottom">
-            <time class="time">{{ currentDate }}</time>
-            <fin-button text class="button">Operating</fin-button>
-          </div>
-        </div>
-      </fin-card>
-    </fin-col>
-  </fin-row>
+<wd-card title="经营分析">
+  一般的，检举内容由承办的党的委员会或纪律检查委员会将处理意见或复议、复查结论同申诉人见面，听取其意见。复议、复查的结论和决定，应交给申诉人一份。
+  <template #footer>
+    <wd-button size="small" plain>查看详情</wd-button>
+  </template>
+</wd-card>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+</script>
+```
 
-const currentDate = ref(new Date())
+### 矩形卡片
+
+矩形卡片
+
+```vue
+<template>
+<wd-card type="rectangle">
+  <template #title>
+    <view class="title">
+      <view>2020-02-03服务到期</view>
+      <view class="title-tip">
+        <wd-icon name="warning" size="14px" custom-style="vertical-align: bottom" />
+        您可以去电脑上使用该服务
+      </view>
+    </view>
+  </template>
+  <view style="height: 40px;" class="content">
+    <image
+      src="https://img11.360buyimg.com/imagetools/jfs/t1/143248/37/5695/265818/5f3a8546E98d998a4/745897ca9c9e474b.jpg"
+      width="40"
+      height="40"
+      alt="joy"
+      style="border-radius: 4px; margin-right: 12px;"
+    />
+    <view>
+      <view style="color: rgba(0,0,0,0.85); font-size: 16px;">智催评营销</view>
+      <view style="color: rgba(0,0,0,0.25); font-size: 12px;">高级版-快速吸粉 | 周期一年</view>
+    </view>
+  </view>
+
+  <template #footer>
+    <view>
+      <wd-button size="small" style="margin-right: 8px;">评价</wd-button>
+      <wd-button size="small" plain>立即使用</wd-button>
+    </view>
+  </template>
+</wd-card>
+</template>
+
+<script lang="ts" setup>
 </script>
 
-<style>
-.time {
-  font-size: 12px;
-  color: #999;
-}
-
-.bottom {
-  margin-top: 13px;
-  line-height: 12px;
+<style lang="scss">
+.content,
+.title {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
 }
-
-.button {
-  padding: 0;
-  min-height: auto;
+.content {
+  justify-content: flex-start;
 }
-
-.image {
-  width: 100%;
-  display: block;
+.title {
+  justify-content: space-between;
+}
+.title-tip {
+  color: rgba(0, 0, 0, 0.25);
+  font-size: 12px;
 }
 </style>
 ```
 
-### shadow
+### 外部样式类
 
-通过 `shadow` 属性设置卡片阴影出现的时机。 该属性的值可以是：`always`、`hover` 或 `never`。
+外部样式类
 
-```vue
-<template>
-  <fin-row :gutter="12">
-    <fin-col :span="8">
-      <fin-card shadow="always"> Always </fin-card>
-    </fin-col>
-    <fin-col :span="8">
-      <fin-card shadow="hover"> Hover </fin-card>
-    </fin-col>
-    <fin-col :span="8">
-      <fin-card shadow="never"> Never </fin-card>
-    </fin-col>
-  </fin-row>
-</template>
-```
+| 类名                 | 说明             | 最低版本 |
+| -------------------- | ---------------- | -------- |
+| custom-class         | 根节点自定义样式 | -        |
+| custom-title-class   | 标题自定义样式   | -        |
+| custom-content-class | 内容自定义样式   | -        |
+| custom-footer-class  | 底部自定义样式   | -        |
 

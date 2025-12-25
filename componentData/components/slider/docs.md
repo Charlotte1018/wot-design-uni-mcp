@@ -1,47 +1,40 @@
-# Slider 滑块
+#  Slider 滑块
 
-通过拖动滑块在一个固定区间内进行选择
+支持单向滑块和双向滑块。
 
-:::tip
+## 基本用法
 
-在 SSR 场景下，您需要将组件包裹在 `<client-only></client-only>` 之中 (如: [Nuxt](https://nuxt.com/v3)) 和 SSG (e.g: [VitePress](https://vitepress.vuejs.org/)).
+`v-model` 为绑定值。如果为 number 类型则显示一个滑块，如果为 array 类型则显示两个滑块。
 
-:::
+## 双滑块
 
-## 基础用法
+双滑块模式下 `value` 为 `二元数组` 类型。
 
-在拖动滑块时，显示当前值
+## 最大值最小值
 
-## 离散值
+设置 `min` 最小值，`min` 最大值。
 
-选项可以是离散的
+## 隐藏文案
 
-## 带有输入框的滑块
+设置 `hide-label` 隐藏滑块当前值。
 
-通过输入框输入来改变当前的值。
+设置 `hide-min-max` 隐藏最大最小值。
 
-## 不同尺寸
+## 禁用
 
-## 位置
+设置 `disabled` 属性。
 
-您可以自定义 Tooltip 提示的位置。
+## Methods
 
-## 范围选择
+对外暴露函数
 
-你还可以选择一个范围值
+| 事件名称 | 说明 | 参数 | 最低版本 |
+|--------|------|-----|---------|
+| initSlider | 初始化slider宽度数据 | - | 1.2.25 |
 
-## 垂直模式
-
-## 显示标记
-
-## Type Declarations
-
-<details>
-  <summary>Show declarations</summary>
-
-```ts
-type SliderMarks = Record<number, string | { style: CSSProperties,  label: any }>
-type Arrayable<T> = T | T[]
-```
-
-</details>
+## 外部样式类
+| 类名 | 说明 | 最低版本 |
+|-----|------|--------|
+| custom-class | 根节点样式 | - |
+| custom-min-class | 最小值自定义样式 | - |
+| custom-max-class | 最大值自定义样式 | - |

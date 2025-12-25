@@ -1,30 +1,33 @@
-# Switch 开关
+#  Switch 开关
 
-表示两种相互对立的状态间的切换，多用于触发「开/关」。
+用来打开或关闭选项。
 
-## 基础用法
+## 基本用法
 
-## 尺寸
+`v-model` 为绑定值，默认为 boolean 类型。
 
-## 文字描述
+## 修改值
 
-使用`active-text`属性与`inactive-text`属性来设置开关的文字描述。 使用 `inline-prompt` 属性来控制文本是否显示在点内。
+通过 `active-value` 属性修改开关打开时的值，`inactive-value` 属性修改开关关闭时的值。
 
-## 显示自定义图标
+## 修改颜色
 
-:::tip
+通过 `active-color` 属性修改开关打开时的颜色，`inactive-color` 属性修改开关关闭时的颜色。
 
-使用 `inactive-icon` 和 `active-icon` 属性来添加图标。 您可以传递组件名称的字符串（提前注册）或组件本身是一个 SVG Vue 组件。 FinD Plus 提供了一组图标，您可以在 [icon component](/zh-CN/component/icon) 查看。
+## 自定义大小
 
-:::
+设置 `size` 修改开关大小。
 
-## 扩展的 value 类型
+## 禁用
 
-## 禁用状态
+设置 `disabled` 属性。
 
-## 加载状态
+## 修改前钩子
 
-## 阻止切换
+设置 `before-change` 属性，修改前钩子，接收 { value, resolve } 参数，`resolve(true)` 表示修改通过，`resolve(false)` 表示不修改。
 
-## 自定义动作图标 ^(2.3.9)
+## 外部样式类
 
+| 类名 | 说明 | 最低版本 |
+|-----|-----|---------|
+| custom-class | 根节点样式 | - |

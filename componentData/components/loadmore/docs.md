@@ -18,25 +18,6 @@
 
 配合`onReachBottom`事件实现滚动到底部加载更多
 
-## Attributes
-
-| 参数          | 说明                 | 类型   | 可选值                 | 默认值             | 最低版本 |
-| ------------- | -------------------- | ------ | ---------------------- | ------------------ | -------- |
-| state         | 加载状态             | string | loading/finished/error | -                  | -        |
-| loading-text  | 加载提示文案         | string | -                      | 加载中...          | -        |
-| finished-text | 全部加载完的提示文案 | string | -                      | 没有更多了         | -        |
-| error-text    | 加载失败的提示文案   | string | -                      | 加载失败，点击重试 | -        |
-| loading-props  | loading加载组件属性| `Partial<LoadingProps>` | -         | -       | 1.3.14        |
-
-#### LoadingProps
-参见[LoadingProps](/component/loading.html#attributes)
-
-## Events
-
-| 事件名称 | 说明                                                | 参数 | 最低版本 |
-| -------- | --------------------------------------------------- | ---- | -------- |
-| reload   | state 为 error 加载错误时，点击文案触发 reload 事件 | -    | -        |
-
 ## 外部样式类
 
 | 类名         | 说明       | 最低版本 |

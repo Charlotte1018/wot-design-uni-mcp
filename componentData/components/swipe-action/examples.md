@@ -34,7 +34,7 @@ function handleAction(action: string) {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .action {
   height: 100%;
 }
@@ -50,7 +50,7 @@ function handleAction(action: string) {
 
 ### 左右滑动
 
->
+左右滑动
 
 ```vue
 <template>
@@ -79,7 +79,7 @@ function handleAction(action: string) {
 
 ### 切换按钮
 
-> 可以通过设置
+切换按钮
 
 ```vue
 <template>
@@ -118,7 +118,7 @@ function changeState(position: string) {
 
 ### 按钮关闭前的钩子函数
 
-> 通过
+按钮关闭前的钩子函数
 
 ```vue
 <template>
@@ -171,7 +171,7 @@ const beforeClose = (reason, position) => {
 
 ### 点击事件
 
->
+点击事件
 
 ```vue
 <template>
@@ -200,7 +200,7 @@ function handleClick({ value }) {
 
 ### 禁用滑动按钮
 
-> 设置
+禁用滑动按钮
 
 ```vue
 <template>
@@ -220,25 +220,7 @@ function handleClick({ value }) {
 </script>
 ```
 
-### attributes
-
-Attributes
-
-| 参数         | 说明                     | 类型     | 可选值               | 默认值 | 最低版本 |
-| ------------ | ------------------------ | -------- | -------------------- | ------ | -------- |
-| v-model        | 滑动按钮的状态           | string   | left / close / right | close  | -        |
-| disabled     | 是否禁用滑动操作         | boolean  | -                    | false  | -        |
-| before-close | 关闭滑动按钮前的钩子函数 | function | -                    | -      | -        |
-
-### events
-
-Events
-
-| 事件名称 | 说明                                                  | 参数                                                  | 最低版本 |
-| -------- | ----------------------------------------------------- | ----------------------------------------------------- | -------- |
-| click    | 当滑动按钮打开时，点击整个滑动操作容器触发 click 事件 | event={value}, value 可能为 'left'、'inside'、'right' | -        |
-
-### Cell外部样式类
+### Cell 外部样式类
 
 Cell 外部样式类
 

@@ -12,6 +12,7 @@ import {
 } from '../constants/path.js';
 import {
   extractDemoBlocks,
+  extractExamplesFromDoc,
   extractSection,
   removeFrontmatter,
   removeSection,
@@ -67,8 +68,8 @@ export interface MetaDataResult {
   extractedCount: number;
   /** 组件总数 */
   componentCount: number;
-  /** Find-Plus 版本 */
-  findPlusVersion: string;
+  /** Wot-Design-Uni 版本 */
+  wotDesignUniVersion: string;
 }
 
 // 清理不需要的内容，减少上下文
@@ -79,7 +80,6 @@ const DOC_CLEANUP_EMPTY_LINE = /\n{3,}/g;
  */
 async function processComponent(
   docsPath: string,
-  examplesPath: string,
   componentFileName: string
 ): Promise<ComponentData | null> {
   const componentDocPath = join(docsPath, componentFileName);
@@ -137,40 +137,24 @@ async function processComponent(
 
     let handleDocResult = initHandleDoc(docContent);
 
-    // 提取示例信息
-    componentData.exampleInfoList = extractDemoBlocks(handleDocResult);
+    // 提取示例信息（Wot-Design-Uni 格式：直接从文档中的代码块提取）
+    componentData.exampleInfoList = extractExamplesFromDoc(handleDocResult);
 
-    // 移除 :::demo 块，只保留文字说明
-    handleDocResult = handleDocResult.replace(/:::demo[\s\S]*?:::/g, '');
+    // 移除代码块，只保留文字说明（用于文档）
+    // 但保留 API 章节的表格
+    handleDocResult = handleDocResult.replace(/```[\s\S]*?```/g, '');
 
     componentData.documentation = handleDocResult.replace(
       DOC_CLEANUP_EMPTY_LINE,
       '\n\n'
     );
 
-    // 读取示例文件
-    const componentExamplesPath = join(examplesPath, dirName);
-    if (existsSync(componentExamplesPath) && componentData.exampleInfoList) {
-      console.log(`  🔍 找到 ${componentData.exampleInfoList.length} 个示例`);
-
-      for (const exampleInfo of componentData.exampleInfoList) {
-        const exampleFilePath = join(componentExamplesPath, `${exampleInfo.name}.vue`);
-
-        try {
-          if (existsSync(exampleFilePath)) {
-            exampleInfo.code = await readFile(exampleFilePath, 'utf-8');
-          } else {
-            console.warn(`  ⚠️ 示例文件不存在: ${exampleFilePath}`);
-          }
-        } catch (error) {
-          console.error(
-            `  ❌ 读取示例 ${exampleInfo.name} 时出错:`,
-            (error as Error).message
-          );
-        }
-      }
-
-      console.log(`  ✅ 已处理 ${componentData.exampleInfoList.length} 个示例`);
+    // 输出示例统计信息
+    const exampleCount = componentData.exampleInfoList?.length || 0;
+    if (exampleCount > 0) {
+      console.log(`  ✅ 从文档中提取了 ${exampleCount} 个示例`);
+    } else {
+      console.log(`  ⚠️ 未找到示例代码`);
     }
 
     return componentData;
@@ -186,37 +170,29 @@ async function processComponent(
 /**
  * 处理所有组件并导出数据的主函数
  */
-async function extractAllData(findPlusRepoPath: string) {
+async function extractAllData(wotDesignUniRepoPath: string) {
   // 确保数据目录存在
   await mkdir(EXTRACTED_DATA_DIR, { recursive: true });
 
-  const docsPath = join(findPlusRepoPath, 'docs/zh-CN/component');
-  const examplesPath = join(findPlusRepoPath, 'docs/examples');
-  const packageJsonPath = join(findPlusRepoPath, 'package.json');
+  const docsPath = join(wotDesignUniRepoPath, 'docs/component');
+  const examplesPath = join(wotDesignUniRepoPath, 'docs/examples');
+  const packageJsonPath = join(wotDesignUniRepoPath, 'package.json');
 
   console.log(`🔍 从 ${docsPath} 抓取文档信息`);
 
   if (!existsSync(docsPath)) {
     console.error(
-      `❌ 错误: 未找到 ${docsPath} 目录，请传入正确的 Find-Plus 目录。`
+      `❌ 错误: 未找到 ${docsPath} 目录，请传入正确的 Wot-Design-Uni 目录。`
     );
     process.exit(1);
   }
 
   // 获取版本信息
-  let findPlusVersion = 'unknown';
+  let wotDesignUniVersion = 'unknown';
   if (existsSync(packageJsonPath)) {
     try {
       const packageJson = JSON.parse(readFileSync(packageJsonPath, 'utf-8'));
-      // Find-Plus 使用 workspace，从 packages/element-plus 获取版本
-      const elementPlusPackageJson = join(
-        findPlusRepoPath,
-        'packages/element-plus/package.json'
-      );
-      if (existsSync(elementPlusPackageJson)) {
-        const epPackage = JSON.parse(readFileSync(elementPlusPackageJson, 'utf-8'));
-        findPlusVersion = epPackage.version || 'unknown';
-      }
+      wotDesignUniVersion = packageJson.version || 'unknown';
     } catch (error) {
       console.warn('⚠️ 无法读取版本信息');
     }
@@ -239,7 +215,7 @@ async function extractAllData(findPlusRepoPath: string) {
   let processedCount = 0;
 
   for (const file of mdFiles) {
-    const componentData = await processComponent(docsPath, examplesPath, file);
+    const componentData = await processComponent(docsPath, file);
     if (componentData) {
       componentDataMap[componentData.name] = componentData;
       processedCount++;
@@ -255,7 +231,7 @@ async function extractAllData(findPlusRepoPath: string) {
     extractedAt: new Date().toISOString(),
     extractedCount: processedCount,
     componentCount: mdFiles.length,
-    findPlusVersion,
+    wotDesignUniVersion,
   };
 
   // 创建组件列表索引
@@ -289,14 +265,29 @@ async function extractAllData(findPlusRepoPath: string) {
     let examplesMarkdown = `## ${componentData.name} 组件示例\n\n`;
 
     componentData.exampleInfoList?.forEach((example) => {
-      examplesMarkdown += `### ${example.name}\n\n${example.description}\n\n\`\`\`vue\n${example.code || ''}\`\`\`\n\n`;
+      examplesMarkdown += `### ${example.name}\n\n${example.description}\n\n`;
+      // 如果是 API 章节（Attributes、Events、外部样式类等），直接输出 markdown 表格
+      // 否则使用 vue 代码块
+      if (example.name.toLowerCase().includes('attributes') || 
+          example.name.toLowerCase().includes('events') || 
+          example.name.includes('外部样式类') ||
+          example.name.toLowerCase().includes('slots') ||
+          example.name.toLowerCase().includes('exposes') ||
+          example.name.toLowerCase().includes('methods')) {
+        examplesMarkdown += `${example.code || ''}\n\n`;
+      } else {
+        // 确保代码块结尾标记另起一行
+        const code = example.code || '';
+        const codeWithNewline = code.endsWith('\n') ? code : `${code}\n`;
+        examplesMarkdown += `\`\`\`vue\n${codeWithNewline}\`\`\`\n\n`;
+      }
     });
 
     await writeFile(join(componentDir, EXAMPLE_FILE_NAME), examplesMarkdown);
   }
 
   console.log(`🎉 文档提取完成！数据已保存到 ${EXTRACTED_DATA_DIR}`);
-  console.log(`📊 版本信息: Find-Plus ${findPlusVersion}`);
+  console.log(`📊 版本信息: Wot-Design-Uni ${wotDesignUniVersion}`);
 }
 
 export default extractAllData;

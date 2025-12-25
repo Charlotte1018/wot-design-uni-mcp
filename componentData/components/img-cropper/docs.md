@@ -24,32 +24,6 @@
 
 结合 `useUpload` 可以实现裁剪完成后自动上传图片的功能。
 
-## Attributes
-
-| 参数 | 说明 | 类型 | 可选值 | 默认值| 最低版本 |
-|-----|------|-----|-------|-------|--------|
-| v-model | 打开图片裁剪组件 | boolean | - | false | - |
-| img-src | 图片资源链接 | string | - | - | - |
-| img-width | 截屏预览图片的初始宽度; `1、设置宽度不设置高度，按照宽度等比缩放；2、如果都不设置，预览时图片大小会根据裁剪框大小进行等比缩放，进行锁边处理；`; string 类型只支持 % 单位，number 类型时单位为 px | number / string | - | - | - |
-| img-height | 截屏预览图片的初始高度; `1、设置高度不设置宽度，按照高度等比缩放；2、如果都不设置，预览时图片大小会根据裁剪框大小进行等比缩放，进行锁边处理；`; string 类型只支持 % 单位，number 类型时单位为 px | number / string | - | - | - |
-| disabled-rotate | 禁止图片旋转 | boolean | - | false | - |
-| export-scale | 设置导出图片尺寸 | number | - | 2 | - |
-| max-scale | 最大缩放倍数 | number | - | 3 | - |
-| cancel-button-text | 取消按钮文案 | string | - | 取消 | - |
-| confirm-button-text | 确认按钮文案 | string | - | 完成 | - |
-| quality | 生成的图片质量 [wx.canvasToTempFilePath属性介绍](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/wx.canvasToTempFilePath.html#%E5%8F%82%E6%95%B0) | number | 0/1 | 1 | - |
-| file-type | 目标文件的类型，[wx.canvasToTempFilePath属性介绍](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/wx.canvasToTempFilePath.html#%E5%8F%82%E6%95%B0) | string | - | png | - |
-| aspect-ratio | 裁剪框宽高比，格式为 width:height | string | - | 1:1 | 1.9.0 |
-
-## Events
-
-| 事件名称 | 说明 | 参数 | 最低版本 |
-|---------|-----|-----|---------|
-| confirm | 完成截图时触发 |  `{tempFilePath, width, height}` 分别为生成文件的临时路径 (本地路径)、生成图片宽、生成图片高| - |
-| cancel | 当取消截图时触发 | - | - |
-| imgloaderror | 当图片加载错误时触发 |  `{err} `| - |
-| imgloaded | 当图片加载完成时触发 |  `{res}` | - |
-
 ## Methods
 
 对外暴露函数

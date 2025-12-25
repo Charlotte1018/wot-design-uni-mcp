@@ -37,7 +37,7 @@
 <script lang="ts" setup>
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .cell-icon {
   display: block;
   box-sizing: border-box;
@@ -52,7 +52,7 @@
 
 ### 分组标题
 
-在
+分组标题
 
 ```vue
 <template>
@@ -68,7 +68,7 @@
 
 ### 单元格大小
 
-设置
+单元格大小
 
 ```vue
 <template>
@@ -81,7 +81,7 @@
 
 ### 展示边框线
 
-在
+展示边框线
 
 ```vue
 <template>
@@ -98,7 +98,7 @@
 
 ### 点击反馈
 
-设置
+点击反馈
 
 ```vue
 <template>
@@ -118,7 +118,7 @@ function showToast() {
 
 ### 页面跳转
 
-设置
+页面跳转
 
 ```vue
 <template>
@@ -134,7 +134,7 @@ function showToast() {
 
 ### 垂直居中
 
-设置
+垂直居中
 
 ```vue
 <template>
@@ -145,7 +145,7 @@ function showToast() {
 </script>
 ```
 
-### 表单属性-必填
+### 表单属性 - 必填
 
 表单属性 - 必填
 
@@ -165,7 +165,7 @@ function handleRateChange({ value }) {
 </script>
 ```
 
-### 表单属性-上下结构
+### 表单属性 - 上下结构
 
 表单属性 - 上下结构
 
@@ -246,7 +246,7 @@ function handleSwitchChange({ value }) {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .cell-icon {
   display: block;
   box-sizing: border-box;
@@ -278,62 +278,7 @@ function handleSwitchChange({ value }) {
 </style>
 ```
 
-### cellgroup-attributes
-
-CellGroup Attributes
-
-| 参数     | 说明           | 类型    | 可选值 | 默认值 | 最低版本 |
-| -------- | -------------- | ------- | ------ | ------ | -------- |
-| title    | 分组标题       | string  | -      | -      | -        |
-| value    | 分组右侧内容   | string  | -      | -      | -        |
-| border   | 是否展示边框线 | boolean  | -      | -      | -        |
-| use-slot | 分组启用插槽   | boolean | -      | false  | -        |
-
-### cell-attributes
-
-Cell Attributes
-
-| 参数        | 说明                           | 类型    | 可选值 | 默认值 | 最低版本 |
-| ----------- | ------------------------------ | ------- | ------ | ------ | -------- |
-| title       | 标题                           | string  | -      | -      | -        |
-| value       | 右侧内容                       | string  | -      | -      | -        |
-| icon        | 图标类名                       | string  | -      | -      | -        |
-| icon-size   | 图标大小                       | string \| number  | -      | -      | 1.13.0 |
-| label       | 描述信息                       | string  | -      | -      | -        |
-| is-link     | 是否为跳转链接                 | boolean | -      | false  | -        |
-| to          | 跳转地址                       | string  | -      | -      | -        |
-| clickable   | 点击反馈，开启 is-link 时，默认开启此选项 | boolean | -      | false  | -        |
-| replace     | 跳转时是否替换栈顶页面         | boolean | -      | false  | -        |
-| size        | 设置单元格大小                 | string  | large  | -      | -        |
-| title-width | 设置左侧标题宽度               | string  | -      | -      | -        |
-| center      | 是否垂直居中，默认顶部居中     | boolean | -      | false  | -        |
-| required    | 表单属性，必填                 | boolean | -      | false  | -        |
-| marker-side | 必填标记的位置                 | string  | before / after | before | 1.12.0 |
-| vertical    | 表单属性，上下结构             | boolean | -      | false  | -        |
-| ellipsis    | 内容省略，右侧内容超出时会以省略号显示 | boolean | -      | false  | 1.11.0 |
-| use-title-slot | 是否启用title插槽，默认启用，用来解决插槽传递时v-slot和v-if冲突问题 | boolean | -      | true  | 1.11.0 |
-| prop | 表单域 `model` 字段名，在使用表单校验功能的情况下，该属性是必填的 | string | - | - | - |
-| rules | 表单验证规则，结合`wd-form`组件使用	 | `FormItemRule []`	 | - | `[]` | - |
-| border | 是否展示边框线，优先级高于`cell-group`的`border` | boolean | - | - | - |
-
-### FormItemRule 数据结构
-
-| 键名 | 说明 | 类型 |
-| --- | --- | --- |
-| required | 是否为必选字段	 | `boolean` |
-| message | 错误提示文案	 | `string` |
-| validator | 通过函数进行校验，可以返回一个 `Promise` 来进行异步校验 | `(value, rule) => boolean \| Promise` |
-| pattern | 通过正则表达式进行校验，正则无法匹配表示校验不通过 | `RegExp` |
-
-### cell-events
-
-Cell Events
-
-| 事件名称 | 说明                                             | 参数 | 最低版本 |
-| -------- | ------------------------------------------------ | ---- | -------- |
-| click    | 当 clickable 或 is-link 为 true 时点击单元格触发 | -    | -        |
-
-### CellGroup外部样式类
+### CellGroup 外部样式类
 
 CellGroup 外部样式类
 
@@ -341,7 +286,7 @@ CellGroup 外部样式类
 | ------------ | ---------- | -------- |
 | custom-class | 根节点样式 | -        |
 
-### Cell外部样式类
+### Cell 外部样式类
 
 Cell 外部样式类
 

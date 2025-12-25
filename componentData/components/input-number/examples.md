@@ -1,164 +1,251 @@
 ## InputNumber 组件示例
 
-### basic
+### 基本用法
 
-要使用它，只需要在 `<fin-input-number>` 元素中使用 `v-model` 绑定变量即可，变量的初始值即为默认值。
+基本用法
 
 ```vue
 <template>
-  <fin-input-number v-model="num" :min="1" :max="10" @change="handleChange" />
+<wd-input-number v-model="value" @change="handleChange" />
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-
-const num = ref(1)
-const handleChange = (value: number) => {
+const value = ref<number>(1)
+function handleChange({ value }) {
   console.log(value)
 }
 </script>
 ```
 
-### disabled
+### 设置步长
 
-`disabled`属性接受一个 `Boolean`，设置为`true`即可禁用整个组件。 ，如果你只需要控制数值在某一范围内，可以设置 `min` 属性和 `max` 属性， 默认最小值为 `0`。
+设置步长
 
 ```vue
 <template>
-  <fin-input-number v-model="num" :disabled="true" />
+<wd-input-number v-model="value" @change="handleChange" :step="2" />
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-
-const num = ref(1)
 </script>
 ```
 
-### readonly
+### 设置最小最大值
 
-`readonly`属性接受一个 `Boolean`，设置为`true`即让整个组件只读。 ，如果你只需要控制数值在某一范围内，可以设置 `min` 属性和 `max` 属性， 默认最小值为 `0`。
+设置最小最大值
 
 ```vue
 <template>
-  <fin-input-number v-model="num" readonly />
-  <fin-input-number v-model="num2" readonly />
+<wd-input-number v-model="value" @change="handleChange" :min="3" :max="10" />
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-
-const num = ref(1)
-const num2 = ref(11)
 </script>
 ```
 
-### steps
+### 禁用
 
-设置 `step` 属性可以控制步长。
+禁用
 
 ```vue
 <template>
-  <fin-input-number v-model="num" :step="2" />
+<wd-input-number v-model="value" @change="handleChange" disabled />
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-
-const num = ref(5)
 </script>
 ```
 
-### step-strictly
+### 禁用输入框
 
-`step-strictly`属性接受一个`Boolean`。 如果这个属性被设置为 `true`，则只能输入步进的倍数。
+禁用输入框
 
 ```vue
 <template>
-  <fin-input-number v-model="num" :step="2" step-strictly />
+<wd-input-number v-model="value" @change="handleChange" disable-input />
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-
-const num = ref(2)
 </script>
 ```
 
-### precision
+### 禁用按钮
 
-设置 `precision` 属性可以控制数值精度，接收一个 `Number`。
+可以单独禁用增加或减少按钮。
 
 ```vue
 <template>
-  <fin-input-number v-model="num" :precision="2" :step="0.1" :max="10" />
+<!-- 禁用减号按钮 -->
+<wd-input-number v-model="value" @change="handleChange" disable-minus />
+
+<!-- 禁用加号按钮 -->
+<wd-input-number v-model="value" @change="handleChange" disable-plus />
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-
-const num = ref(1)
 </script>
 ```
 
-### size
+### 无输入框
 
-
+无输入框
 
 ```vue
 <template>
-  <fin-input-number v-model="num1" size="large" />
-  <fin-input-number v-model="num2" class="mx-4" />
-  <fin-input-number v-model="num3" size="small" />
+<wd-input-number v-model="value" @change="handleChange" without-input />
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-
-const num1 = ref(1)
-const num2 = ref(2)
-const num3 = ref(3)
 </script>
 ```
 
-### controlled
+### 设置小数精度
 
-设置 `controls-position` 属性可以控制按钮位置。
+设置小数精度
 
 ```vue
 <template>
-  <fin-input-number
-    v-model="num"
-    :min="1"
-    :max="10"
-    controls-position="right"
-    size="large"
-    @change="handleChange"
-  />
-  <fin-input-number
-    v-model="num"
-    class="mx-4"
-    :min="1"
-    :max="10"
-    controls-position="right"
-    @change="handleChange"
-  />
-  <fin-input-number
-    v-model="num"
-    :min="1"
-    :max="10"
-    size="small"
-    controls-position="right"
-    @change="handleChange"
-  />
+<wd-input-number v-model="value" @change="handleChange" :precision="2" :step="0.1" />
 </template>
-<script lang="ts" setup>
-import { ref } from 'vue'
 
-const num = ref(1)
-const handleChange = (value: number) => {
+<script lang="ts" setup>
+</script>
+```
+
+### 严格步数倍数
+
+严格步数倍数
+
+```vue
+<template>
+<wd-input-number v-model="value" @change="handleChange" step-strictly :step="2" />
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 修改输入框宽度
+
+修改输入框宽度
+
+```vue
+<template>
+<wd-input-number v-model="value" @change="handleChange" input-width="70px" />
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 允许空值，设置 placeholder
+
+允许空值，设置 placeholder
+
+```vue
+<template>
+<wd-input-number v-model="value" allow-null placeholder="不限" @change="handleChange" />
+</template>
+
+<script lang="ts" setup>
+const value = ref<number|string>('')
+function handleChange({ value }) {
   console.log(value)
 }
 </script>
 ```
+
+### 非立即更新模式
+
+非立即更新模式
+
+```vue
+<template>
+<!-- 立即更新模式（默认） -->
+<wd-input-number v-model="value1" @change="handleChange" :immediate-change="true" />
+
+<!-- 非立即更新模式 -->
+<wd-input-number v-model="value2" @change="handleChange" :immediate-change="false" />
+</template>
+
+<script lang="ts" setup>
+const value1 = ref<number>(1)
+const value2 = ref<number>(1)
+function handleChange({ value }) {
+  console.log(value)
+}
+</script>
+```
+
+### 初始化时自动更新
+
+初始化时自动更新
+
+```vue
+<template>
+<!-- 自动更新初始值（默认） -->
+<wd-input-number v-model="value1" @change="handleChange" :update-on-init="true" :min="3" :max="15" :step="2" step-strictly />
+
+<!-- 不更新初始值，保持原始值 -->
+<wd-input-number v-model="value2" @change="handleChange" :update-on-init="false" :min="3" :max="15" :step="2" step-strictly />
+</template>
+
+<script lang="ts" setup>
+const value1 = ref<number>(1) // 会自动修正为4（≥3的最小2的倍数）
+const value2 = ref<number>(1) // 保持为1，不会修正但会格式化显示
+function handleChange({ value }) {
+  console.log(value)
+}
+</script>
+```
+
+### 异步变更
+
+异步变更
+
+```vue
+<template>
+<wd-input-number v-model="value" :before-change="beforeChange" />
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+import { useToast } from '@/uni_modules/wot-design-uni'
+import type { InputNumberBeforeChange } from '@/uni_modules/wot-design-uni/components/wd-input-number/types'
+const { loading, close } = useToast()
+
+const value = ref<number>(1)
+ 
+const beforeChange: InputNumberBeforeChange = (value) => {
+  loading({ msg: `正在更新到${value}...` })
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      close()
+      resolve(true)
+    }, 500)
+  })
+}
+</script>
+```
+
+### 长按加减
+
+长按加减
+
+```vue
+<template>
+<wd-input-number v-model="value" long-press @change="handleChange" />
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 外部样式类
+
+外部样式类
+
+| 类名 | 说明 | 最低版本 |
+|-----|------|--------|
+| custom-class | 根节点样式 | - |
 

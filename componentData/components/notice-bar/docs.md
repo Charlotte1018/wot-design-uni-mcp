@@ -40,30 +40,6 @@
 
 参考issues：[#358](https://github.com/Moonofweisheng/wot-design-uni/issues/358)、[#650](https://github.com/Moonofweisheng/wot-design-uni/issues/650)
 
-## Attributes
-
-| 参数             | 说明                                   | 类型                       | 可选值                  | 默认值       | 最低版本 |
-| ---------------- | -------------------------------------- | -------------------------- | ----------------------- | ------------ | -------- |
-| text             | 设置通知栏文案                         | `string` `string[]`        | -                       | -            | -        |
-| type             | 设置通知栏类型                         | `string`                   | info / warning / danger | warning      | -        |
-| prefix           | 设置左侧图标，使用 icon 章节中的图标名 | `string`                   | -                       | -            | -        |
-| scrollable       | 是否可以滚动                           | `boolean`                  | -                       | true         | -        |
-| delay            | 滚动动画初始延时，单位 秒(s)           | `number`                   | -                       | 1            | -        |
-| speed            | 滚动速度，单位 px/s                    | `number`                   | -                       | 50           | -        |
-| closable         | 是否可以关闭                           | `boolean`                  | -                       | false        | -        |
-| wrapable         | 是否换行展示                           | `boolean`                  | -                       | false        | -        |
-| color            | 文字、图标颜色                         | `string`                   | -                       | -            | -        |
-| background-color | 背景颜色                               | `string`                   | -                       | -            | -        |
-| direction        | 滚动方向                               | `NoticeBarScrollDirection` | `horizontal` `vertical` | `horizontal` | -        |
-
-## Events
-
-| 事件名称 | 说明             | 参数                                                                           | 最低版本 |
-| -------- | ---------------- | ------------------------------------------------------------------------------ | -------- |
-| close    | 关闭按钮点击时   | -                                                                              | -        |
-| next     | 下一次滚动前触发 | index: `number`                                                                | -        |
-| click    | 点击时触发       | `{ text: string, index: number }`，其中`text`为当前文本，`index`为当前文本索引 | 1.2.16   |
-
 ## Methods
 
 | 方法名称 | 说明 | 参数 | 最低版本 |

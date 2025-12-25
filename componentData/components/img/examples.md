@@ -2,7 +2,7 @@
 
 ### 基本用法
 
-基础用法与原生 image 标签一致，可以设置
+基本用法
 
 ```vue
 <template>
@@ -39,7 +39,7 @@ export default defineConfig({
 
 ### 插槽
 
-使用
+插槽
 
 ```vue
 <template>
@@ -55,9 +55,6 @@ export default defineConfig({
     </template>
   </wd-img>
 </template>
-
-<script lang="ts" setup>
-</script>
 
 <style>
 .error-wrap {
@@ -78,6 +75,9 @@ export default defineConfig({
 }
 </style>
 </template>
+
+<script lang="ts" setup>
+</script>
 ```
 
 ### 填充模式
@@ -108,7 +108,7 @@ export default defineConfig({
 
 ### 可预览
 
-设置
+可预览
 
 ```vue
 <template>
@@ -120,41 +120,6 @@ export default defineConfig({
 <script lang="ts" setup>
 </script>
 ```
-
-### attributes
-
-Attributes
-
-| 参数                   | 说明                                               | 类型            | 可选值                                                                                                                                                                             | 默认值        | 最低版本         |
-| ---------------------- | -------------------------------------------------- | --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ---------------- |
-| src                    | 图片链接                                           | string          | -                                                                                                                                                                                  | -             | -                |
-| width                  | 宽度，默认单位为 px                                | number / string | -                                                                                                                                                                                  | -             | -                |
-| height                 | 高度，默认单位为 px                                | number / string | -                                                                                                                                                                                  | -             | -                |
-| mode                   | 填充模式                                           | ImageMode       | 'top left' / 'top right' / 'bottom left' / 'bottom right' / 'right' / 'left' / 'center' / 'bottom' / 'top' / 'heightFix' / 'widthFix' / 'aspectFill' / 'aspectFit' / 'scaleToFill' | 'scaleToFill' | -                |
-| round                  | 是否显示为圆形                                     | boolean         | -                                                                                                                                                                                  | false         | -                |
-| radius                 | 圆角大小，默认单位为 px                            | number / string | -                                                                                                                                                                                  | -             | -                |
-| enable-preview         | 是否支持点击预览                                   | boolean         | -                                                                                                                                                                                  | false         | 1.2.11           |
-| show-menu-by-longpress | 开启长按图片显示识别小程序码菜单，仅微信小程序支持 | boolean         | -                                                                                                                                                                                  | false         | 1.3.11 |
-| preview-src             | 预览图片链接                                     | string           |  -                                                                                 | -             | 1.8.0 |
-
-### events
-
-Events
-
-| 事件名称 | 说明                 | 参数                        | 最低版本 |
-| -------- | -------------------- | --------------------------- | -------- |
-| click    | 点击事件             | (event: MouseEvent) => void | -        |
-| load     | 当图片载入完毕时触发 | `{height, width}`           | -        |
-| error    | 当错误发生时触发     | `{errMsg}`                  | -        |
-
-### slots
-
-Slots
-
-| 名称    | 说明               | 最低版本 |
-| ------- | ------------------ | -------- |
-| loading | 图片加载时展示     | 1.2.21   |
-| error   | 图片加载失败后展示 | 1.2.21   |
 
 ### 外部样式类
 

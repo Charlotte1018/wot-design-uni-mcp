@@ -7,8 +7,8 @@ const command = args[0];
 
 async function main() {
   if (command === 'extract') {
-    const repoPath = args[1] || './find-plus';
-    console.log(`📦 开始从 ${repoPath} 提取 Find-Plus 组件文档...`);
+    const repoPath = args[1] || '../wot-design-uni';
+    console.log(`📦 开始从 ${repoPath} 提取 Wot-Design-Uni 组件文档...`);
     await extractAllData(repoPath);
   } else {
     // 默认启动 MCP 服务器

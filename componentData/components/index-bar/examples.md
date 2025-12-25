@@ -2,7 +2,7 @@
 
 ### 基本用法
 
-使用一个固定高度的元素包裹
+基本用法
 
 ```vue
 <template>
@@ -16,9 +16,6 @@
     </wd-index-bar>
   </view>
 </template>
-
-<script lang="ts" setup>
-</script>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
@@ -122,6 +119,9 @@ const data = ref([
 }
 </style>
 </template>
+
+<script lang="ts" setup>
+</script>
 ```
 
 ### 更新列表数据
@@ -139,31 +139,7 @@ const data = ref([
 </script>
 ```
 
-### attributes
-
-Attributes
-
-| 参数   | 说明         | 类型    | 可选值 | 默认值 | 最低版本 |
-| ------ | ------------ | ------- | ------ | ------ | -------- |
-| sticky | 索引是否吸顶 | boolean | -      | false  | -        |
-
-### indexanchor-attributes
-
-IndexAnchor Attributes
-
-| 参数  | 说明     | 类型             | 可选值 | 默认值 | 最低版本 |
-| ----- | -------- | ---------------- | ------ | ------ | -------- |
-| index | 索引字符 | string / number | -      | -      | -        |
-
-### indexanchor-slots
-
-IndexAnchor Slots
-
-| name    | 说明       | 参数 | 最低版本 |
-| ------- | ---------- | ---- | -------- |
-| default | 自定义内容 | -    | -        |
-
-### IndexAnchor外部样式类
+### IndexAnchor 外部样式类
 
 IndexAnchor 外部样式类
 

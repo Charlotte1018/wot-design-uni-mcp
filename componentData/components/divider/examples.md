@@ -1,82 +1,121 @@
 ## Divider 组件示例
 
-### basic-usage
+### 基本使用
 
-
-
-```vue
-<template>
-  <div>
-    <span
-      >I sit at my window this morning where the world like a passer-by stops
-      for a moment, nods to me and goes.</span
-    >
-    <fin-divider />
-    <span
-      >There little thoughts are the rustle of leaves; they have their whisper
-      of joy in my mind.</span
-    >
-  </div>
-</template>
-```
-
-### custom-content
-
-
+默认渲染一条水平分割线。
 
 ```vue
 <template>
-  <div>
-    <span>What you are you do not see, what you see is your shadow. </span>
-    <fin-divider content-position="left">Rabindranath Tagore</fin-divider>
-    <span
-      >My wishes are fools, they shout across thy song, my Master. Let me but
-      listen.</span
-    >
-    <fin-divider>
-      <fin-icon><StarSolid /></fin-icon>
-    </fin-divider>
-    <span>I cannot choose the best. The best chooses me.</span>
-    <fin-divider content-position="right">Rabindranath Tagore</fin-divider>
-  </div>
+<wd-divider></wd-divider>
 </template>
 
 <script lang="ts" setup>
-import { StarSolid } from '@jdt/find-plus-icons-vue'
 </script>
 ```
 
-### line-dashed
+### 展示文本
 
-
-
-```vue
-<template>
-  <div>
-    <span>What language is thine, O sea?</span>
-    <fin-divider border-style="dashed" />
-    <span>The language of eternal question.</span>
-  </div>
-  <fin-divider border-style="dotted" />
-  <span>What language is thy answer, O sky?</span>
-  <fin-divider border-style="double" />
-  <span>The language of eternal silence.</span>
-</template>
-```
-
-### vertical-divider
-
-
+使用默认插槽在分割线中间插入内容。
 
 ```vue
 <template>
-  <div>
-    <span>Rain</span>
-    <fin-divider direction="vertical" />
-    <span>Home</span>
-    <fin-divider direction="vertical" border-style="dashed" />
-    <span>Grass</span>
-  </div>
+<wd-divider>展示文本</wd-divider>
 </template>
+
+<script lang="ts" setup>
+</script>
 ```
+
+### 自定义渲染内容
+
+使用默认插槽在分割线中间插入自定义内容。
+
+```vue
+<template>
+<wd-divider>
+  <wd-icon name="arrow-down" size="20" color="#1989fa" />
+</wd-divider>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 内容位置
+
+内容位置
+
+```vue
+<template>
+<wd-divider>中间</wd-divider>
+<wd-divider content-position="left">左侧</wd-divider>
+<wd-divider content-position="right">右侧</wd-divider>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 虚线
+
+虚线
+
+```vue
+<template>
+<wd-divider dashed>虚线分割</wd-divider>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 自定义颜色
+
+自定义颜色
+
+```vue
+<template>
+<wd-divider color="#4D80F0">自定义颜色</wd-divider>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 垂直分割线
+
+垂直分割线
+
+```vue
+<template>
+<view class="content">
+  文本
+  <wd-divider vertical />
+  文本
+  <wd-divider vertical dashed />
+  文本
+  <wd-divider vertical :hairline="false" />
+  文本
+  <wd-divider vertical color="#1989fa" />
+  文本
+</view>
+</template>
+
+<script lang="ts" setup>
+</script>
+
+<style lang="scss">
+.content {
+  padding: 12rpx 15px;
+}
+</style>
+```
+
+### 外部样式类
+
+外部样式类
+
+| 类名         | 说明       | 最低版本 |
+| ------------ | ---------- | -------- |
+| custom-class | 根节点样式 | -        |
 

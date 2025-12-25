@@ -2,7 +2,7 @@
 
 ### 基本用法
 
-需要吸顶的内容包裹在
+基本用法
 
 ```vue
 <template>
@@ -41,7 +41,7 @@ onShow(() => {
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 page{
   height: 200vh;
 }
@@ -81,23 +81,14 @@ page{
 <script lang="ts" setup>
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .container{
     height: 150px;width: 100vw;
 }
 </style>
 ```
 
-### sticky-attributes
-
-Sticky Attributes
-
-| 参数 | 说明 | 类型 | 可选值 | 默认值 | 最低版本 |
-|-----|------|-----|-------|-------|--------|
-| z-index | 堆叠顺序 | number | - | 1 | - |
-| offset-top | 吸顶距离 | number | - | 0 | - |
-
-### Sticky外部样式类
+### Sticky 外部样式类
 
 Sticky 外部样式类
 
@@ -105,7 +96,7 @@ Sticky 外部样式类
 |-----|------|--------|
 | custom-class | 根节点样式 | - |
 
-### StickyBox外部样式类
+### Sticky Box 外部样式类
 
 Sticky Box 外部样式类
 

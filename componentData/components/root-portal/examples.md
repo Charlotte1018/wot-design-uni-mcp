@@ -2,7 +2,7 @@
 
 ### 基本用法
 
-使用
+基本用法
 
 ```vue
 <template>
@@ -20,7 +20,7 @@
 <script lang="ts" setup>
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .modal {
   position: fixed;
   top: 0;
@@ -42,12 +42,4 @@
 }
 </style>
 ```
-
-### slots
-
-Slots
-
-| 名称    | 说明                         | 最低版本 |
-| ------- | ---------------------------- | -------- |
-| default | 默认插槽，用于渲染传送内容   | 1.11.0   |
 

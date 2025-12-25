@@ -28,9 +28,6 @@
 </template>
 
 <script lang="ts" setup>
-</script>
-
-<script lang="ts" setup>
 import { ref } from 'vue'
 
 const showTour = ref(true)
@@ -106,64 +103,12 @@ function onFinish() {
   />
 </view>
 </template>
+
+<script lang="ts" setup>
+</script>
 ```
 
-### attributes
-
-Attributes
-
-| 参数 | 说明 | 类型 | 可选值 | 默认值 |
-|------|------|------|--------|--------|
-| v-model | 是否显示引导组件 | boolean | - | false |
-| steps | 引导步骤列表 | array | - | [] |
-| current | 当前步骤索引，支持 v-model:current 双向绑定 | number | - | 0 |
-| mask | 蒙版是否显示 | boolean | - | true |
-| mask-color | 蒙版颜色（支持 rgba 格式） | string | - | rgba(0, 0, 0, 0.5) |
-| offset | 引导提示框与高亮框的间距 | number | - | 20 |
-| duration | 动画持续时间（毫秒） | number | - | 300 |
-| border-radius | 高亮区域的圆角大小 | number | - | 8 |
-| padding | 高亮区域的内边距 | number | - | 8 |
-| prev-text | 上一步按钮文字 | string | - | 上一步 |
-| next-text | 下一步按钮文字 | string | - | 下一步 |
-| skip-text | 跳过按钮文字 | string | - | 跳过 |
-| finish-text | 完成按钮文字 | string | - | 完成 |
-| highlight-style | 高亮区域样式 | object | - | - |
-| bottom-safety-offset | 底部安全偏移量，用于滚动计算时确保元素周围有足够的空间 | number | - | 100 |
-| top-safety-offset | 顶部安全偏移量，用于滚动计算时确保元素周围有足够的空间 | number | - | 0 |
-| custom-nav | 是否自定义顶部导航栏 | boolean | - | false |
-| click-mask-next | 点击蒙版是否可以下一步 | boolean | - | false |
-| z-index | 引导组件的层级 | number | - | 999 |
-| show-tour-buttons | 是否显示引导按钮 | boolean | - | true |
-| scope | 查询作用域（限定选择器范围） | object | - | - |
-| missing-strategy | 缺失元素处理策略 | 'skip' \| 'stop' \| 'hide' | - | stop |
-
-### events
-
-Events
-
-| 事件名 | 说明 | 参数 |
-|--------|------|------|
-| change | 步骤改变时触发 | `{ current: number }` |
-| prev | 点击上一步按钮时触发 | `{ prevCurrent: number, current: number, total: number, isElementInTop: boolean }` |
-| next | 点击下一步按钮时触发 | `{ prevCurrent: number, current: number, total: number, isElementInTop: boolean }` |
-| finish | 点击完成按钮时触发 | `{ current: number, total: number }` |
-| skip | 点击跳过按钮时触发 | `{ current: number, total: number }` |
-| error | 查找引导元素出错时触发 | `{ message: string, element: string }` |
-
-### slots
-
-Slots
-
-| 插槽名 | 说明 | 参数 |
-|--------|------|------|
-| highlight | 自定义高亮区域 | elementInfo: 元素位置信息 |
-| content | 自定义引导内容 | - |
-| prev | 自定义上一步按钮 | - |
-| next | 自定义下一步按钮 | - |
-| skip | 自定义跳过按钮 | - |
-| finish | 自定义完成按钮 | - |
-
-### methods
+### Methods
 
 通过 ref 可以获取到组件实例，调用组件提供的方法：
 
@@ -180,13 +125,12 @@ Slots
 
 ```vue
 <template>
-  <view></view>
 </template>
 
 <script lang="ts" setup>
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 // 蒙版颜色
 --wd-tour-mask-color: rgba(0, 0, 0, 0.5);
 

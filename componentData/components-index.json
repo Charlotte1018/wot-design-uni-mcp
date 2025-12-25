@@ -1,434 +1,412 @@
 [
   {
-    "name": "Affix",
-    "dirName": "affix",
-    "title": "Affix 固钉",
-    "description": "title: Affix 固钉"
-  },
-  {
-    "name": "Alert",
-    "dirName": "alert",
-    "title": "Alert 提示",
-    "description": "title: Alert 提示"
-  },
-  {
-    "name": "Autocomplete",
-    "dirName": "autocomplete",
-    "title": "Autocomplete 自动补全输入框",
-    "description": "---"
-  },
-  {
-    "name": "Avatar",
-    "dirName": "avatar",
-    "title": "Avatar 头像",
-    "description": "title: Avatar 头像"
+    "name": "ActionSheet",
+    "dirName": "action-sheet",
+    "description": "从底部弹出的动作菜单面板。"
   },
   {
     "name": "Backtop",
     "dirName": "backtop",
-    "title": "Backtop 回到顶部",
-    "description": "title: Backtop 回到顶部"
+    "description": "用于返回页面顶部的操作按钮。"
   },
   {
     "name": "Badge",
     "dirName": "badge",
-    "title": "Badge 徽章",
-    "description": "title: Badge 徽章"
-  },
-  {
-    "name": "Border",
-    "dirName": "border",
-    "title": "Border 边框",
-    "description": "title: Border 边框"
-  },
-  {
-    "name": "Breadcrumb",
-    "dirName": "breadcrumb",
-    "title": "Breadcrumb 面包屑",
-    "description": "title: Breadcrumb 面包屑"
+    "description": "出现在按钮、图标旁的数字或状态标记。"
   },
   {
     "name": "Button",
     "dirName": "button",
-    "title": "Button 按钮",
-    "description": "title: Button 按钮"
+    "description": "按钮用于触发一个操作，如提交表单或打开链接。"
+  },
+  {
+    "name": "CalendarView",
+    "dirName": "calendar-view",
+    "description": "提供日历单选、多选、范围选择、周维度、月维度等功能。可以根据实际业务场景基于该组件进行封装高度定制化组件。"
   },
   {
     "name": "Calendar",
     "dirName": "calendar",
-    "title": "Calendar 日历",
-    "description": "title: Calendar 日历"
+    "description": "提供日历单选、多选、范围选择、周维度、月维度等功能。"
   },
   {
     "name": "Card",
     "dirName": "card",
-    "title": "Card 卡片",
-    "description": "title: Card 卡片"
+    "description": "用于展示商品的图片、价格等信息。"
   },
   {
-    "name": "Carousel",
-    "dirName": "carousel",
-    "title": "Carousel 走马灯",
-    "description": "title: Carousel 走马灯"
-  },
-  {
-    "name": "Cascader",
-    "dirName": "cascader",
-    "title": "Cascader 级联选择器",
-    "description": "title: Cascader 级联选择器"
+    "name": "Cell",
+    "dirName": "cell",
+    "description": "单元格为列表中的单个展示项。"
   },
   {
     "name": "Checkbox",
     "dirName": "checkbox",
-    "title": "Checkbox 多选框",
-    "description": "title: Checkbox 多选框"
+    "description": "复选框用于在一组备选项中进行多选。"
+  },
+  {
+    "name": "Circle",
+    "dirName": "circle",
+    "description": "圆环形的进度条组件，支持进度渐变动画。"
+  },
+  {
+    "name": "ColPicker",
+    "dirName": "col-picker",
+    "description": "使用多列选择器来做级联，交互效果较好，多列选择器支持无限级选择。"
   },
   {
     "name": "Collapse",
     "dirName": "collapse",
-    "title": "Collapse 折叠面板",
-    "description": "title: Collapse 折叠面板"
-  },
-  {
-    "name": "ColorPicker",
-    "dirName": "color-picker",
-    "title": "ColorPicker 颜色选择器",
-    "description": "title: ColorPicker 颜色选择器"
+    "description": "将一组内容放置在多个折叠面板中，点击面板的标题可以展开或收缩其内容。"
   },
   {
     "name": "ConfigProvider",
     "dirName": "config-provider",
-    "title": "全局配置",
-    "description": "title: 全局配置"
+    "description": "用于全局配置 `Wot` 组件，提供深色模式、主题定制等能力。"
   },
   {
-    "name": "Container",
-    "dirName": "container",
-    "title": "Container 布局容器",
-    "description": "title: Container 布局容器"
+    "name": "CountDown",
+    "dirName": "count-down",
+    "description": "用于实时展示倒计时数值，支持毫秒精度。"
   },
   {
-    "name": "DatePicker",
-    "dirName": "date-picker",
-    "title": "DatePicker 日期选择器",
-    "description": "title: DatePicker 日期选择器"
+    "name": "CountTo",
+    "dirName": "count-to",
+    "description": "version: 1.3.8"
+  },
+  {
+    "name": "Curtain",
+    "dirName": "curtain",
+    "description": "一般用于公告类的图片弹窗。"
+  },
+  {
+    "name": "DatetimePickerView",
+    "dirName": "datetime-picker-view",
+    "description": "为 Picker 组件的封装，在其内部构建好日期时间选项。"
   },
   {
     "name": "DatetimePicker",
     "dirName": "datetime-picker",
-    "title": "DateTimePicker 日期时间选择器",
-    "description": "title: DateTimePicker 日期时间选择器"
-  },
-  {
-    "name": "Descriptions",
-    "dirName": "descriptions",
-    "title": "Descriptions 描述列表",
-    "description": "title: Descriptions 描述列表"
-  },
-  {
-    "name": "Dialog",
-    "dirName": "dialog",
-    "title": "Dialog 对话框",
-    "description": "title: Dialog 对话框"
+    "description": "为 DatetimePickerView 组件的封装，在其内部构建好日期时间选项。"
   },
   {
     "name": "Divider",
     "dirName": "divider",
-    "title": "Divider 分割线",
-    "description": "title: Divider 分割线"
+    "description": "用于将内容分隔为多个区域。"
   },
   {
-    "name": "Drawer",
-    "dirName": "drawer",
-    "title": "Drawer 抽屉",
-    "description": "title: Drawer 抽屉"
+    "name": "DropMenu",
+    "dirName": "drop-menu",
+    "description": "向下或向上弹出的菜单列表。"
   },
   {
-    "name": "Dropdown",
-    "dirName": "dropdown",
-    "title": "Dropdown 下拉菜单",
-    "description": "title: Dropdown 下拉菜单"
+    "name": "Fab",
+    "dirName": "fab",
+    "description": "悬浮动作按钮组件，按下可显示一组动作按钮。"
   },
   {
-    "name": "Empty",
-    "dirName": "empty",
-    "title": "Empty 空状态",
-    "description": "title: Empty 空状态"
+    "name": "FloatingPanel",
+    "dirName": "floating-panel",
+    "description": "浮动在页面底部的面板，用户可以通过上下拖动秒板来浏览内容，从而在不离开当前视图的情况下访问更多信息，常用于地图导航。"
   },
   {
     "name": "Form",
     "dirName": "form",
-    "title": "Form 表单",
-    "description": "title: Form 表单"
+    "description": "用于数据录入、校验，支持输入框、单选框、复选框、文件上传等类型，常见的 form 表单为`单元格`形式的展示，即左侧为表单的标题描述，右侧为表单的输入。"
   },
   {
-    "name": "Image",
-    "dirName": "image",
-    "title": "Image 图片",
-    "description": "title: Image 图片"
+    "name": "Gap",
+    "dirName": "gap",
+    "description": "一般用于页面布局时代替margin或者padding;或者充当（底部）占位元素。"
   },
   {
-    "name": "InfiniteScroll",
-    "dirName": "infinite-scroll",
-    "title": "Infinite Scroll 无限滚动",
-    "description": "title: Infinite Scroll 无限滚动"
+    "name": "Grid",
+    "dirName": "grid",
+    "description": "宫格可以在水平方向上把页面分隔成等宽度的区块，用于展示内容或进行页面导航。"
+  },
+  {
+    "name": "ImgCropper",
+    "dirName": "img-cropper",
+    "description": "图片剪裁组件，用于图片裁剪，支持拖拽、缩放、旋转等操作。"
+  },
+  {
+    "name": "Img",
+    "dirName": "img",
+    "description": "增强版的 img 标签，提供多种图片填充模式，支持图片懒加载、加载完成、加载失败。"
+  },
+  {
+    "name": "IndexBar",
+    "dirName": "index-bar",
+    "description": "用于列表的索引分类显示和快速定位。"
   },
   {
     "name": "InputNumber",
     "dirName": "input-number",
-    "title": "Input Number 数字输入框",
-    "description": "title: Input Number 数字输入框"
+    "description": "由增加按钮、减少按钮和输入框组成，用于在一定范围内输入、调整数字。"
   },
   {
     "name": "Input",
     "dirName": "input",
-    "title": "Input 输入框",
-    "description": "---"
+    "description": "用户可以在文本框里输入内容。"
+  },
+  {
+    "name": "Keyboard",
+    "dirName": "keyboard",
+    "description": "version: 1.3.10"
   },
   {
     "name": "Layout",
     "dirName": "layout",
-    "title": "Layout 布局",
-    "description": "title: Layout 布局"
-  },
-  {
-    "name": "Link",
-    "dirName": "link",
-    "title": "Link 链接",
-    "description": "title: Link 链接"
+    "description": "用于快速进行布局。"
   },
   {
     "name": "Loading",
     "dirName": "loading",
-    "title": "Loading 加载",
-    "description": "title: Loading 加载"
+    "description": "加载动画，用于表示加载中的过渡状态。"
   },
   {
-    "name": "Menu",
-    "dirName": "menu",
-    "title": "Menu 菜单",
-    "description": "title: Menu 菜单"
+    "name": "Loadmore",
+    "dirName": "loadmore",
+    "description": "用于在列表底部展示加载状态。"
   },
   {
     "name": "MessageBox",
     "dirName": "message-box",
-    "title": "MessageBox 消息弹框",
-    "description": "title: MessageBox 消息弹框"
+    "description": "弹出对话框，常用于消息提示、消息确认等，支持函数调用。"
   },
   {
-    "name": "Message",
-    "dirName": "message",
-    "title": "Message 消息提示",
-    "description": "title: Message 消息提示"
+    "name": "Navbar",
+    "dirName": "navbar",
+    "description": "为页面提供导航功能，常用于页面顶部。"
   },
   {
-    "name": "Notification",
-    "dirName": "notification",
-    "title": "Notification 通知",
-    "description": "title: Notification 通知"
+    "name": "NoticeBar",
+    "dirName": "notice-bar",
+    "description": "通知栏组件，用于在页面顶部展示通知提醒。"
   },
   {
-    "name": "PageHeader",
-    "dirName": "page-header",
-    "title": "Page Header 页头",
-    "description": "title: Page Header 页头"
+    "name": "Notify",
+    "dirName": "notify",
+    "description": "通知类组件，用于在页面顶部展示通知信息。"
+  },
+  {
+    "name": "NumberKeyboard",
+    "dirName": "number-keyboard",
+    "description": "虚拟数字键盘，用于输入数字、密码或身份证等场景。"
+  },
+  {
+    "name": "Overlay",
+    "dirName": "overlay",
+    "description": "创建一个遮罩层，用于强调特定的页面元素，并阻止用户进行其他操作。"
   },
   {
     "name": "Pagination",
     "dirName": "pagination",
-    "title": "Pagination 分页",
-    "description": "title: Pagination 分页"
+    "description": "当数据量过多时，使用分页分解数据。"
   },
   {
-    "name": "Popconfirm",
-    "dirName": "popconfirm",
-    "title": "Popconfirm 气泡确认框",
-    "description": "title: Popconfirm 气泡确认框"
+    "name": "PasswordInput",
+    "dirName": "password-input",
+    "description": "带网格的输入框组件，可以用于输入密码、短信验证码等场景，通常与[数字键盘](./number-keyboard.md)组件配合使用。"
+  },
+  {
+    "name": "PickerView",
+    "dirName": "picker-view",
+    "description": "选择器视图，用于从一组数据中选择单个或多个值。"
+  },
+  {
+    "name": "Picker",
+    "dirName": "picker",
+    "description": "Picker 组件为 popup 和 pickerView 的组合。"
   },
   {
     "name": "Popover",
     "dirName": "popover",
-    "title": "Popover 气泡卡片",
-    "description": "title: Popover 气泡卡片"
+    "description": "常用于展示提示信息。"
+  },
+  {
+    "name": "Popup",
+    "dirName": "popup",
+    "description": "弹出层组件，用于展示弹窗、信息提示等内容。"
   },
   {
     "name": "Progress",
     "dirName": "progress",
-    "title": "Progress 进度条",
-    "description": "title: Progress 进度条"
+    "description": "用于展示操作的当前进度。"
   },
   {
     "name": "Radio",
     "dirName": "radio",
-    "title": "Radio 单选框",
-    "description": "title: Radio 单选框"
+    "description": "单选框，用于在一组备选项中进行单选。"
   },
   {
     "name": "Rate",
     "dirName": "rate",
-    "title": "Rate 评分",
-    "description": "title: Rate 评分"
+    "description": "用于快速的评价操作，或对评价进行展示。"
   },
   {
-    "name": "Result",
-    "dirName": "result",
-    "title": "Result 结果",
-    "description": "title: Result 结果"
+    "name": "Resize",
+    "dirName": "resize",
+    "description": "当组件包裹的文档流尺寸发生变化时，触发 `resize` 事件。一般用于监听 dom 内容更新时导致的 dom 尺寸位置的变化，重新获取 dom 尺寸和位置，进行内容展示的计算操作。"
   },
   {
-    "name": "Scrollbar",
-    "dirName": "scrollbar",
-    "title": "Scrollbar 滚动条",
-    "description": "title: Scrollbar 滚动条"
+    "name": "RootPortal",
+    "dirName": "root-portal",
+    "description": "version: 1.11.0"
   },
   {
-    "name": "SelectV2",
-    "dirName": "select-v2",
-    "title": "Virtualized Select 虚拟化选择器",
-    "description": "title: Virtualized Select 虚拟化选择器"
+    "name": "Search",
+    "dirName": "search",
+    "description": "搜索框组件，支持输入框聚焦、失焦、输入、搜索、取消、清空事件。"
   },
   {
-    "name": "Select",
-    "dirName": "select",
-    "title": "Select 选择器",
-    "description": "title: Select 选择器"
+    "name": "Segmented",
+    "dirName": "segmented",
+    "description": "分段器用于展示多个选项并允许用户选择其中单个选项。"
+  },
+  {
+    "name": "SelectPicker",
+    "dirName": "select-picker",
+    "description": "用于从一组选项中进行单选或多选。"
+  },
+  {
+    "name": "Sidebar",
+    "dirName": "sidebar",
+    "description": "垂直展示的导航栏，用于在不同的内容区域之间进行切换。"
+  },
+  {
+    "name": "Signature",
+    "dirName": "signature",
+    "description": "version: 1.6.0"
   },
   {
     "name": "Skeleton",
     "dirName": "skeleton",
-    "title": "Skeleton 骨架屏",
-    "description": "title: Skeleton 骨架屏"
+    "description": "用于等待加载内容所展示的占位图形组合，有动态效果加载效果，减少用户等待焦虑。"
   },
   {
     "name": "Slider",
     "dirName": "slider",
-    "title": "Slider 滑块",
-    "description": "title: Slider 滑块"
+    "description": "支持单向滑块和双向滑块。"
   },
   {
-    "name": "Space",
-    "dirName": "space",
-    "title": "Space 间距",
-    "description": "title: Space 间距"
+    "name": "SortButton",
+    "dirName": "sort-button",
+    "description": "用于展示排序按钮，支持升序、降序、重置三种状态。"
   },
   {
-    "name": "Statistic",
-    "dirName": "statistic",
-    "title": "Statistic 统计组件",
-    "description": "title: Statistic 统计组件"
+    "name": "StatusTip",
+    "dirName": "status-tip",
+    "description": "一般用于兜底占位展示。"
   },
   {
     "name": "Steps",
     "dirName": "steps",
-    "title": "Steps 步骤条",
-    "description": "title: Steps 步骤条"
+    "description": "用于引导用户按照流程完成任务或向用户展示当前状态。"
+  },
+  {
+    "name": "Sticky",
+    "dirName": "sticky",
+    "description": "粘性布局组件，用于在页面滚动时将元素固定在指定位置。"
+  },
+  {
+    "name": "SwipeAction",
+    "dirName": "swipe-action",
+    "description": "常用于单元格左右滑删除等手势操作。"
+  },
+  {
+    "name": "Swiper",
+    "dirName": "swiper",
+    "description": "用于创建轮播，它支持水平和垂直方向的滑动，可以自定义样式和指示器位置，支持视频和图片资源的轮播，支持设置轮播标题和自定义标题样式。"
   },
   {
     "name": "Switch",
     "dirName": "switch",
-    "title": "Switch 开关",
-    "description": "title: Switch 开关"
+    "description": "用来打开或关闭选项。"
   },
   {
-    "name": "TableV2",
-    "dirName": "table-v2",
-    "title": "Virtualized Table 虚拟化表格",
-    "description": "title: Virtualized Table 虚拟化表格"
+    "name": "Tabbar",
+    "dirName": "tabbar",
+    "description": "底部导航栏，用于在不同页面之间进行切换。"
   },
   {
     "name": "Table",
     "dirName": "table",
-    "title": "Table 表格",
-    "description": "title: Table 表格"
+    "description": "用于展示多条结构类似的数据， 可对数据进行排序等操作。"
   },
   {
     "name": "Tabs",
     "dirName": "tabs",
-    "title": "Tabs 标签页",
-    "description": "title: Tabs 标签页"
+    "description": "标签页组件，用于在不同的内容区域之间进行切换。"
   },
   {
     "name": "Tag",
     "dirName": "tag",
-    "title": "Tag 标签",
-    "description": "title: Tag 标签"
+    "description": "用于标记状态或者概括主要内容。"
   },
   {
     "name": "Text",
     "dirName": "text",
-    "title": "Text",
-    "description": "title: Text"
+    "description": "文本组件，用于展示文本信息。"
   },
   {
-    "name": "TimePicker",
-    "dirName": "time-picker",
-    "title": "TimePicker 时间选择器",
-    "description": "title: TimePicker 时间选择器"
+    "name": "Textarea",
+    "dirName": "textarea",
+    "description": "用于输入多行文本信息。"
   },
   {
-    "name": "TimeSelect",
-    "dirName": "time-select",
-    "title": "TimeSelect 时间选择",
-    "description": "title: TimeSelect 时间选择"
-  },
-  {
-    "name": "Timeline",
-    "dirName": "timeline",
-    "title": "Timeline 时间线",
-    "description": "title: Timeline 时间线"
-  },
-  {
-    "name": "TooltipV2",
-    "dirName": "tooltip-v2",
-    "title": "Tooltip V2 虚拟化文字提示",
-    "description": "title: Tooltip V2 虚拟化文字提示"
+    "name": "Toast",
+    "dirName": "toast",
+    "description": "轻提示组件，用于消息通知、加载提示、操作结果提示等场景，支持函数式调用。"
   },
   {
     "name": "Tooltip",
     "dirName": "tooltip",
-    "title": "Tooltip 文字提示",
-    "description": "title: Tooltip 文字提示"
+    "description": "常用于展示提示信息。"
   },
   {
-    "name": "Transfer",
-    "dirName": "transfer",
-    "title": "Transfer 穿梭框",
-    "description": "title: Transfer 穿梭框"
+    "name": "Tour",
+    "dirName": "tour",
+    "description": "version: 1.14.0"
   },
   {
-    "name": "TreeSelect",
-    "dirName": "tree-select",
-    "title": "TreeSelect 树形选择",
-    "description": "title: TreeSelect 树形选择"
-  },
-  {
-    "name": "TreeV2",
-    "dirName": "tree-v2",
-    "title": "Tree V2 虚拟化树形控件",
-    "description": "title: Tree V2 虚拟化树形控件"
-  },
-  {
-    "name": "Tree",
-    "dirName": "tree",
-    "title": "Tree 树形控件",
-    "description": "title: Tree 树形控件"
-  },
-  {
-    "name": "Typography",
-    "dirName": "typography",
-    "title": "Typography 排版",
-    "description": "title: Typography 排版"
+    "name": "Transition",
+    "dirName": "transition",
+    "description": "用于在元素进入或离开时应用过渡效果。"
   },
   {
     "name": "Upload",
     "dirName": "upload",
-    "title": "Upload 上传",
-    "description": "title: Upload 上传"
+    "description": "图片、视频和文件上传组件"
+  },
+  {
+    "name": "UseCountDown",
+    "dirName": "use-count-down",
+    "description": "用于处理倒计时相关的逻辑。"
+  },
+  {
+    "name": "UseMessage",
+    "dirName": "use-message",
+    "description": "用于便捷地调用 MessageBox 弹框组件。"
+  },
+  {
+    "name": "UseNotify",
+    "dirName": "use-notify",
+    "description": "用于便捷地调用 Notify 消息通知组件。"
+  },
+  {
+    "name": "UseToast",
+    "dirName": "use-toast",
+    "description": "用于便捷地调用 Toast 轻提示组件。"
+  },
+  {
+    "name": "UseUpload",
+    "dirName": "use-upload",
+    "description": "用于处理文件上传和选择相关的逻辑。"
   },
   {
     "name": "Watermark",
     "dirName": "watermark",
-    "title": "Watermark 水印",
-    "description": "title: Watermark 水印"
+    "description": "在页面或组件上添加指定的图片或文字，可用于版权保护、品牌宣传等场景。"
   }
 ]

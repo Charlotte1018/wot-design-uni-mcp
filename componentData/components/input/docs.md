@@ -1,64 +1,92 @@
-﻿---
-title: Input 输入框
-lang: zh-CN
----
-
 # Input 输入框
 
-通过鼠标或键盘输入字符
+用户可以在文本框里输入内容。
 
-:::warning
-
-Input 为受控组件，它 **总会显示 Vue 绑定值**。
-
-在正常情况下，`input` 的输入事件应该被正常响应。 它的处理程序应该更新组件的绑定值 (或使用 `v-model`)。 否则，输入框的值将不会改变。
-
-不支持 `v-model` 修饰符。
-
+::: tip 提示
+`0.2.0`版本已将 `Input` 组件的 `textarea 文本域`功能迁移至 [Textarea](/component/textarea)组件，所有API保持一致。
 :::
 
-## 基础用法
+## 基本用法
 
-## 禁用状态
+可以通过 `v-model` 双向绑定输入框的值，通过 `placeholder` 设置占位提示文字。
 
-## 只读状态
+## 禁用
 
-## 一键清空
+设置 `disabled` 属性。
 
-## 格式化
+## 只读
 
-在 `formatter`的情况下显示值，我们通常同时使用 `parser`
+设置 `readonly` 属性。
 
-## 密码框
+## 清空按钮
 
-## 带图标的输入框
+设置 `clearable` 属性。
 
-带有图标标记输入类型
+## 有值且聚焦时展示清空按钮
 
-## 文本域
+设置 `clear-trigger` 属性，可以控制是否聚焦时才展示清空按钮。
 
-用于输入多行文本信息可缩放的输入框。 添加 `type="textarea"` 属性来将 `input` 元素转换为原生的 `textarea` 元素。
+:::warning 注意
+支付宝小程序暂不支持 `clear-trigger` 属性，且某种情况下清空按钮无法点击，原因参考此[issue](https://github.com/ant-design/ant-design-mini/issues/1255)（希望可以早点解决，所以直接给蚂蚁的组件库提了个issue）。
+:::
 
-## 自适应文本域
+## 点击清除按钮时不自动聚焦
 
-设置文字输入类型的 `autosize` 属性使得根据内容自动调整的高度。 你可以给 `autosize` 提供一个包含有最大和最小高度的对象，让输入框自动调整。
+设置`focus-when-clear` 属性，可以控制点击清除按钮时是否自动聚焦。
 
-## 复合型输入框
+## 密码输入框
 
-可以在输入框中前置或后置一个元素，通常是标签或按钮。
+设置 `show-password` 属性。
 
-## 尺寸
+## 前后icon
 
-## 输入长度限制
+设置前置icon `prefix-icon`，设置后置icon `suffix-icon`，icon 为 [icon](/component/icon) 章节中的图标，如果没有你需要的图标，则使用 `prefix`、`suffix` 插槽进行自定义插入。
 
-## 常见问题
+## 限制字数输入
 
-#### ElInput 组件的宽度为什么在设置了 `clearable` 时会发生变化
+设置 `maxlength` 属性，如果要显示字数限制，设置 `show-word-limit` 属性。
 
-典型问题： [#7287](https://github.com/element-plus/element-plus/issues/7287)
+## 设置label标题
 
-PS: 由于ElInput 组件没有默认宽度，当显示 clearable 图标时, 组件的宽度将被撑开，可以通过设置固定宽度属性来解决。
+设置 `label` 标题，可以和 `cell-group` 组合使用，形成 `cell` 展示类型。可以通过 `label-width` 设置标题宽度，默认为 '33%'。
 
-```vue
-<fin-input v-model="input" clearable style="width: 200px" />
-```
+## 必填样式
+
+设置了 `label` 的情况下，设置 `required` 属性，展示必填样式。
+
+## 输入框大小
+
+通过设置 `size` 修改输入框大小，将 `size` 设置为 'large' 时字号为 16px。
+
+## 错误状态
+
+设置 `error` 属性，输入框的值显示为红色。
+
+## 垂直居中
+
+当设置 `label` 标题时，默认为顶部居中，设置 `center` 属性可以使标题和输入框垂直居中。
+
+## FormItemRule
+
+| 键名      | 说明                                                    | 类型                                  |
+| --------- | ------------------------------------------------------- | ------------------------------------- |
+| required  | 是否为必选字段                                          | `boolean`                             |
+| message   | 错误提示文案                                            | `string`                              |
+| validator | 通过函数进行校验，可以返回一个 `Promise` 来进行异步校验 | `(value, rule) => boolean \| Promise` |
+| pattern   | 通过正则表达式进行校验，正则无法匹配表示校验不通过      | `RegExp`                              |
+
+## Slot
+
+| name   | 说明         | 最低版本 |
+| ------ | ------------ | -------- |
+| label  | 左侧标题插槽 | -        |
+| prefix | 前置插槽     | -        |
+| suffix | 后置插槽     | -        |
+
+## 外部样式类
+
+| 类名               | 说明                 | 最低版本 |
+| ------------------ | -------------------- | -------- |
+| custom-class       | 根节点样式           | -        |
+| custom-input-class | input 外部自定义样式 | -        |
+| custom-label-class | label 外部自定义样式 | -        |

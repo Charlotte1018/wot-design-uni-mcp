@@ -1,103 +1,133 @@
 ## Badge 组件示例
 
-### basic
+### 基础用法
 
-数量值可接受 Number 或 String。
+展示新消息数量。
 
 ```vue
 <template>
-  <fin-badge :value="12" class="item">
-    <fin-button>comments</fin-button>
-  </fin-badge>
-  <fin-badge :value="3" class="item">
-    <fin-button>replies</fin-button>
-  </fin-badge>
-  <fin-badge :value="1" class="item" type="primary">
-    <fin-button>comments</fin-button>
-  </fin-badge>
-  <fin-badge :value="2" class="item" type="warning">
-    <fin-button>replies</fin-button>
-  </fin-badge>
+<wd-badge modelValue="12">
+  <wd-button size="small">评论</wd-button>
+</wd-badge>
 
-  <fin-dropdown trigger="click">
-    <span class="fin-dropdown-link">
-      Click Me
-      <fin-icon class="fin-icon--right"><BottomSolid /></fin-icon>
-    </span>
-    <template #dropdown>
-      <fin-dropdown-menu>
-        <fin-dropdown-item class="clearfix">
-          comments
-          <fin-badge class="mark" :value="12" />
-        </fin-dropdown-item>
-        <fin-dropdown-item class="clearfix">
-          replies
-          <fin-badge class="mark" :value="3" />
-        </fin-dropdown-item>
-      </fin-dropdown-menu>
-    </template>
-  </fin-dropdown>
+<wd-badge modelValue="12px">
+  <wd-button size="small">评论</wd-button>
+</wd-badge>
 </template>
 
 <script lang="ts" setup>
-import { BottomSolid } from '@jdt/find-plus-icons-vue'
 </script>
-
-<style scoped>
-.item {
-  margin-top: 10px;
-  margin-right: 40px;
-}
-
-.fin-dropdown {
-  margin-top: 1.1rem;
-}
-</style>
 ```
 
-### customize
+### 修改背景色
 
-当 value 是 String 时，可以显示自定义文字。
+修改背景色
 
 ```vue
 <template>
-  <fin-badge value="new" class="item">
-    <fin-button>comments</fin-button>
-  </fin-badge>
-  <fin-badge value="hot" class="item">
-    <fin-button>replies</fin-button>
-  </fin-badge>
-</template>
-
-<style scoped>
-.item {
-  margin-top: 10px;
-  margin-right: 40px;
-}
-</style>
-```
-
-### dot
-
-使用 `is-dot` 属性。 是个布尔值。
-
-```vue
-<template>
-  <fin-badge is-dot class="item">query</fin-badge>
-  <fin-badge is-dot class="item">
-    <fin-button class="share-button" :icon="Relation" type="primary" />
-  </fin-badge>
+<wd-badge custom-class="badge" modelValue="3" bg-color="pink">
+  <wd-button size="small">回复</wd-button>
+</wd-badge>
+<wd-badge custom-class="badge" modelValue="1" type="primary">
+  <wd-button size="small">评论</wd-button>
+</wd-badge>
+<wd-badge custom-class="badge" modelValue="2" type="warning">
+  <wd-button size="small">回复</wd-button>
+</wd-badge>
+<wd-badge custom-class="badge" modelValue="1" type="success">
+  <wd-button size="small">评论</wd-button>
+</wd-badge>
+<wd-badge custom-class="badge" modelValue="2" type="info">
+  <wd-button size="small">回复</wd-button>
+</wd-badge>
 </template>
 
 <script lang="ts" setup>
-import { Relation } from '@jdt/find-plus-icons-vue'
 </script>
 
-<style scoped>
-.item {
-  margin-top: 10px;
-  margin-right: 40px;
+<style lang="scss">
+:deep(.badge) {
+    margin: 0 30px 20px 0;
+    display: inline-block;
 }
 </style>
 ```
+
+### 最大值
+
+可自定义最大值。
+
+```vue
+<template>
+<wd-badge modelValue="200" max="99">
+  <wd-button size="small">评论</wd-button>
+</wd-badge>
+<wd-badge modelValue="100" max="10">
+  <wd-button size="small">回复</wd-button>
+</wd-badge>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 展示 0 值
+
+展示 0 值
+
+```vue
+<template>
+<wd-badge modelValue="0" max="99" show-zero>
+  <wd-button size="small">评论</wd-button>
+</wd-badge>
+<wd-badge modelValue="0" max="10">
+  <wd-button size="small">回复</wd-button>
+</wd-badge>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 自定义内容
+
+可以显示数字以外的文本内容。
+
+```vue
+<template>
+<wd-badge modelValue="new">
+  <wd-button size="small">评论</wd-button>
+</wd-badge>
+<wd-badge modelValue="hot">
+  <wd-button size="small">回复</wd-button>
+</wd-badge>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 点状标注
+
+以红点的形式标注需要关注的内容。
+
+```vue
+<template>
+<wd-badge is-dot>数据查询</wd-badge>
+<wd-badge is-dot>
+  <wd-button class="share-button" ></wd-button>
+</wd-badge>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 外部样式类
+
+外部样式类
+
+| 类名 | 说明 | 最低版本 |
+|-----|------|--------|
+| custom-class | 根节点样式 | - |
 

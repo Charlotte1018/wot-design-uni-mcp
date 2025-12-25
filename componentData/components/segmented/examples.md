@@ -18,7 +18,7 @@ const current = ref('点赞')
 
 ### 大型分段器
 
-设置
+大型分段器
 
 ```vue
 <template>
@@ -31,7 +31,7 @@ const current = ref('点赞')
 
 ### 小型分段器
 
-设置
+小型分段器
 
 ```vue
 <template>
@@ -44,7 +44,7 @@ const current = ref('点赞')
 
 ### 带振动效果的分段器
 
-设置
+带振动效果的分段器
 
 ```vue
 <template>
@@ -57,7 +57,7 @@ const current = ref('点赞')
 
 ### 禁用分段器
 
-设置
+禁用分段器
 
 ```vue
 <template>
@@ -70,7 +70,7 @@ const current = ref('点赞')
 
 ### 自定义渲染分段器标签
 
-使用插槽
+自定义渲染分段器标签
 
 ```vue
 <template>
@@ -103,7 +103,7 @@ const list = ref([
 ])
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .section {
   width: 100%;
   padding: 0 24rpx;
@@ -117,7 +117,7 @@ const list = ref([
 
 ### 在弹出框中使用
 
-微信小程序端，在弹出框中使用本组件时，需要调用
+在弹出框中使用
 
 ```vue
 <template>
@@ -148,7 +148,7 @@ function handlePopupShow() {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss">
 .title {
   display: flex;
   font-size: 32rpx;
@@ -159,50 +159,13 @@ function handlePopupShow() {
 </style>
 ```
 
-### attributes
-
-Attributes
-
-| 参数                | 说明               | 类型                                        | 可选值                         | 默认值   | 最低版本 |
-| ------------------- | ------------------ | ------------------------------------------- | ------------------------------ | -------- | -------- |
-| value/v-model:value | 当前选中的值       | string / number                            | -                              | -        | 0.1.23   |
-| disabled            | 是否禁用分段器     | boolean                                     | true / false                  | `false`  | 0.1.23   |
-| size                | 控件尺寸           | string                                      | `large` / `middle` / `small` | `middle` | 0.1.23   |
-| options             | 数据集合           | `string[] / number[] / SegmentedOption[]` | -                              | []       | 0.1.23   |
-| vibrateShort        | 切换选项时是否振动 | boolean                                     | true / false                  | `false`  | 0.1.23   |
-
-### SegmentedOption
-
-| 参数     | 说明     | 类型             | 可选值        | 默认值 | 最低版本 |
-| -------- | -------- | ---------------- | ------------- | ------ | -------- |
-| value    | 选中值   | string / number | -             | -      | 0.1.23   |
-| disabled | 是否禁用 | boolean          | true / false | -      | 0.1.23   |
-| payload  | 更多数据 | any              | -             | -      | 0.1.23   |
-
-### events
-
-Events
-
-| 事件名称 | 说明           | 参数              | 最低版本 |
-| -------- | -------------- | ----------------- | -------- |
-| change   | 选项切换时触发 | `SegmentedOption` | 0.1.23   |
-| click    | 选项点击时触发 | `SegmentedOption` | 1.2.20   |
-
-### methods
+### Methods
 
 对外暴露函数
 
 | 事件名称          | 说明                                                      | 参数                           | 最低版本 |
 | ----------------- | --------------------------------------------------------- | ------------------------------ | -------- |
 | updateActiveStyle | 更新滑块偏移量，参数`animation`用于是否开启动画，默认开启 | `(animation: boolean) => void` | -        |
-
-### slots
-
-Slots
-
-| name  | 说明         | 参数                          | 最低版本 |
-| ----- | ------------ | ----------------------------- | -------- |
-| label | 选项标签内容 | `{ option: SegmentedOption }` | 0.1.23   |
 
 ### 外部样式类
 

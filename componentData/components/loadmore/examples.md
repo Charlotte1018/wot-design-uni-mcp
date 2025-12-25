@@ -2,7 +2,7 @@
 
 ### 基本用法
 
-在需要进行加载的列表的底部引入该组件即可。当滑动到列表底部时，通过设置
+基本用法
 
 ```vue
 <template>
@@ -16,7 +16,7 @@
 <script lang="ts" setup>
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 :deep(.loadmore) {
   background-color: #f4f4f4;
   margin: 20px 0;
@@ -26,7 +26,7 @@
 
 ### 自定义文案
 
-设置
+自定义文案
 
 ```vue
 <template>
@@ -43,7 +43,7 @@
 
 ### 点击继续加载
 
-当 state 为 error 时，点击文案，组件会触发
+点击继续加载
 
 ```vue
 <template>
@@ -56,7 +56,7 @@
 
 ### 应用实现
 
-配合
+应用实现
 
 ```vue
 <template>
@@ -99,7 +99,7 @@ function loadmore() {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .list-item {
   position: relative;
   display: flex;
@@ -132,29 +132,6 @@ image {
 }
 </style>
 ```
-
-### attributes
-
-Attributes
-
-| 参数          | 说明                 | 类型   | 可选值                 | 默认值             | 最低版本 |
-| ------------- | -------------------- | ------ | ---------------------- | ------------------ | -------- |
-| state         | 加载状态             | string | loading/finished/error | -                  | -        |
-| loading-text  | 加载提示文案         | string | -                      | 加载中...          | -        |
-| finished-text | 全部加载完的提示文案 | string | -                      | 没有更多了         | -        |
-| error-text    | 加载失败的提示文案   | string | -                      | 加载失败，点击重试 | -        |
-| loading-props  | loading加载组件属性| `Partial<LoadingProps>` | -         | -       | 1.3.14        |
-
-#### LoadingProps
-参见[LoadingProps](/component/loading.html#attributes)
-
-### events
-
-Events
-
-| 事件名称 | 说明                                                | 参数 | 最低版本 |
-| -------- | --------------------------------------------------- | ---- | -------- |
-| reload   | state 为 error 加载错误时，点击文案触发 reload 事件 | -    | -        |
 
 ### 外部样式类
 

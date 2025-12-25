@@ -1,499 +1,546 @@
 ## Upload 组件示例
 
-### basic
+### 基本用法
 
-通过 `slot` 你可以传入自定义的上传按钮类型和文字提示。 可通过设置 `limit` 和 `on-exceed` 来限制上传文件的个数和定义超出限制时的行为。 可通过设置 `before-remove` 来阻止文件移除操作。
+基本用法
 
 ```vue
 <template>
-  <fin-upload
-    v-model:file-list="fileList"
-    class="upload-demo"
-    action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-    multiple
-    :on-preview="handlePreview"
-    :on-remove="handleRemove"
-    :before-remove="beforeRemove"
-    :limit="3"
-    :on-exceed="handleExceed"
-  >
-    <fin-button type="primary">Click to upload</fin-button>
-    <template #tip>
-      <div class="fin-upload__tip">
-        jpg/png files with a size less than 500KB.
-      </div>
-    </template>
-  </fin-upload>
+<wd-upload :file-list="fileList" image-mode="aspectFill" :action="action" @change="handleChange"></wd-upload>
 </template>
+
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { FinMessage, FinMessageBox } from '@jdt/find-plus'
-
-import type { UploadProps, UploadUserFile } from '@jdt/find-plus'
-
-const fileList = ref<UploadUserFile[]>([
+const fileList = ref<any[]>([
   {
-    name: 'find plus logo',
-    url: 'https://find-plus/images/find-plus-logo.png',
-  },
-  {
-    name: 'find plus logo2',
-    url: 'https://find-plus/images/find-plus-logo.png',
-  },
+    url: 'https://img12.360buyimg.com//n0/jfs/t1/29118/6/4823/55969/5c35c16bE7c262192/c9fdecec4b419355.jpg'
+  }
 ])
 
-const handleRemove: UploadProps['onRemove'] = (file, uploadFiles) => {
-  console.log(file, uploadFiles)
-}
+const action: string = 'https://mockapi.eolink.com/zhTuw2P8c29bc981a741931bdd86eb04dc1e8fd64865cb5/upload'
 
-const handlePreview: UploadProps['onPreview'] = (uploadFile) => {
-  console.log(uploadFile)
-}
-
-const handleExceed: UploadProps['onExceed'] = (files, uploadFiles) => {
-  FinMessage.warning(
-    `The limit is 3, you selected ${files.length} files this time, add up to ${
-      files.length + uploadFiles.length
-    } totally`
-  )
-}
-
-const beforeRemove: UploadProps['beforeRemove'] = (uploadFile, uploadFiles) => {
-  return FinMessageBox.confirm(
-    `Cancel the transfer of ${uploadFile.name} ?`
-  ).then(
-    () => true,
-    () => false
-  )
+function handleChange({ fileList: files }) {
+  fileList.value = files
 }
 </script>
 ```
 
-### limit-cover
+### 双向绑定 `1.3.8`
 
-设置 `limit` 和 `on-exceed` 可以在选中时自动替换上一个文件。
-
-```vue
-<template>
-  <fin-upload
-    ref="upload"
-    class="upload-demo"
-    action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-    :limit="1"
-    :on-exceed="handleExceed"
-    :auto-upload="false"
-  >
-    <template #trigger>
-      <fin-button type="primary">select file</fin-button>
-    </template>
-    <fin-button class="ml-3" type="success" @click="submitUpload">
-      upload to server
-    </fin-button>
-    <template #tip>
-      <div class="fin-upload__tip text-red">
-        limit 1 file, new file will cover the old file
-      </div>
-    </template>
-  </fin-upload>
-</template>
-
-<script lang="ts" setup>
-import { ref } from 'vue'
-import { genFileId } from '@jdt/find-plus'
-import type { UploadInstance, UploadProps, UploadRawFile } from '@jdt/find-plus'
-
-const upload = ref<UploadInstance>()
-
-const handleExceed: UploadProps['onExceed'] = (files) => {
-  upload.value!.clearFiles()
-  const file = files[0] as UploadRawFile
-  file.uid = genFileId()
-  upload.value!.handleStart(file)
-}
-
-const submitUpload = () => {
-  upload.value!.submit()
-}
-</script>
-```
-
-### avatar
-
-
+双向绑定 `1.3.8`
 
 ```vue
 <template>
-  <fin-upload
-    class="avatar-uploader"
-    action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-    :show-file-list="false"
-    :on-success="handleAvatarSuccess"
-    :before-upload="beforeAvatarUpload"
-  >
-    <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-    <fin-icon v-else class="avatar-uploader-icon"><Plus /></fin-icon>
-  </fin-upload>
+<wd-upload v-model:file-list="fileList1" image-mode="aspectFill" :action="action"></wd-upload>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { FinMessage } from '@jdt/find-plus'
-import { Plus } from '@jdt/find-plus-icons-vue'
-
-import type { UploadProps } from '@jdt/find-plus'
-
-const imageUrl = ref('')
-
-const handleAvatarSuccess: UploadProps['onSuccess'] = (
-  response,
-  uploadFile
-) => {
-  imageUrl.value = URL.createObjectURL(uploadFile.raw!)
-}
-
-const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
-  if (rawFile.type !== 'image/jpeg') {
-    FinMessage.error('Avatar picture must be JPG format!')
-    return false
-  } else if (rawFile.size / 1024 / 1024 > 2) {
-    FinMessage.error('Avatar picture size can not exceed 2MB!')
-    return false
+const fileList = ref<any[]>([
+  {
+    url: 'https://img12.360buyimg.com//n0/jfs/t1/29118/6/4823/55969/5c35c16bE7c262192/c9fdecec4b419355.jpg'
   }
-  return true
+])
+
+const action: string = 'https://mockapi.eolink.com/zhTuw2P8c29bc981a741931bdd86eb04dc1e8fd64865cb5/upload'
+</script>
+```
+
+### 禁用
+
+禁用
+
+```vue
+<template>
+<wd-upload
+  :file-list="fileList"
+  action="https://mockapi.eolink.com/zhTuw2P8c29bc981a741931bdd86eb04dc1e8fd64865cb5/upload"
+  @change="handleChange"
+  disabled
+></wd-upload>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 多选上传
+
+多选上传
+
+```vue
+<template>
+<wd-upload
+  :file-list="fileList"
+  multiple
+  action="https://mockapi.eolink.com/zhTuw2P8c29bc981a741931bdd86eb04dc1e8fd64865cb5/upload"
+  @change="handleChange"
+></wd-upload>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 最大上传数限制
+
+最大上传数限制
+
+```vue
+<template>
+<wd-upload
+  :file-list="fileList"
+  :limit="3"
+  action="https://mockapi.eolink.com/zhTuw2P8c29bc981a741931bdd86eb04dc1e8fd64865cb5/upload"
+  @change="handleChange"
+></wd-upload>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 覆盖上传
+
+覆盖上传
+
+```vue
+<template>
+<wd-upload
+  :file-list="fileList"
+  reupload
+  action="https://mockapi.eolink.com/zhTuw2P8c29bc981a741931bdd86eb04dc1e8fd64865cb5/upload"
+  @change="handleChange"
+></wd-upload>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 拦截预览图片操作
+
+拦截预览图片操作
+
+```vue
+<template>
+<wd-upload
+  :file-list="fileList"
+  action="https://mockapi.eolink.com/zhTuw2P8c29bc981a741931bdd86eb04dc1e8fd64865cb5/upload"
+  @change="handleChange"
+  :before-preview="beforePreview"
+></wd-upload>
+</template>
+
+<script lang="ts" setup>
+import { useToast, useMessage } from '@/uni_modules/wot-design-uni'
+
+const messageBox = useMessage()
+const toast = useToast()
+const fileList = ref<any[]>([
+  {
+    url: 'https://img12.360buyimg.com//n0/jfs/t1/29118/6/4823/55969/5c35c16bE7c262192/c9fdecec4b419355.jpg'
+  }
+])
+
+const beforePreview = ({ file, resolve }) => {
+  messageBox
+    .confirm({
+      msg: '是否预览图片',
+      title: '提示'
+    })
+    .then(() => {
+      resolve(true)
+    })
+    .catch(() => {
+      toast.show('取消预览操作')
+    })
+}
+
+function handleChange({ fileList }) {
+  fileList.value = fileList
 }
 </script>
+```
 
-<style scoped>
-.avatar-uploader .avatar {
-  width: 178px;
-  height: 178px;
-  display: block;
+### 上传前置处理
+
+上传前置处理
+
+```vue
+<template>
+<wd-upload
+  :file-list="fileList"
+  action="https://mockapi.eolink.com/zhTuw2P8c29bc981a741931bdd86eb04dc1e8fd64865cb5/upload"
+  @change="handleChange"
+  :before-upload="beforeUpload"
+></wd-upload>
+</template>
+
+<script lang="ts" setup>
+import { useToast, useMessage } from '@/uni_modules/wot-design-uni'
+
+const messageBox = useMessage()
+const toast = useToast()
+const fileList = ref<any[]>([
+  {
+    url: 'https://img12.360buyimg.com//n0/jfs/t1/29118/6/4823/55969/5c35c16bE7c262192/c9fdecec4b419355.jpg'
+  }
+])
+
+const beforeUpload = ({ files, resolve }) => {
+  messageBox
+    .confirm({
+      msg: '是否上传',
+      title: '提示'
+    })
+    .then(() => {
+      resolve(true)
+    })
+    .catch(() => {
+      toast.show('取消上传操作')
+    })
 }
-</style>
 
+function handleChange({ fileList }) {
+  fileList.value = fileList
+}
+</script>
+```
+
+### 移除图片前置处理
+
+移除图片前置处理
+
+```vue
+<template>
+<wd-upload
+  :file-list="fileList"
+  action="https://mockapi.eolink.com/zhTuw2P8c29bc981a741931bdd86eb04dc1e8fd64865cb5/upload"
+  @change="handleChange"
+  :before-remove="beforeRemove"
+></wd-upload>
+</template>
+
+<script lang="ts" setup>
+import { useToast, useMessage } from '@/uni_modules/wot-design-uni'
+
+const messageBox = useMessage()
+const toast = useToast()
+const fileList = ref<any[]>([
+  {
+    url: 'https://img12.360buyimg.com//n0/jfs/t1/29118/6/4823/55969/5c35c16bE7c262192/c9fdecec4b419355.jpg'
+  }
+])
+
+const beforeRemove = ({ file, fileList, resolve }) => {
+  messageBox
+    .confirm({
+      msg: '是否删除',
+      title: '提示'
+    })
+    .then(() => {
+      toast.success('删除成功')
+      resolve(true)
+    })
+    .catch(() => {
+      toast.show('取消删除操作')
+    })
+}
+
+function handleChange({ fileList }) {
+  fileList.value = fileList
+}
+</script>
+```
+
+### 选择文件前置处理
+
+选择文件前置处理
+
+```vue
+<template>
+<wd-upload
+  :file-list="fileList"
+  action="https://mockapi.eolink.com/zhTuw2P8c29bc981a741931bdd86eb04dc1e8fd64865cb5/upload"
+  @change="handleChange"
+  :before-choose="beforeChoose"
+></wd-upload>
+</template>
+
+<script lang="ts" setup>
+import { useToast, useMessage } from '@/uni_modules/wot-design-uni'
+
+const messageBox = useMessage()
+const toast = useToast()
+const fileList = ref<any[]>([
+  {
+    url: 'https://img12.360buyimg.com//n0/jfs/t1/29118/6/4823/55969/5c35c16bE7c262192/c9fdecec4b419355.jpg'
+  }
+])
+
+const beforeChoose = ({fileList, resolve}) => {
+  messageBox
+    .confirm({
+      msg: '是否选择',
+      title: '提示'
+    })
+    .then(() => {
+      resolve(true)
+    })
+    .catch(() => {
+      toast.show('取消选择操作')
+    })
+}
+
+function handleChange({ fileList }) {
+  fileList.value = fileList
+}
+</script>
+```
+
+### 上传至云存储
+
+上传至云存储
+
+```vue
+<template>
+<wd-upload :file-list="files" :action="host" :build-form-data="buildFormData" @change="handleChange"></wd-upload>
+
+
+
+
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 自定义唤起上传样式
+
+使用默认插槽可以修改唤起上传的样式。
+
+```vue
+<template>
+<wd-upload :file-list="fileList" action="https://mockapi.eolink.com/zhTuw2P8c29bc981a741931bdd86eb04dc1e8fd64865cb5/upload" @change="handleChange">
+    <wd-button>上传</wd-button>
+</wd-upload>
+</template>
+
+<script lang="ts" setup>
+const fileList = ref<any[]>([
+  {
+    url: 'https://img12.360buyimg.com//n0/jfs/t1/29118/6/4823/55969/5c35c16bE7c262192/c9fdecec4b419355.jpg'
+  }
+])
+</script>
+```
+
+### 上传视频
+
+上传视频
+
+```vue
+<template>
+<wd-upload accept="video" multiple :file-list="fileList" :action="action" @change="handleChange"></wd-upload>
+</template>
+
+<script lang="ts" setup>
+const action = ref<string>('https://mockapi.eolink.com/zhTuw2P8c29bc981a741931bdd86eb04dc1e8fd64865cb5/upload')
+
+const fileList = ref([])
+
+function handleChange({ fileList }) {
+  fileList.value = fileList
+}
+</script>
+```
+
+### 同时上传视频和图片
+
+同时上传视频和图片
+
+```vue
+<template>
+<wd-upload accept="media" multiple :file-list="fileList" :action="action" @change="handleChange"></wd-upload>
+</template>
+
+<script lang="ts" setup>
+const action = ref<string>('https://mockapi.eolink.com/zhTuw2P8c29bc981a741931bdd86eb04dc1e8fd64865cb5/upload')
+
+const fileList = ref([])
+
+function handleChange({ fileList }) {
+  fileList.value = fileList
+}
+</script>
+```
+
+### 仅上传文件
+
+仅上传文件
+
+```vue
+<template>
+<wd-upload accept="file" multiple :file-list="fileList" :action="action" @change="handleChange"></wd-upload>
+</template>
+
+<script lang="ts" setup>
+const action = ref<string>('https://mockapi.eolink.com/zhTuw2P8c29bc981a741931bdd86eb04dc1e8fd64865cb5/upload')
+
+const fileList = ref([])
+
+function handleChange({ fileList }) {
+  fileList.value = fileList
+}
+</script>
+```
+
+### 上传视频图片和文件
+
+上传视频图片和文件
+
+```vue
+<template>
+<wd-upload accept="all" multiple :file-list="fileList" :action="action" @change="handleChange"></wd-upload>
+</template>
+
+<script lang="ts" setup>
+const action = ref<string>('https://mockapi.eolink.com/zhTuw2P8c29bc981a741931bdd86eb04dc1e8fd64865cb5/upload')
+
+const fileList = ref([])
+
+function handleChange({ fileList }) {
+  fileList.value = fileList
+}
+</script>
+```
+
+### 手动触发上传
+
+手动触发上传
+
+```vue
+<template>
+<wd-upload
+  ref="uploader"
+  :auto-upload="false"
+  :file-list="fileList"
+  action="https://mockapi.eolink.com/zhTuw2P8c29bc981a741931bdd86eb04dc1e8fd64865cb5/upload"
+  @change="handleChange"
+></wd-upload>
+<wd-button @click="onUploadClick()">开始上传</wd-button>
+</template>
+
+<script lang="ts" setup>
+const uploader = ref()
+
+const onUploadClick = () => {
+  uploader.value?.submit()
+}
+</script>
+```
+
+### 自定义上传方法
+
+自定义上传方法
+
+```vue
+<template>
+<wd-upload v-model:file-list="fileList" :upload-method="customUpload"></wd-upload>
+</template>
+
+<script lang="ts" setup>
+import type { UploadMethod, UploadFile } from '@/uni_modules/wot-design-uni/components/wd-upload/types'
+
+const fileList = ref<UploadFile[]>([])
+const customUpload: UploadMethod = (file, formData, options) => {
+  const uploadTask = uni.uploadFile({
+    url: action,
+    header: options.header,
+    name: options.name,
+    fileName: options.name,
+    fileType: options.fileType,
+    formData,
+    filePath: file.url,
+    success(res) {
+      if (res.statusCode === options.statusCode) {
+        // 设置上传成功
+        options.onSuccess(res, file, formData)
+      } else {
+        // 设置上传失败
+        options.onError({ ...res, errMsg: res.errMsg || '' }, file, formData)
+      }
+    },
+    fail(err) {
+      // 设置上传失败
+      options.onError(err, file, formData)
+    }
+  })
+  // 设置当前文件加载的百分比
+  uploadTask.onProgressUpdate((res) => {
+    options.onProgress(res, file)
+  })
+}
+</script>
+```
+
+### 自定义预览样式
+
+自定义预览样式
+
+```vue
+<template>
+<wd-upload v-model:file-list="fileList" accept="image" image-mode="aspectFill" :action="action">
+  <template #preview-cover="{ file,index }">
+            <!-- 小程序拿不到文件 -->
+    <view class="preview-cover">{{ file?.name||`文件${index+1}` }}</view>
+  </template>
+</wd-upload>
 <style>
-.avatar-uploader .fin-upload {
-  border: 1px dashed var(--fin-border-color);
-  border-radius: 6px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: var(--fin-transition-duration-fast);
-}
-
-.avatar-uploader .fin-upload:hover {
-  border-color: var(--fin-color-primary);
-}
-
-.fin-icon.avatar-uploader-icon {
-  font-size: 28px;
-  color: #8c939d;
-  width: 178px;
-  height: 178px;
+  .preview-cover {
+  margin-top: 10rpx;
   text-align: center;
 }
 </style>
-```
-
-### photo-wall
-
-
-
-```vue
-<template>
-  <fin-upload
-    v-model:file-list="fileList"
-    action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-    list-type="picture-card"
-    :on-preview="handlePictureCardPreview"
-    :on-remove="handleRemove"
-  >
-    <fin-icon><Plus /></fin-icon>
-  </fin-upload>
-
-  <fin-dialog v-model="dialogVisible">
-    <img w-full :src="dialogImageUrl" alt="Preview Image" />
-  </fin-dialog>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { Plus } from '@jdt/find-plus-icons-vue'
-
-import type { UploadProps, UploadUserFile } from '@jdt/find-plus'
-
-const fileList = ref<UploadUserFile[]>([
-  {
-    name: 'food.jpeg',
-    url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
-  },
-  {
-    name: 'plant-1.png',
-    url: '/images/plant-1.png',
-  },
-  {
-    name: 'food.jpeg',
-    url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
-  },
-  {
-    name: 'plant-2.png',
-    url: '/images/plant-2.png',
-  },
-  {
-    name: 'food.jpeg',
-    url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
-  },
-  {
-    name: 'figure-1.png',
-    url: '/images/figure-1.png',
-  },
-  {
-    name: 'food.jpeg',
-    url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
-  },
-  {
-    name: 'figure-2.png',
-    url: '/images/figure-2.png',
-  },
-])
-
-const dialogImageUrl = ref('')
-const dialogVisible = ref(false)
-
-const handleRemove: UploadProps['onRemove'] = (uploadFile, uploadFiles) => {
-  console.log(uploadFile, uploadFiles)
-}
-
-const handlePictureCardPreview: UploadProps['onPreview'] = (uploadFile) => {
-  dialogImageUrl.value = uploadFile.url!
-  dialogVisible.value = true
-}
+const fileList = ref<UploadFile[]>([])
+const action: string = 'https://mockapi.eolink.com/zhTuw2P8c29bc981a741931bdd86eb04dc1e8fd64865cb5/upload'
 </script>
 ```
 
-### custom-thumbnail
+### 根据文件拓展名过滤
 
-
+根据文件拓展名过滤
 
 ```vue
 <template>
-  <fin-upload action="#" list-type="picture-card" :auto-upload="false">
-    <fin-icon><Plus /></fin-icon>
-
-    <template #file="{ file }">
-      <div>
-        <img class="fin-upload-list__item-thumbnail" :src="file.url" alt="" />
-        <span class="fin-upload-list__item-actions">
-          <span
-            class="fin-upload-list__item-preview"
-            @click="handlePictureCardPreview(file)"
-          >
-            <fin-icon><zoom-in /></fin-icon>
-          </span>
-          <span
-            v-if="!disabled"
-            class="fin-upload-list__item-delete"
-            @click="handleDownload(file)"
-          >
-            <fin-icon><Download /></fin-icon>
-          </span>
-          <span
-            v-if="!disabled"
-            class="fin-upload-list__item-delete"
-            @click="handleRemove(file)"
-          >
-            <fin-icon><Delete /></fin-icon>
-          </span>
-        </span>
-      </div>
-    </template>
-  </fin-upload>
-
-  <fin-dialog v-model="dialogVisible">
-    <img w-full :src="dialogImageUrl" alt="Preview Image" />
-  </fin-dialog>
-</template>
-<script lang="ts" setup>
-import { ref } from 'vue'
-import { Delete, Download, Plus, ZoomIn } from '@jdt/find-plus-icons-vue'
-
-import type { UploadFile } from '@jdt/find-plus'
-
-const dialogImageUrl = ref('')
-const dialogVisible = ref(false)
-const disabled = ref(false)
-
-const handleRemove = (file: UploadFile) => {
-  console.log(file)
-}
-
-const handlePictureCardPreview = (file: UploadFile) => {
-  dialogImageUrl.value = file.url!
-  dialogVisible.value = true
-}
-
-const handleDownload = (file: UploadFile) => {
-  console.log(file)
-}
-</script>
-```
-
-### file-list-with-thumbnail
-
-
-
-```vue
-<template>
-  <fin-upload
-    v-model:file-list="fileList"
-    class="upload-demo"
-    action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-    :on-preview="handlePreview"
-    :on-remove="handleRemove"
-    list-type="picture"
-  >
-    <fin-button type="primary">Click to upload</fin-button>
-    <template #tip>
-      <div class="fin-upload__tip">
-        jpg/png files with a size less than 500kb
-      </div>
-    </template>
-  </fin-upload>
+<wd-upload
+  v-model:file-list="fileList"
+  :extension="['.jpg', '.png']"
+  action="https://mockapi.eolink.com/xxx"
+></wd-upload>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-
-import type { UploadProps, UploadUserFile } from '@jdt/find-plus'
-
-const fileList = ref<UploadUserFile[]>([
-  {
-    name: 'food.jpeg',
-    url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
-  },
-  {
-    name: 'food2.jpeg',
-    url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
-  },
-])
-
-const handleRemove: UploadProps['onRemove'] = (uploadFile, uploadFiles) => {
-  console.log(uploadFile, uploadFiles)
-}
-
-const handlePreview: UploadProps['onPreview'] = (file) => {
-  console.log(file)
-}
 </script>
 ```
 
-### file-list
+### Methods
 
+Methods
 
+| 方法名称 | 说明         | 参数 | 最低版本         |
+| -------- | ------------ | ---- | ---------------- |
+| submit   | 手动开始上传 | -    | 1.3.8 |
 
-```vue
-<template>
-  <fin-upload
-    v-model:file-list="fileList"
-    class="upload-demo"
-    action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-    :on-change="handleChange"
-  >
-    <fin-button type="primary">Click to upload</fin-button>
-    <template #tip>
-      <div class="fin-upload__tip">
-        jpg/png files with a size less than 500kb
-      </div>
-    </template>
-  </fin-upload>
-</template>
-<script lang="ts" setup>
-import { ref } from 'vue'
+### Upload 外部样式类
 
-import type { UploadProps, UploadUserFile } from '@jdt/find-plus'
+Upload 外部样式类
 
-const fileList = ref<UploadUserFile[]>([
-  {
-    name: 'food.jpeg',
-    url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
-  },
-  {
-    name: 'food2.jpeg',
-    url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
-  },
-])
-
-const handleChange: UploadProps['onChange'] = (uploadFile, uploadFiles) => {
-  fileList.value = fileList.value.slice(-3)
-}
-</script>
-```
-
-### drag-and-drop
-
-
-
-```vue
-<template>
-  <fin-upload
-    class="upload-demo"
-    drag
-    action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-    multiple
-  >
-    <fin-icon class="fin-icon--upload"><Upload /></fin-icon>
-    <div class="fin-upload__text">
-      Drop file here or <em>click to upload</em>
-    </div>
-    <template #tip>
-      <div class="fin-upload__tip">
-        jpg/png files with a size less than 500kb
-      </div>
-    </template>
-  </fin-upload>
-</template>
-
-<script lang="ts" setup>
-import { Upload } from '@jdt/find-plus-icons-vue'
-</script>
-```
-
-### manual
-
-
-
-```vue
-<template>
-  <fin-upload
-    ref="uploadRef"
-    class="upload-demo"
-    action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-    :auto-upload="false"
-  >
-    <template #trigger>
-      <fin-button type="primary">select file</fin-button>
-    </template>
-
-    <fin-button class="ml-3" type="success" @click="submitUpload">
-      upload to server
-    </fin-button>
-
-    <template #tip>
-      <div class="fin-upload__tip">
-        jpg/png files with a size less than 500kb
-      </div>
-    </template>
-  </fin-upload>
-</template>
-<script lang="ts" setup>
-import { ref } from 'vue'
-import type { UploadInstance } from '@jdt/find-plus'
-
-const uploadRef = ref<UploadInstance>()
-
-const submitUpload = () => {
-  uploadRef.value!.submit()
-}
-</script>
-```
+| 类名                 | 说明                     | 最低版本 |
+| -------------------- | ------------------------ | -------- |
+| custom-class         | 根节点样式类             | -        |
+| custom-evoke-class   | 自定义上传按钮样式类     | -        |
+| custom-preview-class | 自定义预览图片列表样式类 | -        |
 

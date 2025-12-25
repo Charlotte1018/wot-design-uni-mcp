@@ -21,13 +21,12 @@ function showToast() {
 </script>
 ```
 
-### 成功异常警告常规
+### 成功、异常、警告、常规
 
 成功、异常、警告、常规
 
 ```vue
 <template>
-  <view></view>
 </template>
 
 <script lang="ts" setup>
@@ -41,11 +40,10 @@ toast.info('常规提示信息')
 
 ### 使用图标
 
-使用
+使用图标
 
 ```vue
 <template>
-  <view></view>
 </template>
 
 <script lang="ts" setup>
@@ -66,11 +64,10 @@ toast.show({
 
 ### 提示位置
 
-设置
+提示位置
 
 ```vue
 <template>
-  <view></view>
 </template>
 
 <script lang="ts" setup>
@@ -100,7 +97,6 @@ toast.show({
 
 ```vue
 <template>
-  <view></view>
 </template>
 
 <script lang="ts" setup>
@@ -118,7 +114,6 @@ toast.success({
 
 ```vue
 <template>
-  <view></view>
 </template>
 
 <script lang="ts" setup>
@@ -126,13 +121,12 @@ toast.close()
 </script>
 ```
 
-### loading提示
+### loading 提示
 
 loading 提示
 
 ```vue
 <template>
-  <view></view>
 </template>
 
 <script lang="ts" setup>
@@ -147,30 +141,7 @@ toast.close()
 </script>
 ```
 
-### attributes
-
-Attributes
-
-| 参数         | 说明                                     | 类型     | 可选值                                     | 默认值     | 最低版本         |
-|--------------|------------------------------------------|----------|--------------------------------------------|------------|------------------|
-| selector     | 选择器                                   | string   | -                                          | ''         | -                |
-| msg          | 提示信息                                 | string   | -                                          | ''         | 1.7.0 |
-| direction    | 排列方向                                 | string   | vertical / horizontal                      | horizontal | 1.7.0 |
-| iconName     | 图标类型                                 | string   | success / error / warning / loading / info | ''         | 1.7.0 |
-| iconSize     | 图标大小                                 | number   | -                                          | -          | 1.7.0 |
-| loadingType  | 加载类型                                 | string   | outline / ring                             | outline    | 1.7.0 |
-| loadingColor | 加载颜色                                 | string   | -                                          | #4D80F0    | 1.7.0 |
-| loadingSize  | 加载大小                                 | number   | -                                          | -          | 1.7.0 |
-| iconColor    | 图标颜色                                 | string   | -                                          | -          | 1.7.0 |
-| position     | 提示信息框的位置                         | string   | top / middle-top / middle / bottom         | middle-top | 1.7.0 |
-| zIndex       | 层级                                     | number   | -                                          | 100        | 1.7.0 |
-| cover        | 是否存在遮罩层                           | boolean  | -                                          | false      | 1.7.0 |
-| iconClass    | 图标类名                                 | string   | -                                          | ''         | 1.7.0 |
-| classPrefix  | 类名前缀，用于使用自定义图标             | string   | -                                          | wd-icon    | 1.7.0 |
-| opened       | 完全展示后的回调函数                     | Function | -                                          | -          | 1.7.0 |
-| closed       | 完全关闭时的回调函数                     | Function | -                                          | -          | 1.7.0 |
-
-### methods
+### Methods
 
 Methods
 

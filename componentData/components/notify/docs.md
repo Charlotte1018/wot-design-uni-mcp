@@ -16,27 +16,6 @@
 
 ## 进阶`demo`
 
-## Attributes
-| 参数         | 说明                                                             | 类型    | 可选值                    | 默认值       | 最低版本 |
-| ------------ | ----------------------------------------------------------------| ------- | ------------------------- | ------------ | -------- |
-| type         | 类型                                                             | NotifyType | `primary` `success` `warning` `danger` | `danger` | -        |
-| message      | 展示文案，支持通过`\n`换行                                          | string | -                         | -            | -        |
-| duration     | 展示时长(ms)，值为 0 时，notify 不会消失                             | number | -                         | `3000`            | -        |
-| zIndex     | 层级                                                               | number | -                          | `99`            | -        |
-| position   | 弹出位置                                                            | NotifyPosition | `top` `bottom`     | `top`            | -        |
-| color     | 字体颜色                                                             | string | -     | -            | -        |
-| background   | 背景颜色                                                          | string | -     | -            | -        |
-| safeHeight   | 顶部安全高度                                                       | number / string | -     | -            | -        |
-| selector   | 指定唯一标识                                                       | number | -     | -            | -        |
-| root-portal | 是否从页面中脱离出来，用于解决各种 fixed 失效问题 | boolean | - | false | 1.11.0 |
-
-## Events
-| 事件名 | 说明                                      | 参数    | 最低版本 |
-| -------- | ----------------------------------------- | ------- | -------- |
-| click  | 点击时的回调函数                                  | (event: MouseEvent) => void | -        |
-| closed    | 关闭时的回调函数                                  | () => void | -        |
-| opened     | 展示后的回调函数                                 | () => void | -        |
-
 ## Methods
 
 | 方法名称 | 说明                                      | 参数    | 最低版本 |

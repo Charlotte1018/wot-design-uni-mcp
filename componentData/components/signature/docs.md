@@ -104,39 +104,6 @@
 5. 其他平台请使用通用横屏方案
 :::
 
-## Attributes
-
-| 参数 | 说明 | 类型 | 默认值 | 最低版本 |
-|------|------|------|--------|----------|
-| pen-color | 签名笔颜色 | string | #000000 | - |
-| line-width | 签名笔宽度 | number | 3 | - |
-| height | 画布的高度 | number | 200 | - |
-| width | 画布的宽度 | number | 300 | - |
-| clear-text | 清空按钮的文本 | string | - | - |
-| confirm-text | 确认按钮的文本 | string | - | - |
-| file-type | 导出图片类型 | string | png | - |
-| quality | 导出图片质量(0-1) | number | 1 | - |
-| export-scale | 导出图片的缩放比例 | number | 1 | - |
-| disabled | 是否禁用签名板 | boolean | false | - |
-| background-color | 画板的背景色 | string | - | - |
-| disable-scroll | 是否禁用画布滚动 | boolean | true | - |
-| enable-history | 是否开启历史记录 | boolean | false | 1.8.0 |
-| step | 历史记录步长 | number | 1 | 1.8.0 |
-| pressure | 是否启用笔锋模式 | boolean | false | 1.8.0 |
-| min-width | 笔锋模式最小宽度 | number | 2 | 1.8.0 |
-| max-width | 笔锋模式最大宽度 | number | 6 | 1.8.0 |
-| min-speed | 笔锋模式速度阈值 | number | 1.5 | 1.8.0 |
-
-## Events
-
-| 事件名称 | 说明 | 参数 | 最低版本 |
-|---------|------|------|----------|
-| start | 开始签名时触发 | event: TouchEvent | - |
-| end | 结束签名时触发 | event: TouchEvent | - |
-| signing | 签名过程中触发 | event: TouchEvent | - |
-| confirm | 确认签名时触发 | result: SignatureResult | - |
-| clear | 清空签名时触发 | - | - |
-
 ## Methods
 
 | 方法名 | 说明 | 参数 | 最低版本 |
@@ -146,9 +113,3 @@
 | clear | 清空签名 | - | - |
 | restore | 恢复上一步 | - | - |
 | revoke | 撤销上一步 | - | - |
-
-## Slots
-
-| 名称 | 说明 | 参数 | 最低版本 |
-|------|------|------|----------|
-| footer | 自定义底部按钮 | `{ clear, confirm, restore, revoke, currentStep, historyList }` | - |

@@ -2,7 +2,7 @@
 
 ### 基础用法
 
-基础用法需要绑定
+基础用法
 
 ```vue
 <template>
@@ -43,7 +43,7 @@ function handleChange2({ value }) {
 
 ### 自定义菜单内容
 
-插槽
+自定义菜单内容
 
 ```vue
 <template>
@@ -105,9 +105,9 @@ function handleOpened() {
 </script>
 ```
 
-### 自定义菜单图标el-tagtextstylevertical-alignmiddlemargin-left8pxeffectplain137el-tag
+### 自定义菜单图标<el-tag text style="vertical-align: middle;margin-left:8px;" effect="plain">1.3.7</el-tag>
 
-通过
+自定义菜单图标<el-tag text style="vertical-align: middle;margin-left:8px;" effect="plain">1.3.7</el-tag>
 
 ```vue
 <template>
@@ -120,7 +120,7 @@ function handleOpened() {
 </script>
 ```
 
-### 异步打开关闭el-tagtextstylevertical-alignmiddlemargin-left8pxeffectplain137el-tag
+### 异步打开/关闭<el-tag text style="vertical-align: middle;margin-left:8px;" effect="plain">1.3.7</el-tag>
 
 异步打开/关闭<el-tag text style="vertical-align: middle;margin-left:8px;" effect="plain">1.3.7</el-tag>
 
@@ -195,59 +195,16 @@ const handleBeforeToggle: DropMenuItemBeforeToggle = ({ status, resolve }) => {
 </script>
 ```
 
-### dropmenu-attributes
+### DropdownItem Methods
 
-DropMenu Attributes
-
-| 参数                 | 说明                                 | 类型    | 可选值    | 默认值 | 最低版本 |
-| -------------------- | ------------------------------------ | ------- | --------- | ------ | -------- |
-| direction            | 菜单展开方向，可选值为`up` 或 `down` | string  | up / down | down   | -        |
-| modal                | 是否展示蒙层                         | boolean | -         | true   | -        |
-| close-on-click-modal | 是否点击蒙层时关闭                   | boolean | -         | true   | -        |
-| duration             | 菜单展开收起动画时间，单位 ms        | number  | -         | 200    | -        |
-
-### dropmenuitem-attributes
-
-DropMenuItem Attributes
-
-| 参数          | 说明                                                                   | 类型                          | 可选值 | 默认值     | 最低版本 |
-| ------------- | ---------------------------------------------------------------------- | ----------------------------- | ------ | ---------- | -------- |
-| v-model       | 当前选中项对应选中的 value                                             | string / number               | -      | -          | -        |
-| disabled      | 禁用菜单                                                               | boolean                       | -      | false      | -        |
-| options       | 列表数据，对应数据结构 `[{label: '标题', value: '0', tip: '提示文字'}]` | array                         | -      | -          | -        |
-| icon-name     | 选中的图标名称(可选名称在 wd-icon 组件中)                              | string                        | -      | check      | -        |
-| title         | 菜单标题                                                               | string                        | -      | -          | -        |
-| icon          | 菜单图标                                                               | string                        | -      | arrow-down | -        |
-| icon-size     | 菜单图标尺寸                                                           | string                        | -      | 14px       | \_       |
-| before-toggle | 下拉菜单打开或者关闭前触发，`reslove(true)`时继续执行打开或关闭操作    | function({ status, resolve }) | -      | -          | 1.3.7    |
-| value-key     | 选项对象中，value 对应的 key                                           | string                        | -      | value      | -        |
-| label-key     | 选项对象中，展示的文本对应的 key                                       | string                        | -      | label      | -        |
-| tip-key       | 选项对象中，选项说明对应的 key                                         | string                        | -      | tip        | -        |
-| popup-height  | popup弹出容器的高度，不设置默认为80%                                       | string                        | -      | -        | 1.13.0 |
-| root-portal    | 是否从页面中脱离出来，用于解决各种 fixed 失效问题                     | boolean                       | -      | false      | 1.11.0 |
-
-### dropdownitem-events
-
-DropdownItem Events
-
-| 方法名 | 说明             | 参数                                                                          | 最低版本 |
-| ------ | ---------------- | ----------------------------------------------------------------------------- | -------- |
-| change | 绑定值变化时触发 | event.detail = { value, selectedItem }, value 为选中值，selectedItem 为选中项 | -        |
-| close  | 关闭菜单         | -                                                                             | -        |
-| open   | 展开菜单         | -                                                                             | -        |
-| closed | 菜单完全关闭     | -                                                                             | -        |
-| opened | 菜单展开完成     | -                                                                             | -        |
-
-### dropdownitem-methods
-
-通过设置
+通过设置 `ref` 可以获取到 DropdownItem 实例并调用实例方法
 
 | 方法名 | 说明     | 参数 | 返回值 | 最低版本 |
 | ------ | -------- | ---- | ------ | -------- |
 | close  | 关闭菜单 | -    | -      | -        |
 | open   | 展开菜单 | -    | -      | -        |
 
-### DropMenu外部样式类
+### DropMenu 外部样式类
 
 DropMenu 外部样式类
 
@@ -255,7 +212,7 @@ DropMenu 外部样式类
 | ------------ | ------------------- | -------- |
 | custom-class | DropMenu 根节点样式 | -        |
 
-### DropMenuItem外部样式类
+### DropMenuItem 外部样式类
 
 DropMenuItem 外部样式类
 

@@ -1,36 +1,41 @@
-# Rate 评分
+#  Rate 评分
 
-用于评分
+用于快速的评价操作，或对评价进行展示。
 
-## 基础用法
+## 基本用法
 
-## 尺寸
-
-## 允许半选
-
-## 辅助文字
-
-用辅助文字直接地表达对应分数
-
-## 可清空
-
-## 更多种类的图标
-
-当有多层评价时，可以用不同类型的图标区分评分层级。
+设置`v-model`分数，设置`num`总分数，默认为5分。
 
 ## 只读
 
-只读的评分用来展示分数， 允许出现半星。
+设置 `readonly` 属性。
 
-## 自定义样式
+## 禁用
 
-您可以为 rate 组件设定自定义样式。 使用 `css` 或 `scss` 改变全局或局部的颜色。 我们设置了一些全局颜色变量：`--fin-rate-void-color`、`--fin-rate-fill-color`、`--fin-rate-disabled-void-color` 和 `--fin-rate-text-color`。 您可以像这样使用：`:root { --fin-rate-void-color: red; --fin-rate-fill-color: blue; }`。
+设置 `disabled` 属性和`disabled-color`
 
-### 默认变量
+## 修改颜色
 
-| 变量                            | 默认颜色                          |
-| ----------------------------- | ----------------------------- |
-| --fin-rate-void-color          | var(--fin-border-color-darker) |
-| --fin-rate-fill-color          | #f7ba2a                       |
-| --fin-rate-disabled-void-color | var(--fin-fill-color)          |
-| --fin-rate-text-color          | var(--fin-text-color-primary)  |
+可以通过 `color` 属性修改未选中的颜色，`active-color` 修改选中的颜色。
+
+## 修改icon
+
+可以通过 `icon` 属性修改未选中的图标，`active-icon` 修改选中的图标。
+
+## 修改大小、间隔
+
+可以通过 `size` 属性修改图标的大小，`space` 修改图标之间的间隔。
+
+## 允许半选
+
+设置 `allowHalf` 属性。
+
+## 允许清空评分
+
+设置 `clearable` 属性，当 clearable 属性设置为 true，再次点击相同的值时，可以将值重置为 0。
+
+## 外部样式类
+
+| 类名 | 说明 | 最低版本 |
+|-----|------|--------|
+| custom-class | 根节点样式 | - |

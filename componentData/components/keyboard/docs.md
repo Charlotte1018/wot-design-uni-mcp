@@ -48,43 +48,11 @@
 当前`modal`仅控制遮罩是否为透明，`hideOnClickOutside`控制弹窗是否有遮罩，当存在遮罩时，点击遮罩就可以关闭键盘，但是键盘展开时必须点击遮罩关闭当前键盘后才可以再点击别的按钮。也可以关闭`hideOnClickOutside`，手动控制键盘是否展示来实现点击外部时收起键盘，这样更灵活。
 :::
 
-## Attributes
-
-| 参数                | 说明                                                                 | 类型                  | 可选值                     | 默认值     | 最低版本 |
-| ------------------- | -------------------------------------------------------------------- | --------------------- | -------------------------- | ---------- | -------- |
-| v-model:visible     | 是否展开                                                             | `boolean`             | -                          | `false`    | 1.3.10   |
-| v-model             | 绑定的值                                                             | `string`              | -                          | -          | 1.3.10   |
-| title               | 标题                                                                 | `string`              | -                          | -          | 1.3.10   |
-| mode                | 键盘模式                                                             | `string`              | `default`, `car`, `custom` | `default`  | 1.3.10   |
-| zIndex              | 层级                                                                 | `number`              | -                          | `100`      | 1.3.10   |
-| maxlength           | 最大长度                                                             | `number`              | -                          | `Infinity` | 1.3.10   |
-| showDeleteKey       | 是否显示删除键                                                       | `boolean`             | -                          | `true`     | 1.3.10   |
-| randomKeyOrder      | 是否随机键盘按键顺序                                                 | `boolean`             | -                          | `false`    | 1.3.10   |
-| closeText           | 确认按钮文本                                                         | `string`              | -                          | -          | 1.3.10   |
-| deleteText          | 删除按钮文本                                                         | `string`              | -                          | -          | 1.3.10   |
-| closeButtonLoading  | 关闭按钮是否显示加载状态                                             | `boolean`             | -                          | `false`    | 1.3.10   |
-| modal               | 是否显示蒙层遮罩                                                     | `boolean`             | -                          | `false`    | 1.3.10   |
-| hideOnClickOutside  | 是否在点击外部时收起键盘                                             | `boolean`             | -                          | `true`     | 1.3.10   |
-| lockScroll          | 是否锁定背景滚动，锁定时蒙层里的内容也将无法滚动                     | `boolean`             | -                          | `true`     | 1.3.10   |
-| safeAreaInsetBottom | 是否在底部安全区域内                                                 | `boolean`             | -                          | `true`     | 1.3.10   |
-| extraKey            | 额外按键                                                             | `string` / `string[]` | -                          | -          | 1.3.10   |
-| root-portal         | 是否从页面中脱离出来，用于解决各种 fixed 失效问题                    | `boolean`             | -                          | `false`    | 1.11.0   |
-| v-model:carLang    | 车牌键盘语言模式，当 mode=car 时生效                                 | `string`              | `zh`, `en`                 | -          | 1.13.0   |
-| autoSwitchLang    | 是否自动切换车牌键盘语言，当 mode=car 且 car-lang 是非受控状态时生效 | `boolean`             | -                          | `false`    | 1.13.0   |
-
 ## Slot
 
 | name  | 说明 | 类型 | 最低版本 |
 | ----- | ---- | ---- | -------- |
 | title | 标题 | -    | 1.2.12   |
-
-## Events
-
-| 事件名称 | 说明                           | 参数        | 最低版本 |
-| -------- | ------------------------------ | ----------- | -------- |
-| input    | 点击按键时触发                 | key: string | -        |
-| delete   | 点击删除键时触发               | -           | -        |
-| close    | 点击关闭按钮或非键盘区域时触发 | -           | -        |
 
 ## 外部样式类
 

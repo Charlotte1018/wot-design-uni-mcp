@@ -2,7 +2,7 @@
 
 ### 基本用法
 
-单列选择器，给
+基本用法
 
 ```vue
 <template>
@@ -22,7 +22,7 @@ function onChange({picker, value, index}) {
 
 ### 禁用选项
 
-选项可以为对象，设置
+禁用选项
 
 ```vue
 <template>
@@ -69,7 +69,7 @@ const columns = ref([
 
 ### 多级联动
 
-传入
+多级联动
 
 ```vue
 <template>
@@ -106,24 +106,7 @@ const onChangeDistrict = (pickerView, value, columnIndex, resolve) => {
 </script>
 ```
 
-### attributes
-
-Attributes
-
-| 参数 | 说明 | 类型 | 可选值 | 默认值 | 最低版本 |
-|-----|------|-----|-------|-------|---------|
-| v-model | 选中项，如果为多列选择器，则其类型应为数组 | string / number / boolean / array | - | - | - |
-| columns | 选择器数据，可以为字符串数组，也可以为对象数组，如果为二维数组，则为多列选择器 | array | - | - | - |
-| loading | 加载中 | boolean | - | false | - |
-| loading-color | 加载的颜色，只能使用十六进制的色值写法，且不能使用缩写 | string | - | #4D80F0 | - |
-| columns-height | picker内部滚筒高 | number | - | 231 | - |
-| item-height | picker item的高度 | number | - | 35 | 1.13.0 |
-| value-key | 选项对象中，value对应的 key | string | - | value | - |
-| label-key | 选项对象中，展示的文本对应的 key | string | - | label | - |
-| column-change | 接收 pickerView 实例、选中项、当前修改列的下标、resolve 作为入参，根据选中项和列下标进行判断，通过 pickerView 实例暴露出来的 `setColumnData` 方法修改其他列的数据源。 | function | - | - | - |
-| immediate-change | 是否在手指松开时立即触发picker-view的 change 事件。若不开启则会在滚动动画结束后触发 change 事件，1.2.25版本起提供，仅微信小程序和支付宝小程序支持。 | boolean | - | false | 1.2.25 |
-
-### methods
+### Methods
 
 Methods
 
@@ -134,16 +117,6 @@ Methods
 | getColumnData | 获取某一列的选项 | columnIndex | - |
 | setColumnData | 设置某一列的选项 | columnIndex, values | - |
 | resetColumns | 重置列数据为指定列数据 | columns（类型与props中columns相同） | 1.3.9 |
-
-### events
-
-Events
-
-| 事件名称 | 说明 | 参数 | 最低版本 |
-|--------|------|------|--------|
-| change | 选项值修改时触发 | event = { value, picker, index }, 单列: picker实例, 选中项值, 选中项下标; 多列: picker实例, 所有列选中项值, 当前列的下标 | - |
-| pickstart | 当滚动选择开始时候触发事件 | - | - |
-| pickend | 当滚动选择结束时候触发事件 | - | - |
 
 ### 外部样式类
 

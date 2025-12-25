@@ -1,38 +1,56 @@
 ## Backtop 组件示例
 
-### basic
+### 基本用法
 
-
-
-```vue
-<template>
-  Scroll down to see the bottom-right button.
-  <fin-backtop :right="100" :bottom="100" />
-</template>
-```
-
-### custom
-
-
+基本用法
 
 ```vue
 <template>
-  Scroll down to see the bottom-right button.
-  <fin-backtop :bottom="100">
-    <div
-      style="
-        height: 100%;
-        width: 100%;
-        background-color: var(--fin-bg-color-overlay);
-        box-shadow: var(--fin-box-shadow-lighter);
-        text-align: center;
-        line-height: 40px;
-        color: #1989fa;
-      "
-    >
-      UP
-    </div>
-  </fin-backtop>
+<wd-backtop :scrollTop="scrollTop"></wd-backtop>
 </template>
+
+<script lang="ts" setup>
+const scrollTop = ref<number>(0)
+onPageScroll((e) => {
+  scrollTop.value = e.scrollTop
+})
+</script>
 ```
+
+### 自定义图标
+
+自定义图标
+
+```vue
+<template>
+<wd-backtop :scrollTop="scrollTop">
+    <text>TOP<text>
+  </wd-backtop>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 自定义样式
+
+自定义样式
+
+```vue
+<template>
+<wd-backtop :scrollTop="scrollTop" customStyle="background: #007aff;color:white;"></wd-backtop>
+</template>
+
+<script lang="ts" setup>
+</script>
+```
+
+### 外部样式类
+
+外部样式类
+
+| 类名         | 说明       | 最低版本 |
+| ------------ | ---------- | -------- |
+| custom-class | 根节点样式 | -        |
+| custom-style | 根节点样式 | -        |
 
